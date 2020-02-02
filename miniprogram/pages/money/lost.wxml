@@ -1,2 +1,51 @@
-<!--miniprogram/pages/money/lost.wxml-->
-<text>miniprogram/pages/money/lost.wxml</text>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">花钱</view>
+    </view>
+    <view class="page__bd">
+
+        <view class="weui-cells__title">记录</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">类别</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" value="{{costType}}" bindinput="onCostTypeChange" autofocus placeholder="比如: 吃饭、打车..."/>
+                </view>
+            </view>
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">消费</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" bindinput="onCostMoneyChange" value="{{costMoney}}" placeholder="比如: 15.00" />
+                </view>
+            </view>
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">日期</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker mode="date" value="{{coseDate}}" start="2020-01-01" bindchange="onDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title">备注</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="onSubmit">确定</button>
+        </view>
+    </view>
+</view>

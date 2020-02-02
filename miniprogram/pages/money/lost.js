@@ -1,66 +1,76 @@
 // miniprogram/pages/money/lost.js
+const app = getApp();
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
 
-  },
+    data: {
+        name: null,
+        costMoney: 0.00,
+        costType: "吃饭",
+        costDate: null,
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+    onLoad: function (options) {
+        const { userInfo } = app.globalData;
+        this.setData({
+            name: userInfo.nickName,
+        })
+    },
 
-  },
+    onCostTypeChange: function (e) {
+        this.setData({
+            costType: e.detail.value,
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    onCostMoneyChange: function (e) {
+        this.setData({
+            costMoney: e.detail.value,
+        })
+    },
 
-  },
+    onDateChange: function (e) {
+        this.setData({
+            costDate: e.detail.value,
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    onSubmit: function (e) {
+        function validatePass() {
+            return Object.keys(this.data).every(key => this.data[ key ] != null)
+        }
 
-  },
+        if (!validatePass.call(this)) {
+            wx.showModal({
+                content: '请完善所有信息',
+                showCancel: false,
+            })
+            return;
+        }
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+        const db = wx.cloud.database();
+        const { name, costMoney, costType, costDate } = this.data;
+        db.collection('money-tracker').add({
+            data: {
+                name,
+                costType,
+                costMoney,
+                costDate,
+            },
+            success: res => {
+                wx.showToast({
+                    title: '添加成功',
+                    success: () => {
+                        setTimeout(function () {
+                            wx.navigateBack({
+                                delta: -1,
+                            })
+                        }, 1000)
+                    }
+                })
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+            }
+        });
+    }
+});
