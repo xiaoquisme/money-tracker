@@ -1,59 +1,26 @@
-<!--index.wxml-->
-<view class="container">
-
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
-    <view class="userinfo-nickname-wrapper">
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+<view class="page">
+  <view class="page__bd page__bd-spacing">
+    <view class="kind-list">
+      <block wx:for="{{functions}}" wx:key="id">
+        <view class="kind-list__item">
+          <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+            <view class="weui-flex__item">{{item.name}}</view>
+          </view>
+          <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+              <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+                <navigator url="{{page.url}}" class="weui-cell weui-cell_access">
+                  <view class="weui-cell__bd">{{page.name}}</view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </navigator>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="warn" bindtap="onLogout">登出</button>
     </view>
   </view>
-
-
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
-    </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-    </view>
-  </view>
-
-
-  <!-- 操作数据库 -->
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 即时通信 -->
-  <view class="uploader">
-    <navigator url="../im/im" open-type="navigate" class="uploader-text">
-      <text>即时通信 Demo</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
-  <!-- 云调用 -->
-  <view class="uploader">
-    <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-      <text>云调用</text>
-    </navigator>
-  </view>
-
-
 </view>

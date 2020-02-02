@@ -1,5 +1,5 @@
 //index.js
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -7,10 +7,29 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    functions: [
+      {
+        id: 'main',
+        name: '记账',
+        open: true,
+        pages: [
+          { name: "花钱", url: "/pages/money/lost" },
+          { name: "挣钱", url: "/pages/money/income" },
+        ]
+      },
+      {
+        id: 'other',
+        name: "其他",
+        open: false,
+        pages: [
+          { name: "今日消费", url: "/pages/today/cost" }
+        ]
+      }
+    ]
   },
 
-  onLoad: function() {
+  onLoad: function () {
 
     const { userInfo, logged } = app.globalData;
     if (!logged) {
@@ -25,35 +44,31 @@ Page({
     });
   },
 
-  onGetUserInfo: function(e) {
-    if (!this.data.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
+  onLogout: function () {
+    wx.openSetting({
+      success: res => {
+        if (!res.authSetting[ 'scope.userInfo' ]) {
+          app.globalData.logged = false;
+          wx.redirectTo({
+            url: "/pages/login/login",
+          })
+        }
+      },
+    })
   },
 
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
+  kindToggle: function (e) {
+    var id = e.currentTarget.id, list = this.data.functions;
+    for (var i = 0, len = list.length; i < len; ++i) {
+      if (list[ i ].id == id) {
+        list[ i ].open = !list[ i ].open
+      } else {
+        list[ i ].open = false
       }
-    })
+    }
+    this.setData({
+      functions: list,
+    });
   },
 
   // 上传图片
@@ -62,17 +77,17 @@ Page({
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
+      sourceType: ['图库', '拍照'],
       success: function (res) {
 
         wx.showLoading({
           title: '上传中',
         })
 
-        const filePath = res.tempFilePaths[0]
+        const filePath = res.tempFilePaths[ 0 ]
 
         // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[ 0 ]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
@@ -106,4 +121,4 @@ Page({
     })
   },
 
-})
+});
