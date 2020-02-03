@@ -27,8 +27,8 @@
                     <view class="weui-label">日期</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker mode="date" value="{{coseDate}}" start="2020-01-01" bindchange="onDateChange">
-                        <view class="weui-input">{{date}}</view>
+                    <picker mode="date" value="{{costDate}}" start="2020-01-01" bindchange="onDateChange">
+                        <view class="weui-input">{{costDate || ""}}</view>
                     </picker>
                 </view>
             </view>
@@ -38,8 +38,8 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
-                    <view class="weui-textarea-counter">0/200</view>
+                    <textarea value="{{costComment}}" class="weui-textarea" bindinput="onCostCommentChange" placeholder="备注一下吧" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">{{costComment.length}}/200</view>
                 </view>
             </view>
         </view>

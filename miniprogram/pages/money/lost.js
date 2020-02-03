@@ -9,6 +9,7 @@ Page({
         costMoney: 0.00,
         costType: "吃饭",
         costDate: null,
+        costComment: "",
     },
 
     onLoad: function (options) {
@@ -36,6 +37,12 @@ Page({
         })
     },
 
+    onCostCommentChange: function(e) {
+        this.setData({
+            costComment: e.detail.value,
+        });
+    },
+
     onSubmit: function (e) {
         function validatePass() {
             return Object.keys(this.data).every(key => this.data[ key ] != null)
@@ -45,7 +52,7 @@ Page({
             wx.showModal({
                 content: '请完善所有信息',
                 showCancel: false,
-            })
+            });
             return;
         }
 
