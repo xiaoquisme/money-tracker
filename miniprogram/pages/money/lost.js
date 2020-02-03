@@ -57,13 +57,14 @@ Page({
         }
 
         const db = wx.cloud.database();
-        const { name, costMoney, costType, costDate } = this.data;
+        const { name, costMoney, costType, costDate, costComment } = this.data;
         db.collection('money-tracker').add({
             data: {
                 name,
                 costType,
                 costMoney,
                 costDate,
+                costComment,
             },
             success: res => {
                 wx.showToast({
