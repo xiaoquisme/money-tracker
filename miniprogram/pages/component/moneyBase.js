@@ -1,3 +1,5 @@
+const app = getApp();
+
 Component({
     options: {
         addGlobalClass: true,
@@ -11,12 +13,11 @@ Component({
         typeTitle: String,
         typePlaceholder: String,
         count: String,
-        countTitle:String,
-        countPlaceholder:String,
+        countTitle: String,
+        countPlaceholder: String,
         date: String,
         comment: String,
         moneyType: String,
-        creator: String,
     },
 
     data: {
@@ -65,10 +66,12 @@ Component({
 
             const db = wx.cloud.database();
             const { type, count, date, comment } = this.data;
-            const { moneyType, creator } = this.properties;
+            const { moneyType } = this.properties;
+            const { userInfo } = app.globalData;
             db.collection('money-tracker').add({
                 data: {
-                    creator,
+                    creator: userInfo.nickName,
+                    avatarUrl: userInfo.avatarUrl,
                     moneyType,
                     type,
                     count,
