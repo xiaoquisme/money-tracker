@@ -1,0 +1,48 @@
+.weui-tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.weui-tabbar__label {
+    font-size: 16px;
+}
+
+.user_avatar {
+    margin: 0 16px 0 8px;
+    vertical-align: middle;
+    width: 33px;
+    height: 33px;
+}
+
+.weui-cell {
+    padding: 10px;
+}
+
+.comment {
+    color: rgba(0, 0, 0, .5);
+    text-align: right;
+}
+
+.cost_count {
+    color: green;
+    margin: 0 16px 0 0;
+    min-width: 50px;
+}
+.income_count {
+    color: red;
+    margin: 0 16px 0 0;
+    min-width: 50px;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+
+.type {
+    margin: 0 16px 0 0;
+    min-width: 50px;
+}
