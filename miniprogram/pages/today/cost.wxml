@@ -1,34 +1,12 @@
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">今日账单({{ today }})</view>
-        <view class="page__desc">共计消费: {{ todayLost }}, 共计收入: {{ todayIncome }}</view>
-        <view class="page__desc {{ todayIncome - todayLost >0 ? 'red' : 'green' }}">累计盈亏: {{ todayIncome - todayLost > 0
-            ? '+' : '' }}{{ todayIncome - todayLost }}
-        </view>
-    </view>
-    <view class="page__bd">
-        <view class="weui-cells__title">今日消费</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view wx:for="{{lostItems}}" class="weui-cell">
-                <image src="{{item.avatarUrl}}" class="user_avatar"></image>
-                <view class="type">{{ item.type }}</view>
-                <view class="cost_count">-{{ item.count }}</view>
-                <view class="weui-flex">
-                    <view class="comment">{{ item.comment }}</view>
-                </view>
-            </view>
-
-        </view>
-        <view wx:if="{{ incomeItems.length > 0 }}" class="weui-cells__title">今日收入</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view wx:for="{{incomeItems}}" class="weui-cell">
-                <image src="{{item.avatarUrl}}" class="user_avatar"></image>
-                <view class="type">{{ item.type }}</view>
-                <view class="income_count">+{{ item.count }}</view>
-                <view class="weui-flex">
-                    <view class="comment">{{ item.comment }}</view>
-                </view>
-            </view>
-        </view>
-    </view>
-</view>
+<report-base
+        date="{{ today }}"
+        dateDescription="今日账单"
+        lostItems="{{ lostItems }}"
+        lostItemTitle="今日消费"
+        incomeItems="{{ incomeItems }}"
+        incomeItemsTitle="今日收入"
+        totalLost="{{ todayLost }}"
+        totalIncome="{{ todayIncome }}"
+        total="{{ todayIncome-todayLost }}"
+        totalDescription="累计消费"
+/>
