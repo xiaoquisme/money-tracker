@@ -68,30 +68,37 @@ Component({
             const { type, count, date, comment } = this.data;
             const { moneyType } = this.properties;
             const { userInfo } = app.globalData;
-            db.collection('money-tracker').add({
-                data: {
-                    creator: userInfo.nickName,
-                    avatarUrl: userInfo.avatarUrl,
-                    moneyType,
-                    type,
-                    count,
-                    date,
-                    comment
-                },
-                success: res => {
-                    wx.showToast({
-                        title: '添加成功',
-                        success: () => {
-                            setTimeout(function () {
-                                wx.navigateBack({
-                                    delta: -1,
-                                })
-                            }, 1000)
+            wx.cloud.callFunction({
+                name: "lib",
+                data: { date }
+            }).then(res => res.result.weekNumber)
+                .then(weekNumber => {
+                    db.collection('money-tracker').add({
+                        data: {
+                            creator: userInfo.nickName,
+                            avatarUrl: userInfo.avatarUrl,
+                            moneyType,
+                            type,
+                            count,
+                            date,
+                            comment,
+                            weekNumber,
+                        },
+                        success: res => {
+                            wx.showToast({
+                                title: '添加成功',
+                                success: () => {
+                                    setTimeout(function () {
+                                        wx.navigateBack({
+                                            delta: -1,
+                                        })
+                                    }, 1000)
+                                }
+                            })
+
                         }
                     })
-
-                }
-            });
+                });
         }
     }
 });
