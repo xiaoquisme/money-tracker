@@ -14,25 +14,26 @@ Page({
     },
 
     onLoad: function (options) {
-        const db = wx.cloud.database();
         const today = new Date().toISOString().split('T')[ 0 ];
         this.setData({
             today: today,
         });
-        db.collection("money-tracker")
-            .where({
-                date: today
-            })
-            .get()
+        wx.cloud.callFunction({
+            name: 'db',
+            data: {
+                type: 'today',
+                date: today,
+            }
+        }).then(res => res.result)
             .then(res => {
                 const lostItems = res.data.filter(d => d.moneyType == "LOST").reverse();
                 const incomeItems = res.data.filter(d => d.moneyType == "INCOME").reverse();
-                const todayLost = lostItems.reduce((pre, cur) => parseFloat(cur.count)+ pre, 0);
-                const todayIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count)+ pre, 0);
+                const todayLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
+                const todayIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
                 this.setData({
                     lostItems: lostItems,
                     incomeItems: incomeItems,
-                    today:today,
+                    today: today,
                     todayLost: todayLost,
                     todayIncome: todayIncome,
                 });
