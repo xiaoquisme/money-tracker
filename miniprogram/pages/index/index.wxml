@@ -19,8 +19,5 @@
         </view>
       </block>
     </view>
-    <view class="weui-btn-area">
-      <button class="weui-btn" type="warn" bindtap="onLogout">登出</button>
-    </view>
   </view>
 </view>

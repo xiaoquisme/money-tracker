@@ -4,7 +4,7 @@
     "pages/login/login",
     "pages/money/lost",
     "pages/money/income",
-    "pages/today/cost",
+    "pages/today/today",
     "pages/week/week"
   ],
   "window": {
