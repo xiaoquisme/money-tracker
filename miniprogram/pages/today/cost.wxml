@@ -1,12 +1,12 @@
 <report-base
         date="{{ today }}"
-        dateDescription="今日账单"
+        dateDescription="{{ todayDescription }}"
         lostItems="{{ lostItems }}"
-        lostItemTitle="今日消费"
+        lostItemTitle="{{ lostItemsTitle }}"
         incomeItems="{{ incomeItems }}"
-        incomeItemsTitle="今日收入"
+        incomeItemsTitle="{{ incomeItemsTitle }}"
         totalLost="{{ todayLost }}"
         totalIncome="{{ todayIncome }}"
         total="{{ todayIncome-todayLost }}"
-        totalDescription="累计消费"
+        totalDescription="{{ totalDescription }}"
 />

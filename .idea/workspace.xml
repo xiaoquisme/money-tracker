@@ -143,9 +143,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="0" y="23" width="1440" height="877" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1580739834944" />
-    <state x="504" y="179" key="RollbackChangesDialog" timestamp="1580734662452">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="504" y="160" key="RollbackChangesDialog" timestamp="1582949655461">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="504" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1582949655461" />
     <state x="504" y="179" key="RollbackChangesDialog/0.23.1440.877@0.23.1440.877" timestamp="1580734662452" />
     <state x="450" y="200" width="540" height="524" key="StructurePopup" timestamp="1580737972949">
       <screen x="0" y="23" width="1440" height="877" />

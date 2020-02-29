@@ -3,10 +3,14 @@ Page({
 
     data: {
         today: null,
+        todayDescription: "今日账单",
         lostItems: [],
+        lostItemsTitle: "今日消费",
         incomeItems: [],
+        incomeItemsTitle: "今日收入",
         todayLost: 0,
         todayIncome: 0,
+        totalDescription: "累计消费",
     },
 
     onLoad: function (options) {
