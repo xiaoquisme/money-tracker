@@ -2,7 +2,7 @@
         date="{{ week }}"
         dateDescription="{{ weekDescription }}"
         lostItems="{{ lostItems }}"
-        lostItemTitle="{{ lostItemsTitle }}"
+        lostItemsTitle="{{ lostItemsTitle }}"
         incomeItems="{{ incomeItems }}"
         incomeItemsTitle="{{ incomeItemsTitle }}"
         totalLost="{{ weekLost }}"

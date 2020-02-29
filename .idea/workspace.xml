@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7888a2ba-c78e-4094-b028-48d9baadf563" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/component/moneyBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/component/money-base.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/component/moneyBase.json" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/component/money-base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/component/moneyBase.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/component/money-base.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/component/moneyBase.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/component/money-base.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram/pages/money/income.json" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/money/income.json" afterDir="false" />
+    <list default="true" id="7888a2ba-c78e-4094-b028-48d9baadf563" name="Default Changelist" comment="refactor today">
+      <change afterPath="$PROJECT_DIR$/cloudfunctions/db/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/component/report-base.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/component/report-base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/component/report-base.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/component/report-base.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/today/today.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/today/today.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/week/week.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/week/week.wxml" afterDir="false" />
     </list>
     <list id="2540079c-8300-479e-96cc-86c3b6fe0054" name="other" comment="">
       <change afterPath="$PROJECT_DIR$/cloudfunctions/lib/package-lock.json" afterDir="false" />
@@ -20,6 +21,27 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="3" end1="9" start2="3" end2="10" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="23" end1="23" start2="24" end2="45" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="40" end1="40" start2="62" end2="63" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="75" end1="76" start2="98" end2="99" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="154" end1="155" start2="177" end2="206" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="174" end1="174" start2="225" end2="226" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="185" end1="186" start2="237" end2="242" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="192" end1="193" start2="248" end2="249" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="195" end1="196" start2="251" end2="252" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="197" end1="198" start2="253" end2="254" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="200" end1="201" start2="256" end2="257" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="211" end1="212" start2="267" end2="272" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="214" end1="215" start2="274" end2="279" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="219" end1="221" start2="283" end2="285" changelist="2540079c-8300-479e-96cc-86c3b6fe0054" />
+        <range start1="222" end1="223" start2="286" end2="287" changelist="2540079c-8300-479e-96cc-86c3b6fe0054" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1XFgVX8QD0sMvhRAVzOscybwmIV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -38,6 +60,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -73,7 +96,7 @@
       <workItem from="1580732186728" duration="7719000" />
       <workItem from="1582335884095" duration="1191000" />
       <workItem from="1582808301142" duration="4677000" />
-      <workItem from="1582949529756" duration="2122000" />
+      <workItem from="1582949529756" duration="5842000" />
     </task>
     <task id="LOCAL-00001" summary="add money lost and money income page">
       <created>1580650492327</created>
@@ -152,7 +175,35 @@
       <option name="project" value="LOCAL" />
       <updated>1582951684909</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="rename money base component">
+      <created>1582951742120</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582951742120</updated>
+    </task>
+    <task id="LOCAL-00013" summary="init db could function">
+      <created>1582952409354</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582952409354</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor use cloud function to get data">
+      <created>1582955398457</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582955398457</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor today">
+      <created>1582955881555</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1582955881555</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +223,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add money lost and money income page" />
     <MESSAGE value="fix cost data show issue and  add comment enabled" />
     <MESSAGE value="fix cost comment not save in db" />
@@ -183,22 +235,26 @@
     <MESSAGE value="fix 今日收入 if statement error" />
     <MESSAGE value=" add week cost report" />
     <MESSAGE value="remove useless cloud functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove useless cloud functions" />
+    <MESSAGE value="rename money base component" />
+    <MESSAGE value="init db could function" />
+    <MESSAGE value="refactor use cloud function to get data" />
+    <MESSAGE value="refactor today" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor today" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="127" key="#Plugins" timestamp="1580732173707">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="320" y="127" key="#Plugins/0.23.1440.877@0.23.1440.877" timestamp="1580732173707" />
-    <state x="303" y="51" key="CommitChangelistDialog2" timestamp="1582951684614">
+    <state x="303" y="51" key="CommitChangelistDialog2" timestamp="1582955881331">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1582951684614" />
+    <state x="303" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1582955881331" />
     <state x="303" y="73" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1580740145347" />
-    <state x="0" y="0" width="1440" height="900" key="DiffContextDialog" timestamp="1582951670339">
+    <state x="0" y="0" width="1440" height="900" key="DiffContextDialog" timestamp="1582956115622">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="0" y="0" width="1440" height="900" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1582951670339" />
+    <state x="0" y="0" width="1440" height="900" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1582956115622" />
     <state x="0" y="23" width="1440" height="877" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1580739834944" />
     <state x="504" y="160" key="RollbackChangesDialog" timestamp="1582949655461">
       <screen x="0" y="0" width="1440" height="900" />
@@ -209,10 +265,18 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="450" y="200" width="540" height="524" key="StructurePopup/0.23.1440.877@0.23.1440.877" timestamp="1580737972949" />
-    <state x="378" y="207" width="683" height="486" key="find.popup" timestamp="1580650823005">
+    <state x="523" y="161" key="VCS.ChangeListViewerDialog" timestamp="1582956112703">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="378" y="207" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1580650823005" />
+    <state x="523" y="161" key="VCS.ChangeListViewerDialog/0.0.1440.900@0.0.1440.900" timestamp="1582956112703" />
+    <state x="558" y="326" key="VCS.EditChangelistDialog" timestamp="1582809335362">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="558" y="326" key="VCS.EditChangelistDialog/0.0.1440.900@0.0.1440.900" timestamp="1582809335362" />
+    <state x="378" y="207" width="683" height="486" key="find.popup" timestamp="1582952760714">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="378" y="207" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1582952760714" />
     <state x="385" y="211" key="run.anything.popup" timestamp="1580734660687">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

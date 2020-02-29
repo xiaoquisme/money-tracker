@@ -6,7 +6,7 @@ Component({
       date: String,
       dateDescription: String,
       lostItems: Array,
-      lostItemTitle: String,
+      lostItemsTitle: String,
       incomeItems: Array,
       incomeItemsTitle: String,
       totalLost: Number,
