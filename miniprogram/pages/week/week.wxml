@@ -1,0 +1,12 @@
+<report-base
+        date="{{ week }}"
+        dateDescription="{{ weekDescription }}"
+        lostItems="{{ lostItems }}"
+        lostItemTitle="{{ lostItemsTitle }}"
+        incomeItems="{{ incomeItems }}"
+        incomeItemsTitle="{{ incomeItemsTitle }}"
+        totalLost="{{ weekLost }}"
+        totalIncome="{{ weekIncome }}"
+        total="{{ weekIncome-weekLost }}"
+        totalDescription="{{ totalDescription }}"
+/>

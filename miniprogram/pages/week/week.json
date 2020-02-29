@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "report-base": "/pages/component/report-base"
+  }
+}

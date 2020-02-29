@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7888a2ba-c78e-4094-b028-48d9baadf563" name="Default Changelist" comment="add money lost and money income page">
+    <list default="true" id="7888a2ba-c78e-4094-b028-48d9baadf563" name="Default Changelist" comment=" add money income page">
+      <change afterPath="$PROJECT_DIR$/miniprogram/pages/week/week.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/miniprogram/pages/week/week.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/miniprogram/pages/week/week.wxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/miniprogram/pages/week/week.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram/pages/index/index.js" afterDir="false" />
+    </list>
+    <list id="2540079c-8300-479e-96cc-86c3b6fe0054" name="other" comment="">
+      <change afterPath="$PROJECT_DIR$/cloudfunctions/lib/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniprogram/.idea/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,14 +23,40 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="14" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="5" end1="5" start2="15" end2="16" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="13" end1="13" start2="24" end2="47" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="15" end1="16" start2="49" end2="52" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="22" end1="22" start2="58" end2="59" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="52" end1="52" start2="89" end2="90" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="60" end1="60" start2="98" end2="101" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="103" end1="104" start2="144" end2="166" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="123" end1="123" start2="185" end2="186" changelist="2540079c-8300-479e-96cc-86c3b6fe0054" />
+        <range start1="129" end1="130" start2="192" end2="196" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="136" end1="138" start2="202" end2="204" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="139" end1="140" start2="205" end2="206" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="141" end1="143" start2="207" end2="209" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="144" end1="144" start2="210" end2="211" changelist="7888a2ba-c78e-4094-b028-48d9baadf563" />
+        <range start1="154" end1="154" start2="221" end2="225" changelist="2540079c-8300-479e-96cc-86c3b6fe0054" />
+        <range start1="162" end1="164" start2="233" end2="235" changelist="2540079c-8300-479e-96cc-86c3b6fe0054" />
+        <range start1="165" end1="166" start2="236" end2="237" changelist="2540079c-8300-479e-96cc-86c3b6fe0054" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1XFgVX8QD0sMvhRAVzOscybwmIV" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -50,6 +87,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7888a2ba-c78e-4094-b028-48d9baadf563" name="Default Changelist" comment="" />
+      <changelist id="2540079c-8300-479e-96cc-86c3b6fe0054" name="other" comment="" />
       <created>1580647280540</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -58,6 +96,9 @@
       <workItem from="1580717936045" duration="8000" />
       <workItem from="1580731951192" duration="220000" />
       <workItem from="1580732186728" duration="7719000" />
+      <workItem from="1582335884095" duration="1191000" />
+      <workItem from="1582808301142" duration="4677000" />
+      <workItem from="1582949529756" duration="1870000" />
     </task>
     <task id="LOCAL-00001" summary="add money lost and money income page">
       <created>1580650492327</created>
@@ -101,7 +142,28 @@
       <option name="project" value="LOCAL" />
       <updated>1580740145512</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor 今日消费 extract report base component">
+      <created>1582809432233</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1582809432233</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add week support">
+      <created>1582813185934</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1582813185934</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix 今日收入 if statement error">
+      <created>1582950363331</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1582950363331</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,21 +189,25 @@
     <MESSAGE value="remove useless code" />
     <MESSAGE value="extract component for moneybase" />
     <MESSAGE value=" add money income page" />
-    <option name="LAST_COMMIT_MESSAGE" value=" add money income page" />
+    <MESSAGE value="refactor 今日消费 extract report base component" />
+    <MESSAGE value="add week support" />
+    <MESSAGE value="fix 今日收入 if statement error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix 今日收入 if statement error" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="127" key="#Plugins" timestamp="1580732173707">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="320" y="127" key="#Plugins/0.23.1440.877@0.23.1440.877" timestamp="1580732173707" />
-    <state x="303" y="73" key="CommitChangelistDialog2" timestamp="1580740145347">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="303" y="51" key="CommitChangelistDialog2" timestamp="1582950362752">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1580650492018" />
+    <state x="303" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1582950362752" />
     <state x="303" y="73" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1580740145347" />
-    <state x="0" y="23" width="1440" height="877" key="DiffContextDialog" timestamp="1580739834944">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="0" y="0" width="1440" height="900" key="DiffContextDialog" timestamp="1582950310698">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="0" y="0" width="1440" height="900" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1582950310698" />
     <state x="0" y="23" width="1440" height="877" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1580739834944" />
     <state x="504" y="160" key="RollbackChangesDialog" timestamp="1582949655461">
       <screen x="0" y="0" width="1440" height="900" />
