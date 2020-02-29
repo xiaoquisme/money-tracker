@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "money-base": "/pages/component/moneyBase"
+    "money-base": "/pages/component/money-base"
   }
 }
