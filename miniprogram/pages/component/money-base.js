@@ -1,5 +1,7 @@
 const app = getApp();
 
+let timer;
+
 Component({
     options: {
         addGlobalClass: true,
@@ -51,7 +53,7 @@ Component({
                 comment: e.detail.value,
             })
         },
-        onSubmit: function (e) {
+        onSubmit: function () {
             function validatePass() {
                 return Object.keys(this.data).every(key => this.data[ key ] != null)
             }
@@ -95,10 +97,19 @@ Component({
                                     }, 1000)
                                 }
                             })
-
                         }
                     })
                 });
+        },
+
+        debounce: function (func, waitSecond) {
+            return () => {
+                clearTimeout(timer);
+                timer = setTimeout(func, waitSecond * 1000)
+            };
+        },
+        onSubmitClick: function () {
+            this.debounce(this.onSubmit.bind(this), 0.85)();
         }
     }
 });
