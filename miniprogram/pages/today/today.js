@@ -14,6 +14,7 @@ Page({
     },
 
     onLoad: function (options) {
+        wx.showLoading({ title: '数据加载中' })
         const today = new Date().toISOString().split('T')[ 0 ];
         this.setData({
             today: today,
@@ -37,6 +38,7 @@ Page({
                     todayLost: todayLost,
                     todayIncome: todayIncome,
                 });
+                wx.hideLoading();
             })
     },
 });
