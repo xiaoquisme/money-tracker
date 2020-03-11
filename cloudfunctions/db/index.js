@@ -13,6 +13,9 @@ exports.main = async (event, context) => {
     if (type === "week") {
         return await getWeekData(date);
     }
+    if(type === "remove-today-test") {
+        return await deleteTodayTestData();
+    }
     return [];
 };
 
@@ -34,4 +37,13 @@ async function getWeekData(date) {
         .where({
             weekNumber: weekNumber,
         }).get();
+}
+async function deleteTodayTestData() {
+    const today = new Date().toISOString().split('T')[ 0 ];
+    return db.collection("money-tracker")
+        .where({
+            date: today,
+            comment: '111'
+        }).remove();
+
 }

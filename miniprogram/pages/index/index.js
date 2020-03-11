@@ -46,8 +46,8 @@ Page({
   },
 
   kindToggle: function (e) {
-    var id = e.currentTarget.id, list = this.data.functions;
-    for (var i = 0, len = list.length; i < len; ++i) {
+    const id = e.currentTarget.id, list = this.data.functions;
+    for (let i = 0, len = list.length; i < len; ++i) {
       if (list[ i ].id == id) {
         list[ i ].open = !list[ i ].open
       } else {
@@ -58,4 +58,18 @@ Page({
       functions: list,
     });
   },
+  clickDelete: function (e) {
+    wx.cloud.callFunction({
+      name:"db",
+      data: {
+        type: "remove-today-test"
+      }
+    }).then(any => {
+      wx.showToast({
+        icon: "success",
+        title: "删除成功",
+        duration: 1000
+      })
+    })
+  }
 });

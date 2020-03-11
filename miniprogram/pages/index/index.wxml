@@ -19,5 +19,8 @@
         </view>
       </block>
     </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" disabled="disabled" type="primary" bindtap="clickDelete">删除今日数据</button>
+    </view>
   </view>
 </view>
