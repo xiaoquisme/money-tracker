@@ -1,2 +1,2 @@
-./cloudfunctions/**/node_modules/*
+/cloudfunctions/*/node_modules/
 .idea
