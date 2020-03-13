@@ -2,11 +2,9 @@
     <money-base
             title="花钱"
             type-title="类别"
-            type="吃饭"
-            type-placeholder="比如: 吃饭。。。"
+            type-options="{{ moneyTypeOptions }}"
             count-title="消费"
             count-placeholder="比如: 10.00"
             money-type="{{ moneyType }}"
-            creator="{{ creator }}"
     />
 </view>

@@ -11,9 +11,8 @@ Component({
      */
     properties: {
         title: String,
-        type: String,
         typeTitle: String,
-        typePlaceholder: String,
+        typeOptions: Array,
         count: String,
         countTitle: String,
         countPlaceholder: String,
@@ -23,7 +22,7 @@ Component({
     },
 
     data: {
-        type: "",
+        type: "0",
         count: 0.00,
         date: null,
         comment: "",
@@ -80,7 +79,7 @@ Component({
                             creator: userInfo.nickName,
                             avatarUrl: userInfo.avatarUrl,
                             moneyType,
-                            type,
+                            type: this.properties.typeOptions[type],
                             count,
                             date,
                             comment,

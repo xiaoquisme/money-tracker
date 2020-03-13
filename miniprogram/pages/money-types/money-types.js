@@ -41,19 +41,18 @@ Page({
                     isActive: true,
                 }
             }
-        })
-            .then(res => {
-                wx.showToast({
-                    title: '添加成功',
-                    success: () => {
-                        setTimeout(function () {
-                            wx.navigateBack({
-                                delta: -1,
-                            })
-                        }, 1000)
-                    }
-                })
+        }).then(res => {
+            wx.showToast({
+                title: '添加成功',
+                success: () => {
+                    setTimeout(function () {
+                        wx.navigateBack({
+                            delta: -1,
+                        })
+                    }, 1000)
+                }
             })
+        })
         ;
     }
 

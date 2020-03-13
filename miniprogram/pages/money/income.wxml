@@ -2,8 +2,7 @@
     <money-base
             title="挣钱"
             type-title="类别"
-            type="工资"
-            type-placeholder="比如: 工资,外快。。。"
+            type-options="{{ moneyTypeOptions }}"
             count-title="收入"
             count-placeholder="比如: 10000"
             money-type="{{ moneyType }}"

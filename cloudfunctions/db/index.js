@@ -19,11 +19,22 @@ exports.main = async (event, context) => {
     if (type === "money-types-lost") {
         return await findAllMoneyLostTypes();
     }
+    if(type === "money-types-income") {
+        return await findAllMoneyIncomeTypes();
+    }
     if (type === "money-types-add") {
         return await addMoneyType(data);
     }
     return [];
 };
+
+async function findAllMoneyIncomeTypes() {
+    return db.collection("money-types")
+        .where({
+            value: "INCOME",
+            isActive: true,
+        }).get();
+}
 
 async function addMoneyType(data) {
     return db.collection("money-types")
@@ -35,7 +46,7 @@ async function addMoneyType(data) {
 async function findAllMoneyLostTypes() {
     return db.collection("money-types")
         .where({
-            type: "LOST",
+            value: "LOST",
             isActive: true,
         }).get();
 }

@@ -10,7 +10,9 @@
                     <view class="weui-label">{{ typeTitle }}</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" value="{{type}}" bindinput="onTypeChange" placeholder="{{typePlaceholder}}" autofocus/>
+                    <picker value="{{type}}" range="{{ typeOptions }}" bindchange="onTypeChange">
+                        <view class="weui-input">{{ typeOptions[type || "0"]}}</view>
+                    </picker>
                 </view>
             </view>
             <view class="weui-cell ">
