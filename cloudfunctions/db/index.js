@@ -25,8 +25,34 @@ exports.main = async (event, context) => {
     if (type === "money-types-add") {
         return await addMoneyType(data);
     }
+    if(type === "delete-money-tracker"){
+        return await deleteMoneyTracker(data);
+    }
+    if(type === "update-money-tracker") {
+        return await updateMoneyTrackers();
+    }
     return [];
 };
+
+async function updateMoneyTrackers() {
+    return db.collection("money-tracker")
+        .update({
+            data: {
+                isDelete: false
+            }
+        });
+}
+
+async function deleteMoneyTracker(data) {
+    return db.collection("money-tracker")
+        .where({
+            _id: data.id,
+        }).update({
+            data: {
+                isDelete: true
+            }
+        });
+}
 
 async function findAllMoneyIncomeTypes() {
     return db.collection("money-types")
