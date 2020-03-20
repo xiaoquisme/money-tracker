@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "cell": "/pages/component/cell/cell"
+  }
 }

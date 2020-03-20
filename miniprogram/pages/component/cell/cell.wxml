@@ -1,0 +1,11 @@
+<mp-slideview buttons="{{slideButtons}}"
+              bindbuttontap="lostItemsDelete">
+    <view style="display:flex" class="report-base-weui-cell">
+        <image src="{{item.avatarUrl}}" class="user_avatar"></image>
+        <view class="type">{{ item.type }}</view>
+        <view class="cost_count">-{{ item.count }}</view>
+        <view class="weui-flex">
+            <view class="comment">{{ item.comment }}</view>
+        </view>
+    </view>
+</mp-slideview>

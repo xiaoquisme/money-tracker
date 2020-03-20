@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-slideview": "/pages/component/vanders/weui/slideview/slideview"
+  }
+}
