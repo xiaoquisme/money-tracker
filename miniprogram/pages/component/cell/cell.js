@@ -10,7 +10,7 @@ Component({
 
     data: {
         slideButtons: [],
-        itemData:{},
+        itemData: {},
     },
     observers: {
         'item': function (data) {
@@ -32,7 +32,7 @@ Component({
     methods: {
         lostItemsDelete: function (event) {
             const { data } = event.detail;
-            this.triggerEvent('customevent', { data: data._id }, { bubbles: true });
+            this.triggerEvent('customevent', { data: { id: data._id, type: data.moneyType } }, { bubbles: true });
             wx.cloud.callFunction({
                 name: "db",
                 data: {
