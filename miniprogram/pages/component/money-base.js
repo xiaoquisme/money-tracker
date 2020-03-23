@@ -64,42 +64,36 @@ Component({
                 });
                 return;
             }
-
-            const db = wx.cloud.database();
             const { type, count, date, comment } = this.data;
             const { moneyType } = this.properties;
             const { userInfo } = app.globalData;
+            const data = {
+                creator: userInfo.nickName,
+                avatarUrl: userInfo.avatarUrl,
+                moneyType,
+                type: this.properties.typeOptions[type],
+                count,
+                date,
+                comment
+            };
             wx.cloud.callFunction({
-                name: "lib",
-                data: { date }
-            }).then(res => res.result.weekNumber)
-                .then(weekNumber => {
-                    db.collection('money-tracker').add({
-                        data: {
-                            creator: userInfo.nickName,
-                            avatarUrl: userInfo.avatarUrl,
-                            moneyType,
-                            type: this.properties.typeOptions[type],
-                            count,
-                            date,
-                            comment,
-                            weekNumber,
-                            isDelete: false,
-                        },
-                        success: res => {
-                            wx.showToast({
-                                title: '添加成功',
-                                success: () => {
-                                    setTimeout(function () {
-                                        wx.navigateBack({
-                                            delta: -1,
-                                        })
-                                    }, 1000)
-                                }
+                name: "db",
+                data: {
+                    type: "add-money-tracer",
+                    data: data,
+                }
+            }).then(res => {
+                wx.showToast({
+                    title: '添加成功',
+                    success: () => {
+                        setTimeout(function () {
+                            wx.navigateBack({
+                                delta: -1,
                             })
-                        }
-                    })
-                });
+                        }, 1000)
+                    }
+                })
+            });
         },
 
         debounce: function (func, waitSecond) {
@@ -109,7 +103,7 @@ Component({
             };
         },
         onSubmitClick: function () {
-            this.debounce(this.onSubmit.bind(this), 0.85)();
+            this.debounce(this.onSubmit.bind(this), 0.55)();
         }
     }
 });
