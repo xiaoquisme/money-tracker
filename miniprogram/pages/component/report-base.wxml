@@ -18,13 +18,11 @@
         </view>
         <view wx:if="{{ incomeItems.length > 0 }}" class="weui-cells__title">{{ incomeItemsTitle }}</view>
         <view class="weui-cells weui-cells_after-title">
-            <view wx:for="{{incomeItems}}" class="report-base-weui-cell">
-                <image src="{{item.avatarUrl}}" class="user_avatar"></image>
-                <view class="type">{{ item.type }}</view>
-                <view class="income_count">+{{ item.count }}</view>
-                <view class="weui-flex">
-                    <view class="comment">{{ item.comment }}</view>
-                </view>
+            <view wx:for="{{ incomeItems }}">
+                <cell
+                        item="{{ item }}"
+                        bindcustomevent="deleteItemCallBack">
+                </cell>
             </view>
         </view>
     </view>
