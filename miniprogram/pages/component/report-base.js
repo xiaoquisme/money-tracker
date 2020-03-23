@@ -15,13 +15,11 @@ Component({
         totalDescription: String,
     },
 
-    data: {},
-
     methods: {
         deleteItemCallBack: function (event) {
             const id = event.detail.data;
             this.setData({
-                lostItems:this.data.lostItems.filter(i => i._id !== id),
+                lostItems: this.data.lostItems.filter(i => i._id !== id),
             });
         }
     }

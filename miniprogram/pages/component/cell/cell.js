@@ -10,20 +10,23 @@ Component({
 
     data: {
         slideButtons: [],
+        itemData:{},
     },
-
-    ready: function () {
-        this.setData({
-            slideButtons: [
-                {
-                    type: 'warn',
-                    text: '删除',
-                    data: this.properties.item,
-                    // extClass: 'weui-cell',
-                    src: '/page/weui/cell/icon_del.svg', // icon的路径
-                }
-            ]
-        })
+    observers: {
+        'item': function (data) {
+            this.setData({
+                itemData: this.properties.item,
+                slideButtons: [
+                    {
+                        type: 'warn',
+                        text: '删除',
+                        data: this.properties.item,
+                        // extClass: 'weui-cell',
+                        src: '/page/weui/cell/icon_del.svg', // icon的路径
+                    }
+                ]
+            })
+        }
     },
 
     methods: {
