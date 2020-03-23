@@ -28,8 +28,20 @@ exports.main = async (event, context) => {
     if(type === "delete-money-tracker"){
         return await deleteMoneyTracker(data);
     }
+    if(type === "add-money-tracer"){
+        return await addMoneyTracker(data);
+    }
     return [];
 };
+
+async function addMoneyTracker(data) {
+    const {date} = data;
+    const weekNumber = await getWeekNumber(date);
+    return db.collection("money-tracker")
+        .add({
+            data: {...data, isDelete: false, weekNumber}
+        })
+}
 
 
 async function deleteMoneyTracker(data) {
@@ -75,11 +87,15 @@ async function getTodayData(today) {
         .get();
 }
 
-async function getWeekData(date) {
-    const { weekNumber } = (await cloud.callFunction({
+async function getWeekNumber(date) {
+    return (await cloud.callFunction({
         name: "lib",
         data: { date }
-    })).result;
+    })).result.weekNumber;
+}
+
+async function getWeekData(date) {
+    const weekNumber = await getWeekNumber(date);
 
     return db.collection("money-tracker")
         .where({
