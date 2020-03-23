@@ -28,20 +28,9 @@ exports.main = async (event, context) => {
     if(type === "delete-money-tracker"){
         return await deleteMoneyTracker(data);
     }
-    if(type === "update-money-tracker") {
-        return await updateMoneyTrackers();
-    }
     return [];
 };
 
-async function updateMoneyTrackers() {
-    return db.collection("money-tracker")
-        .update({
-            data: {
-                isDelete: false
-            }
-        });
-}
 
 async function deleteMoneyTracker(data) {
     return db.collection("money-tracker")
@@ -80,7 +69,8 @@ async function findAllMoneyLostTypes() {
 async function getTodayData(today) {
     return db.collection("money-tracker")
         .where({
-            date: today
+            date: today,
+            isDelete: false,
         })
         .get();
 }
@@ -94,6 +84,7 @@ async function getWeekData(date) {
     return db.collection("money-tracker")
         .where({
             weekNumber: weekNumber,
+            isDelete: false,
         }).get();
 }
 
