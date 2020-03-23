@@ -84,6 +84,7 @@ Component({
                             date,
                             comment,
                             weekNumber,
+                            isDelete: false,
                         },
                         success: res => {
                             wx.showToast({
