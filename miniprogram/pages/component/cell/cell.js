@@ -15,12 +15,12 @@ Component({
     observers: {
         'item': function (data) {
             this.setData({
-                itemData: this.properties.item,
+                itemData: data,
                 slideButtons: [
                     {
                         type: 'warn',
                         text: '删除',
-                        data: this.properties.item,
+                        data: data,
                         // extClass: 'weui-cell',
                         src: '/page/weui/cell/icon_del.svg', // icon的路径
                     }
@@ -32,7 +32,10 @@ Component({
     methods: {
         lostItemsDelete: function (event) {
             const { data } = event.detail;
-            this.triggerEvent('customevent', { data: { id: data._id, type: data.moneyType } }, { bubbles: true });
+            this.triggerEvent('customevent',
+                { data: { id: data._id, type: data.moneyType } },
+                { bubbles: true }
+            );
             wx.cloud.callFunction({
                 name: "db",
                 data: {
@@ -41,7 +44,8 @@ Component({
                         id: data._id
                     }
                 }
-            }).then(res => {})
+            }).then(res => {
+            })
         }
     },
 })
