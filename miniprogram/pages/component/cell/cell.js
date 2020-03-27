@@ -15,7 +15,10 @@ Component({
     observers: {
         'item': function (data) {
             this.setData({
-                itemData: data,
+                itemData: {
+                    ...data,
+                    countWithFormat: data.moneyType === "LOST" ? `-${ data.count }` : `+${ data.count }`
+                },
                 slideButtons: [
                     {
                         type: 'warn',

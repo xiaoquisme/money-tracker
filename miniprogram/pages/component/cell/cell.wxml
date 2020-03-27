@@ -3,7 +3,9 @@
     <view style="display:flex" class="report-base-weui-cell">
         <image src="{{itemData.avatarUrl}}" class="user_avatar"></image>
         <view class="type">{{ itemData.type }}</view>
-        <view class="cost_count">-{{ itemData.count }}</view>
+        <view class="{{ itemData.moneyType === 'LOST' ? 'cost_count': 'income_count' }}">
+            {{ itemData.countWithFormat }}
+        </view>
         <view class="weui-flex">
             <view class="comment">{{ itemData.comment }}</view>
         </view>
