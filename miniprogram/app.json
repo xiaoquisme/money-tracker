@@ -4,7 +4,7 @@
     "pages/login/login",
     "pages/money/lost",
     "pages/money/income",
-    "pages/day/today",
+    "pages/day/day",
     "pages/week/week",
     "pages/money-types/money-types"
   ],
