@@ -1,5 +1,5 @@
 <mp-slideview buttons="{{slideButtons}}"
-              bindbuttontap="lostItemsDelete">
+              bind:buttontap="lostItemsDelete">
     <view style="display:flex" class="report-base-weui-cell">
         <image src="{{itemData.avatarUrl}}" class="user_avatar"></image>
         <view class="type">{{ itemData.type }}</view>

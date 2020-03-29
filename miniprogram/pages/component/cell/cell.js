@@ -35,10 +35,8 @@ Component({
     methods: {
         lostItemsDelete: function (event) {
             const { data } = event.detail;
-            this.triggerEvent('customevent',
-                { data: { id: data._id, type: data.moneyType } },
-                { bubbles: true }
-            );
+            this.triggerEvent('deleteItem',
+                { data: { id: data._id, type: data.moneyType } });
             wx.cloud.callFunction({
                 name: "db",
                 data: {

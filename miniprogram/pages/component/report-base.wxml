@@ -12,7 +12,7 @@
             <view wx:for="{{ lostItems }}">
                 <cell
                         item="{{ item }}"
-                        bindcustomevent="deleteItemCallBack">
+                        bind:deleteItem="deleteItemCallBack">
                 </cell>
             </view>
         </view>
@@ -21,7 +21,7 @@
             <view wx:for="{{ incomeItems }}">
                 <cell
                         item="{{ item }}"
-                        bindcustomevent="deleteItemCallBack">
+                        bind:deleteItem="deleteItemCallBack">
                 </cell>
             </view>
         </view>
