@@ -110,7 +110,7 @@ Component({
             };
         },
         onSubmitClick: function () {
-            this.debounce(this.onSubmit.bind(this), 0.55)();
+            this.debounce(this.onSubmit.bind(this), 0.3)();
         }
     }
 });
