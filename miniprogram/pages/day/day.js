@@ -1,4 +1,5 @@
 // miniprogram/pages/today/lost.js
+const { getToday } = require("../component/lib/lib");
 Page({
 
     data: {
@@ -15,7 +16,7 @@ Page({
 
     onLoad: function (options) {
         wx.showLoading({ title: '数据加载中' })
-        const today = new Date().toISOString().split('T')[ 0 ];
+        const today = getToday();
         this.setData({
             today: today,
         });

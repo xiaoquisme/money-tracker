@@ -2,6 +2,8 @@ const app = getApp();
 
 let timer;
 
+const { getToday } = require('./lib/lib');
+
 Component({
     options: {
         addGlobalClass: true,
@@ -28,7 +30,7 @@ Component({
         comment: "",
     },
     ready: function (e) {
-        const today = new Date().toISOString().split('T')[ 0 ];
+        const today = getToday();
         this.setData({
             date: today
         });

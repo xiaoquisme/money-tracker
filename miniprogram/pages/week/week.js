@@ -1,3 +1,4 @@
+const { getToday } = require('../component/lib/lib');
 Page({
 
     data: {
@@ -14,7 +15,7 @@ Page({
 
     onLoad: function (options) {
         wx.showLoading({ title: '数据加载中' });
-        const date = new Date().toISOString().split('T')[ 0 ];
+        const date = getToday();
         wx.cloud.callFunction({
             name: "db",
             data: {

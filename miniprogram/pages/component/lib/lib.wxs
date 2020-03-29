@@ -1,0 +1,7 @@
+var get_today = function () {
+    return getDate().toISOString().split('T')[ 0 ];
+};
+
+module.exports = {
+    getToday: get_today
+};
