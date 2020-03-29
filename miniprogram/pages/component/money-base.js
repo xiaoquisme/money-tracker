@@ -27,7 +27,12 @@ Component({
         date: null,
         comment: "",
     },
-
+    ready: function (e) {
+        const today = new Date().toISOString().split('T')[ 0 ];
+        this.setData({
+            date: today
+        });
+    },
     /**
      * 组件的方法列表
      */
@@ -71,7 +76,7 @@ Component({
                 creator: userInfo.nickName,
                 avatarUrl: userInfo.avatarUrl,
                 moneyType,
-                type: this.properties.typeOptions[type],
+                type: this.properties.typeOptions[ type ],
                 count,
                 date,
                 comment
