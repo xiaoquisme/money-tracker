@@ -23,7 +23,7 @@ Page({
                 name: "其他",
                 open: false,
                 pages: [
-                    { name: "今日消费", url: "/pages/today/today" },
+                    { name: "今日消费", url: "/pages/day/today" },
                     { name: "本周消费", url: "/pages/week/week" },
                     { name: "消费类型", url: "/pages/money-types/money-types" }
                 ]
