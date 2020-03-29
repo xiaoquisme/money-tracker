@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "report-base": "/pages/component/report-base"
+    "report-base": "/pages/component/report-base",
+    "action-sheet": "/pages/component/vanders/weui/actionsheet/actionsheet"
   }
 }
