@@ -24,7 +24,7 @@ Page({
                 open: false,
                 pages: [
                     { name: "日消费", url: "/pages/day/day" },
-                    { name: "本周消费", url: "/pages/week/week" },
+                    { name: "周消费", url: "/pages/week/week" },
                     { name: "消费类型", url: "/pages/money-types/money-types" }
                 ]
             }

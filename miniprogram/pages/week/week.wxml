@@ -1,12 +1,34 @@
-<report-base
-        date="{{ week }}"
-        dateDescription="{{ weekDescription }}"
-        lostItems="{{ lostItems }}"
-        lostItemsTitle="{{ lostItemsTitle }}"
-        incomeItems="{{ incomeItems }}"
-        incomeItemsTitle="{{ incomeItemsTitle }}"
-        totalLost="{{ weekLost }}"
-        totalIncome="{{ weekIncome }}"
-        total="{{ weekIncome-weekLost }}"
-        totalDescription="{{ totalDescription }}"
-/>
+<view>
+    <action-sheet
+            bindactiontap="btnClick"
+            show="{{ showActionSheet }}"
+            actions="{{ groups }}"
+            title="请选择周"
+            bind:close="closeActionSheet"
+    >
+        <view slot="choice-day" class="weui-cells">
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">周:</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker mode="selector" value="{{week}}" range="{{weekNumberOptions}}" bind:change="onWeekSelect">
+                        <view class="weui-input">{{ week || "请选择"}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </action-sheet>
+    <report-base
+            date="{{ week }}"
+            dateDescription="{{ weekDescription }}"
+            lostItems="{{ lostItems }}"
+            lostItemsTitle="{{ lostItemsTitle }}"
+            incomeItems="{{ incomeItems }}"
+            incomeItemsTitle="{{ incomeItemsTitle }}"
+            totalLost="{{ weekLost }}"
+            totalIncome="{{ weekIncome }}"
+            total="{{ weekIncome-weekLost }}"
+            totalDescription="{{ totalDescription }}"
+    />
+</view>

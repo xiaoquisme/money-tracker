@@ -94,12 +94,10 @@ async function getWeekNumber(date) {
     })).result.weekNumber;
 }
 
-async function getWeekData(date) {
-    const weekNumber = await getWeekNumber(date);
-
+async function getWeekData(weekNumber) {
     return db.collection("money-tracker")
         .where({
-            weekNumber: weekNumber,
+            weekNumber: parseInt(weekNumber),
             isDelete: false,
         }).get();
 }
