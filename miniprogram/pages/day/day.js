@@ -1,13 +1,12 @@
-// miniprogram/pages/today/lost.js
 Page({
 
     data: {
-        today: null,
-        todayDescription: "今日账单",
+        day: null,
+        todayDescription: "日账单",
         lostItems: [],
-        lostItemsTitle: "今日消费",
+        lostItemsTitle: "日消费",
         incomeItems: [],
-        incomeItemsTitle: "今日收入",
+        incomeItemsTitle: "日收入",
         todayLost: 0,
         todayIncome: 0,
         totalDescription: "累计消费",
@@ -24,13 +23,13 @@ Page({
         wx.showLoading({ title: '数据加载中' })
         const selectedDate = event.detail.value;
         this.setData({
-            today: selectedDate,
+            day: selectedDate,
             showActionSheet: false,
         });
         wx.cloud.callFunction({
             name: 'db',
             data: {
-                type: 'today',
+                type: 'day',
                 date: selectedDate,
             }
         }).then(res => res.result).then(res => {
@@ -41,7 +40,7 @@ Page({
             this.setData({
                 lostItems: lostItems,
                 incomeItems: incomeItems,
-                today: selectedDate,
+                day: selectedDate,
                 todayLost: todayLost,
                 todayIncome: todayIncome,
             });

@@ -12,15 +12,15 @@
                     <view class="weui-label">日期</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker mode="date" value="{{today}}" start="2020-01-01" bindchange="onDateChange">
-                        <view class="weui-input">{{today || "请选择"}}</view>
+                    <picker mode="date" value="{{day}}" start="2020-01-01" bindchange="onDateChange">
+                        <view class="weui-input">{{day || "请选择"}}</view>
                     </picker>
                 </view>
             </view>
         </view>
     </action-sheet>
     <report-base
-            date="{{ today }}"
+            date="{{ day }}"
             dateDescription="{{ todayDescription }}"
             lostItems="{{ lostItems }}"
             lostItemsTitle="{{ lostItemsTitle }}"

@@ -7,8 +7,8 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
     const { type, date, data } = event;
-    if (type === "today") {
-        return await getTodayData(date);
+    if (type === "day") {
+        return await getDayData(date);
     }
     if (type === "week") {
         return await getWeekData(date);
@@ -78,10 +78,10 @@ async function findAllMoneyLostTypes() {
         }).get();
 }
 
-async function getTodayData(today) {
+async function getDayData(day) {
     return db.collection("money-tracker")
         .where({
-            date: today,
+            date: day,
             isDelete: false,
         })
         .get();
