@@ -25,14 +25,14 @@ Page({
             data: { date: getToday() },
         }).then(res => res.result).then(res => {
             this.setData({
-                weekNumberOptions: [...Array(parseInt(res.weekNumber) + 1).keys()]
+                weekNumberOptions: [...Array(parseInt(res.weekNumber) + 1).keys()].reverse()
             })
         }).then(any => {
             wx.hideLoading();
         })
     },
     onWeekSelect: function (e) {
-        const selectedWeekNumber = e.detail.value;
+        const selectedWeekNumber = this.data.weekNumberOptions[e.detail.value];
         wx.showLoading({ title: '数据加载中' });
         this.setData({
             week: selectedWeekNumber,
