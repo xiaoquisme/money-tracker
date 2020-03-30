@@ -43,7 +43,13 @@ async function addMoneyTracker(data) {
     const weekNumber = await getWeekNumber(date);
     return db.collection("money-tracker")
         .add({
-            data: { ...data, isDelete: false, weekNumber }
+            data: {
+                ...data,
+                isDelete: false,
+                weekNumber,
+                month: getMonth(date),
+                year: getYear(date)
+            }
         })
 }
 
