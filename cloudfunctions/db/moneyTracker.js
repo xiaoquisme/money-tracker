@@ -1,9 +1,10 @@
-const { getWeekNumber, getYear, getMonth, getToday } = require("./utils");
+const { getWeekNumber, getYear, getMonth, getToday, getDatabase } = require("./utils");
 const _ = require('lodash');
 
-async function addMoneyTracker(data, db) {
+async function addMoneyTracker(data, cloud) {
     const { date } = data;
-    const weekNumber = await getWeekNumber(date);
+    const weekNumber = await getWeekNumber(cloud,date);
+    const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .add({
             data: {
@@ -16,7 +17,8 @@ async function addMoneyTracker(data, db) {
         })
 }
 
-async function deleteMoneyTracker(data, db) {
+async function deleteMoneyTracker(data, cloud) {
+    const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .where({
             _id: data.id,
@@ -27,7 +29,8 @@ async function deleteMoneyTracker(data, db) {
         });
 }
 
-async function getDayData(day, db) {
+async function getDayData(day, cloud) {
+    const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .where({
             date: day,
@@ -36,7 +39,8 @@ async function getDayData(day, db) {
         .get();
 }
 
-async function getWeekData(weekNumber, db) {
+async function getWeekData(weekNumber, cloud) {
+    const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .where({
             weekNumber: parseInt(weekNumber),
@@ -60,7 +64,8 @@ async function getAllData(db) {
     }, { data: null, errorMessage: null })
 }
 
-async function refreshDataWithMonthAndYear(weekNumber, db) {
+async function refreshDataWithMonthAndYear(weekNumber, cloud) {
+    const db = getDatabase(cloud);
     const response = await db.collection("money-tracker").get();
     return (await Promise.all(response.data.map(d => {
         return {
@@ -80,7 +85,8 @@ async function refreshDataWithMonthAndYear(weekNumber, db) {
 
 }
 
-async function deleteTodayTestData(db) {
+async function deleteTodayTestData(cloud) {
+    const db = getDatabase(cloud);
     const today = getToday();
     return db.collection("money-tracker")
         .where({

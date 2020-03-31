@@ -21,31 +21,31 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const { type, date, data } = event;
     if (type === "day") {
-        return await getDayData(date, db);
+        return await getDayData(date, cloud);
     }
     if (type === "week") {
-        return await getWeekData(date, db);
+        return await getWeekData(date, cloud);
     }
     if (type === "remove-today-test") {
-        return await deleteTodayTestData(db);
+        return await deleteTodayTestData(cloud);
     }
     if (type === "money-types-lost") {
-        return await findAllMoneyLostTypes(db);
+        return await findAllMoneyLostTypes(cloud);
     }
     if (type === "money-types-income") {
-        return await findAllMoneyIncomeTypes(db);
+        return await findAllMoneyIncomeTypes(cloud);
     }
     if (type === "money-types-add") {
-        return await addMoneyType(data, db);
+        return await addMoneyType(data, cloud);
     }
     if (type === "delete-money-tracker") {
-        return await deleteMoneyTracker(data, db);
+        return await deleteMoneyTracker(data, cloud);
     }
     if (type === "add-money-tracer") {
-        return await addMoneyTracker(data, db);
+        return await addMoneyTracker(data, cloud);
     }
     if (type === 'refreshDataWithMonthAndYear') {
-        return await refreshDataWithMonthAndYear(data, db);
+        return await refreshDataWithMonthAndYear(data, cloud);
     }
     return [];
 };

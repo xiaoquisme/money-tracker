@@ -1,7 +1,4 @@
-const cloud = require('wx-server-sdk');
-cloud.init();
-
-async function getWeekNumber(date) {
+async function getWeekNumber(cloud, date) {
     return (await cloud.callFunction({
         name: "lib",
         data: { date }
@@ -20,9 +17,14 @@ function getYear(date) {
     return parseInt(date.split('-')[0])
 }
 
+function getDatabase(cloud) {
+    return cloud.database();
+}
+
 module.exports = {
     getWeekNumber,
     getToday,
     getMonth,
     getYear,
+    getDatabase,
 };
