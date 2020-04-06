@@ -20,7 +20,7 @@ Page({
     },
 
     onDateChange: function (event) {
-        wx.showLoading({ title: '数据加载中' })
+        wx.showLoading({ title: '数据加载中' });
         const selectedDate = event.detail.value;
         this.setData({
             day: selectedDate,

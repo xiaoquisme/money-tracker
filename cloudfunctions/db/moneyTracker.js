@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 async function addMoneyTracker(data, cloud) {
     const { date } = data;
-    const weekNumber = await getWeekNumber(cloud,date);
+    const weekNumber = await getWeekNumber(cloud, date);
     const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .add({
@@ -44,6 +44,16 @@ async function getWeekData(weekNumber, cloud) {
     return db.collection("money-tracker")
         .where({
             weekNumber: parseInt(weekNumber),
+            isDelete: false,
+        }).get();
+}
+
+async function getMonthData(year, month, cloud) {
+    const db = getDatabase(cloud);
+    return db.collection("money-tracker")
+        .where({
+            year: parseInt(year),
+            month: parseInt(month),
             isDelete: false,
         }).get();
 }
@@ -101,6 +111,7 @@ module.exports = {
     deleteMoneyTracker,
     getDayData,
     getWeekData,
+    getMonthData,
     refreshDataWithMonthAndYear,
     deleteTodayTestData,
 };

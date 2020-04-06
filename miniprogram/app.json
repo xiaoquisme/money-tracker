@@ -6,7 +6,8 @@
     "pages/money/income",
     "pages/day/day",
     "pages/week/week",
-    "pages/money-types/money-types"
+    "pages/money-types/money-types",
+    "pages/month/month"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

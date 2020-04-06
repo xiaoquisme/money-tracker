@@ -1,10 +1,14 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk');
+cloud.init();
+
+
 const {
     addMoneyTracker,
     deleteMoneyTracker,
     getDayData,
     getWeekData,
+    getMonthData,
     deleteTodayTestData,
     refreshDataWithMonthAndYear
 } = require('./moneyTracker');
@@ -14,9 +18,6 @@ const {
     findAllMoneyLostTypes
 } = require('./moneyTypes');
 
-cloud.init();
-const db = cloud.database();
-
 // 云函数入口函数
 exports.main = async (event, context) => {
     const { type, date, data } = event;
@@ -25,6 +26,10 @@ exports.main = async (event, context) => {
     }
     if (type === "week") {
         return await getWeekData(date, cloud);
+    }
+    if(type === "month"){
+        const { month, year } = date;
+        return await getMonthData(year, month, cloud);
     }
     if (type === "remove-today-test") {
         return await deleteTodayTestData(cloud);
