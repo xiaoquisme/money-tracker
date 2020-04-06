@@ -9,6 +9,14 @@
         <view slot="choice-month" class="weui-cells">
             <view class="weui-cell ">
                 <view class="weui-cell__hd">
+                    <view class="weui-label">只看我</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <switch checked="{{onlyMe}}" bind:change="onOnlyMeChange"/>
+                </view>
+            </view>
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
                     <view class="weui-label">日期</view>
                 </view>
                 <view class="weui-cell__bd">

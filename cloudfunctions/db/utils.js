@@ -21,10 +21,16 @@ function getDatabase(cloud) {
     return cloud.database();
 }
 
+function getUserId(cloud) {
+    const { OPENID: userId } = cloud.getWXContext();
+    return userId;
+}
+
 module.exports = {
     getWeekNumber,
     getToday,
     getMonth,
     getYear,
     getDatabase,
+    getUserId,
 };

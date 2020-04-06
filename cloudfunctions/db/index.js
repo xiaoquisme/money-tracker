@@ -10,7 +10,7 @@ const {
     getWeekData,
     getMonthData,
     deleteTodayTestData,
-    refreshDataWithMonthAndYear
+    refreshDataWithMonthAndYear,
 } = require('./moneyTracker');
 const {
     addMoneyType,
@@ -22,14 +22,17 @@ const {
 exports.main = async (event, context) => {
     const { type, date, data } = event;
     if (type === "day") {
-        return await getDayData(date, cloud);
+        const { onlyMe } = event;
+        return await getDayData(date, cloud, onlyMe);
     }
     if (type === "week") {
-        return await getWeekData(date, cloud);
+        const { onlyMe } = event;
+        return await getWeekData(date, cloud, onlyMe);
     }
-    if(type === "month"){
+    if (type === "month") {
+        const { onlyMe } = event;
         const { month, year } = date;
-        return await getMonthData(year, month, cloud);
+        return await getMonthData(year, month, cloud, onlyMe);
     }
     if (type === "remove-today-test") {
         return await deleteTodayTestData(cloud);

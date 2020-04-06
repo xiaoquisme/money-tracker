@@ -1,4 +1,4 @@
-const { getWeekNumber, getYear, getMonth, getToday, getDatabase } = require("./utils");
+const { getWeekNumber, getYear, getMonth, getToday, getDatabase, getUserId } = require("./utils");
 const _ = require('lodash');
 
 async function addMoneyTracker(data, cloud) {
@@ -9,6 +9,7 @@ async function addMoneyTracker(data, cloud) {
         .add({
             data: {
                 ...data,
+                _openid: getUserId(cloud),
                 isDelete: false,
                 weekNumber,
                 month: getMonth(date),
@@ -29,7 +30,25 @@ async function deleteMoneyTracker(data, cloud) {
         });
 }
 
-async function getDayData(day, cloud) {
+async function getDayData(day, cloud, onlyMe) {
+    if (onlyMe) {
+        return getDayWithOnlyMe(day, cloud);
+    }
+    return getDayWithAll(day, cloud);
+}
+
+async function getDayWithOnlyMe(day, cloud) {
+    const db = getDatabase(cloud);
+    return db.collection("money-tracker")
+        .where({
+            date: day,
+            _openid: getUserId(cloud),
+            isDelete: false,
+        })
+        .get();
+}
+
+async function getDayWithAll(day, cloud) {
     const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .where({
@@ -39,7 +58,26 @@ async function getDayData(day, cloud) {
         .get();
 }
 
-async function getWeekData(weekNumber, cloud) {
+function getWeekDataWithOnlyMe(weekNumber, cloud) {
+    const userId = getUserId(cloud);
+    const db = getDatabase(cloud);
+    return db.collection("money-tracker")
+        .where({
+            weekNumber: parseInt(weekNumber),
+            isDelete: false,
+            _openid: userId,
+        }).get();
+}
+
+async function getWeekData(weekNumber, cloud, onlyMe) {
+    if (onlyMe) {
+        return getWeekDataWithOnlyMe(weekNumber, cloud);
+    }
+    return getWeekDataWithAll(weekNumber, cloud);
+
+}
+
+async function getWeekDataWithAll(weekNumber, cloud) {
     const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .where({
@@ -48,12 +86,30 @@ async function getWeekData(weekNumber, cloud) {
         }).get();
 }
 
-async function getMonthData(year, month, cloud) {
+async function getMonthData(year, month, cloud, onlyMe) {
+    if (onlyMe) {
+        return getMonthDataWithOnlyMe(year, month, cloud);
+    }
+    return getMonthDataWithAll(year, month, cloud);
+}
+
+async function getMonthDataWithAll(year, month, cloud) {
     const db = getDatabase(cloud);
     return db.collection("money-tracker")
         .where({
             year: parseInt(year),
             month: parseInt(month),
+            isDelete: false,
+        }).get();
+}
+
+async function getMonthDataWithOnlyMe(year, month, cloud) {
+    const db = getDatabase(cloud);
+    return db.collection("money-tracker")
+        .where({
+            year: parseInt(year),
+            month: parseInt(month),
+            _openid: getUserId(cloud),
             isDelete: false,
         }).get();
 }
@@ -92,7 +148,6 @@ async function refreshDataWithMonthAndYear(weekNumber, cloud) {
                 data: _.omit(item, '_id'),
             });
     })));
-
 }
 
 async function deleteTodayTestData(cloud) {

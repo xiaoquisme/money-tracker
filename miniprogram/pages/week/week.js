@@ -16,6 +16,7 @@ Page({
             "choice-day",
         ],
         weekNumberOptions: [],
+        onlyMe: false,
     },
 
     onLoad: function (options) {
@@ -33,16 +34,33 @@ Page({
     },
     onWeekSelect: function (e) {
         const selectedWeekNumber = this.data.weekNumberOptions[e.detail.value];
-        wx.showLoading({ title: '数据加载中' });
         this.setData({
             week: selectedWeekNumber,
             showActionSheet: false,
         });
+        this.loadData(selectedWeekNumber);
+    },
+    closeActionSheet: function (e) {
+        this.setData({
+            showActionSheet: false,
+        });
+        wx.navigateBack({
+            delta: -1
+        })
+    },
+    onOnlyMeChange: function (e) {
+        this.setData({
+            onlyMe: e.detail.value,
+        });
+    },
+    loadData: function (selectedWeekNumber) {
+        wx.showLoading({ title: '数据加载中' });
         wx.cloud.callFunction({
             name: "db",
             data: {
                 type: "week",
                 date: selectedWeekNumber,
+                onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
             const lostItems = res.data.filter(d => d.moneyType === "LOST").reverse();
@@ -59,13 +77,6 @@ Page({
         }).then(any => {
             wx.hideLoading();
         });
-    },
-    closeActionSheet: function (e) {
-        this.setData({
-            showActionSheet: false,
-        });
-        wx.navigateBack({
-            delta: -1
-        })
-    },
+    }
+
 });
