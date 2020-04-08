@@ -12,6 +12,8 @@
 - [x] ~~周报表，周数选择~~
 - [x] ~~日报表 天数选择~~
 - [x] ~~add lint~~
+- [x] ~~git hook:[pre-commit, pre-push]~~
+- [x] ~~github workflow~~
 - [ ] add test
 - [x] ~~月报表~~ 
 - [ ] 年报表（小程序云数据库，服务端最大只能取100条数据，需要特殊处理）
