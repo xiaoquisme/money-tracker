@@ -6,7 +6,7 @@ async function getWeekNumber(cloud, date) {
 }
 
 function getToday() {
-    return new Date().toISOString().split('T')[0];
+    return new Date(Date.now()).toISOString().split('T')[0];
 }
 
 function getMonth(date) {

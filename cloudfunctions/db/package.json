@@ -3,13 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "test": "jest",
+    "eslint": "eslint"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "testRegex": "__tests__",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 66.67,
+        "lines": 62.5,
+        "statements": -10
+      }
+    }
+  },
   "dependencies": {
     "lodash": "^4.17.15",
     "wx-server-sdk": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "jest": "^25.2.7"
   }
 }

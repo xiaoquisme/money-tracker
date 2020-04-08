@@ -11,26 +11,26 @@ const {
     getMonthData,
     deleteTodayTestData,
     refreshDataWithMonthAndYear,
-} = require('./moneyTracker');
+} = require('./src/moneyTracker');
 const {
     addMoneyType,
     findAllMoneyIncomeTypes,
     findAllMoneyLostTypes
-} = require('./moneyTypes');
+} = require('./src/moneyTypes');
 
 // 云函数入口函数
-exports.main = async (event, context) => {
-    const { type, date, data } = event;
+exports.main = async (request, context) => {
+    const { type, date, data } = request;
     if (type === "day") {
-        const { onlyMe } = event;
+        const { onlyMe } = request;
         return await getDayData(date, cloud, onlyMe);
     }
     if (type === "week") {
-        const { onlyMe } = event;
+        const { onlyMe } = request;
         return await getWeekData(date, cloud, onlyMe);
     }
     if (type === "month") {
-        const { onlyMe } = event;
+        const { onlyMe } = request;
         const { month, year } = date;
         return await getMonthData(year, month, cloud, onlyMe);
     }
