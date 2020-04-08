@@ -1,0 +1,50 @@
+{
+  "name": "money-tracker",
+  "version": "1.0.0",
+  "description": "mini program",
+  "scripts": {
+    "test": "jest",
+    "eslint": "eslint --fix cloudfunctions/db/src/* cloudfunctions/db/__tests__/*"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "testRegex": "__tests__",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": -10
+      }
+    }
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.8.2",
+    "husky": "^4.2.3",
+    "jest": "^25.2.7",
+    "lint-staged": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1483523635/money-tracker.git"
+  },
+  "keywords": [
+    "mini-program"
+  ],
+  "author": "xiaoqu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1483523635/money-tracker/issues"
+  },
+  "homepage": "https://github.com/1483523635/money-tracker#readme",
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
+}

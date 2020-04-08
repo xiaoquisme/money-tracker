@@ -3,4 +3,5 @@
 /miniprogram/node_modules/
 coverage
 pack-lock.json
-.eslintcache
+cloudfunctions/.eslintcache
+/node_modules/
