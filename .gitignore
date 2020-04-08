@@ -1,3 +1,4 @@
 /cloudfunctions/*/node_modules/
 .idea
 /miniprogram/node_modules/
+/cloudfunctions/*/coverage/
