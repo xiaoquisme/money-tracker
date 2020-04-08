@@ -3,3 +3,4 @@
 /miniprogram/node_modules/
 coverage
 pack-lock.json
+.eslintcache
