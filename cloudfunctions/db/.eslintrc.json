@@ -1,10 +1,11 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "extends": [
-    "airbub"
+    "eslint:recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -15,5 +16,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "semi": "error",
+    "quotes": ["error", "single"]
   }
 }

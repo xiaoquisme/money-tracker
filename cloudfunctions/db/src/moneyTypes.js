@@ -2,16 +2,16 @@ const { getDatabase } = require('./utils');
 
 async function findAllMoneyIncomeTypes(cloud) {
     const db = getDatabase(cloud);
-    return db.collection("money-types")
+    return db.collection('money-types')
         .where({
-            value: "INCOME",
+            value: 'INCOME',
             isActive: true,
         }).get();
 }
 
 async function addMoneyType(data, cloud) {
     const db = getDatabase(cloud);
-    return db.collection("money-types")
+    return db.collection('money-types')
         .add({
             data: { ...data }
         });
@@ -19,9 +19,9 @@ async function addMoneyType(data, cloud) {
 
 async function findAllMoneyLostTypes(cloud) {
     const db = getDatabase(cloud);
-    return db.collection("money-types")
+    return db.collection('money-types')
         .where({
-            value: "LOST",
+            value: 'LOST',
             isActive: true,
         }).get();
 }

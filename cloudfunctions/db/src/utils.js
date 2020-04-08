@@ -1,6 +1,6 @@
 async function getWeekNumber(cloud, date) {
     return (await cloud.callFunction({
-        name: "lib",
+        name: 'lib',
         data: { date }
     })).result.weekNumber;
 }
@@ -14,7 +14,7 @@ function getMonth(date) {
 }
 
 function getYear(date) {
-    return parseInt(date.split('-')[0])
+    return parseInt(date.split('-')[0]);
 }
 
 function getDatabase(cloud) {
