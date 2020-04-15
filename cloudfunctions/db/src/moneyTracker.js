@@ -58,7 +58,7 @@ async function getDayWithAll(day, cloud) {
         .get();
 }
 
-function getWeekDataWithOnlyMe(weekNumber, cloud) {
+async function getWeekDataWithOnlyMe(weekNumber, cloud) {
     const userId = getUserId(cloud);
     const db = getDatabase(cloud);
     return db.collection('money-tracker')
