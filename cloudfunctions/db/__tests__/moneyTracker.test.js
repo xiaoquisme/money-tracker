@@ -83,7 +83,58 @@ describe('moneyTrackerTest', () => {
     });
 
     describe('getWeekData', () => {
-        it('should get only me week data when onlyMe=true', function () {
+        it('should get only me week data when onlyMe=true', async function () {
+            const mockDB = mockCloudDB('success');
+            utils.getDatabase.mockReturnValue(mockDB());
+            utils.getUserId.mockReturnValue('userId');
+            const response = await moneyTracker.getWeekData(1, null, true);
+            expect(response).toBe('success');
+            expect(mockDB).toHaveBeenCalled();
+            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection().where).toBeCalledWith({ weekNumber: 1, isDelete: false, _openid: 'userId' });
+            expect(mockDB().collection().where().get()).toBe('success');
+        });
+        it('should get all week data when onlyMe=false', async function () {
+            const mockDB = mockCloudDB('success');
+            utils.getDatabase.mockReturnValue(mockDB());
+            const response = await moneyTracker.getWeekData(1, null, false);
+            expect(response).toBe('success');
+            expect(mockDB).toHaveBeenCalled();
+            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection().where).toBeCalledWith({ weekNumber: 1, isDelete: false });
+            expect(mockDB().collection().where().get()).toBe('success');
+        });
+    });
+    describe('getMonthData', () => {
+        it('should get only me month data when onlyMe=true', async function () {
+            const mockDB = mockCloudDB('success');
+            utils.getDatabase.mockReturnValue(mockDB());
+            utils.getUserId.mockReturnValue('userId');
+            const response = await moneyTracker.getMonthData('2020', '01', null, true);
+            expect(response).toBe('success');
+            expect(mockDB).toHaveBeenCalled();
+            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection().where).toBeCalledWith({
+                year: 2020,
+                month: 1,
+                _openid: 'userId',
+                isDelete: false
+            });
+            expect(mockDB().collection().where().get).toHaveBeenCalled();
+        });
+        it('should get all month data when onlyMe=false', async function () {
+            const mockDB = mockCloudDB('success');
+            utils.getDatabase.mockReturnValue(mockDB());
+            const response = await moneyTracker.getMonthData('2020', '01', null, false);
+            expect(response).toBe('success');
+            expect(mockDB).toHaveBeenCalled();
+            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection().where).toBeCalledWith({
+                year: 2020,
+                month: 1,
+                isDelete: false
+            });
+            expect(mockDB().collection().where().get).toHaveBeenCalled();
         });
     });
 });
