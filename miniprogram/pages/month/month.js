@@ -6,17 +6,17 @@ Page({
      */
     data: {
         month: null,
-        monthDescription: "月账单",
+        monthDescription: '月账单',
         lostItems: [],
-        lostItemsTitle: "月消费",
+        lostItemsTitle: '月消费',
         incomeItems: [],
-        incomeItemsTitle: "月收入",
+        incomeItemsTitle: '月收入',
         monthLost: 0,
         monthIncome: 0,
-        totalDescription: "累计消费",
+        totalDescription: '累计消费',
         showActionSheet: true,
         groups: [
-            "choice-month",
+            'choice-month',
         ],
         onlyMe: false,
     },
@@ -24,6 +24,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
+    // eslint-disable-next-line no-unused-vars
     onLoad: function (options) {
 
     },
@@ -36,13 +37,13 @@ Page({
         });
         this.loadData(selectedDate);
     },
-    closeActionSheet: function (e) {
+    closeActionSheet: function () {
         this.setData({
             showActionSheet: false,
         });
         wx.navigateBack({
             delta: -1
-        })
+        });
     },
     onOnlyMeChange: function (e) {
         this.setData({
@@ -73,8 +74,8 @@ Page({
                 onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
-            const lostItems = res.data.filter(d => d.moneyType === "LOST").reverse();
-            const incomeItems = res.data.filter(d => d.moneyType === "INCOME").reverse();
+            const lostItems = res.data.filter(d => d.moneyType === 'LOST').reverse();
+            const incomeItems = res.data.filter(d => d.moneyType === 'INCOME').reverse();
             const monthLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             const monthIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
@@ -84,7 +85,7 @@ Page({
                 monthLost: monthLost,
                 monthIncome: monthIncome,
             });
-        }).then(any => {
+        }).then(() => {
             wx.hideLoading();
         });
     }
