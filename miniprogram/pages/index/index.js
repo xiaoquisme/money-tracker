@@ -46,32 +46,4 @@ Page({
             userInfo: userInfo
         });
     },
-
-    kindToggle: function (e) {
-        const id = e.currentTarget.id, list = this.data.functions;
-        for (let i = 0, len = list.length; i < len; ++i) {
-            if (list[i].id == id) {
-                list[i].open = !list[i].open;
-            } else {
-                list[i].open = false;
-            }
-        }
-        this.setData({
-            functions: list,
-        });
-    },
-    clickDelete: function () {
-        wx.cloud.callFunction({
-            name: 'db',
-            data: {
-                type: 'remove-today-test'
-            }
-        }).then(() => {
-            wx.showToast({
-                icon: 'success',
-                title: '删除成功',
-                duration: 1000
-            });
-        });
-    }
 });

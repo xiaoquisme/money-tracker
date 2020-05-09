@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "folding-list": "/pages/component/folding/folding-list"
+  }
 }
