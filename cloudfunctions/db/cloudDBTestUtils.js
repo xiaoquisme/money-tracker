@@ -12,11 +12,21 @@ function getMockCreateCollection() {
 }
 
 function getMockCollection(responseValue) {
-    const mockResponse = jest.fn().mockImplementation(() => responseValue);
+    const mockResponse = jest.fn().mockImplementation(() => {
+        return { data: responseValue };
+    });
     const mockUpdate = jest.fn().mockReturnValue(responseValue);
-    const mockWhere = jest.fn().mockReturnValue({ get: mockResponse, update: mockUpdate });
+    const mockCount = jest.fn().mockResolvedValue({ total: 1 });
+    const mockLimit = jest.fn().mockReturnValue({ get: mockResponse });
+    const mockSkip = jest.fn().mockReturnValue({ limit: mockLimit });
+    const mockWhere = jest.fn().mockReturnValue({
+        get: mockResponse,
+        update: mockUpdate,
+        count: mockCount,
+        skip: mockSkip
+    });
     const mockAdd = jest.fn().mockReturnValue(responseValue);
-    const mockCollection =  jest.fn().mockReturnValue({ where: mockWhere, add: mockAdd });
+    const mockCollection = jest.fn().mockReturnValue({ where: mockWhere, add: mockAdd });
     return mockCollection;
 }
 
