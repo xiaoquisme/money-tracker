@@ -24,11 +24,12 @@ Component({
     },
 
     data: {
-        type: "0",
+        type: '0',
         count: 0.00,
         date: null,
-        comment: "",
+        comment: '',
     },
+    // eslint-disable-next-line no-unused-vars
     ready: function (e) {
         const today = getToday();
         this.setData({
@@ -42,26 +43,26 @@ Component({
         onTypeChange: function (e) {
             this.setData({
                 type: e.detail.value,
-            })
+            });
         },
         onCountChange: function (e) {
             this.setData({
                 count: e.detail.value,
-            })
+            });
         },
         onDateChange: function (e) {
             this.setData({
                 date: e.detail.value,
-            })
+            });
         },
         onCommentChange: function (e) {
             this.setData({
                 comment: e.detail.value,
-            })
+            });
         },
         onSubmit: function () {
             function validatePass() {
-                return Object.keys(this.data).every(key => this.data[ key ] != null)
+                return Object.keys(this.data).every(key => this.data[key] != null);
             }
 
             if (!validatePass.call(this)) {
@@ -78,35 +79,35 @@ Component({
                 creator: userInfo.nickName,
                 avatarUrl: userInfo.avatarUrl,
                 moneyType,
-                type: this.properties.typeOptions[ type ],
+                type: this.properties.typeOptions[type],
                 count,
                 date,
                 comment
             };
             wx.cloud.callFunction({
-                name: "db",
+                name: 'db',
                 data: {
-                    type: "add-money-tracer",
+                    type: 'add-money-tracer',
                     data: data,
                 }
-            }).then(res => {
+            }).then(() => {
                 wx.showToast({
                     title: '添加成功',
                     success: () => {
                         setTimeout(function () {
                             wx.navigateBack({
                                 delta: -1,
-                            })
-                        }, 1000)
+                            });
+                        }, 1000);
                     }
-                })
+                });
             });
         },
 
         debounce: function (func, waitSecond) {
             return () => {
                 clearTimeout(timer);
-                timer = setTimeout(func, waitSecond * 1000)
+                timer = setTimeout(func, waitSecond * 1000);
             };
         },
         onSubmitClick: function () {
