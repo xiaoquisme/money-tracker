@@ -19,37 +19,38 @@ const {
 } = require('./src/moneyTypes');
 
 // 云函数入口函数
+// eslint-disable-next-line no-unused-vars
 exports.main = async (request, context) => {
     const { type, date, data } = request;
-    if (type === "day") {
+    if (type === 'day') {
         const { onlyMe } = request;
         return await getDayData(date, cloud, onlyMe);
     }
-    if (type === "week") {
+    if (type === 'week') {
         const { onlyMe } = request;
         return await getWeekData(date, cloud, onlyMe);
     }
-    if (type === "month") {
+    if (type === 'month') {
         const { onlyMe } = request;
         const { month, year } = date;
         return await getMonthData(year, month, cloud, onlyMe);
     }
-    if (type === "remove-today-test") {
+    if (type === 'remove-today-test') {
         return await deleteTodayTestData(cloud);
     }
-    if (type === "money-types-lost") {
+    if (type === 'money-types-lost') {
         return await findAllMoneyLostTypes(cloud);
     }
-    if (type === "money-types-income") {
+    if (type === 'money-types-income') {
         return await findAllMoneyIncomeTypes(cloud);
     }
-    if (type === "money-types-add") {
+    if (type === 'money-types-add') {
         return await addMoneyType(data, cloud);
     }
-    if (type === "delete-money-tracker") {
+    if (type === 'delete-money-tracker') {
         return await deleteMoneyTracker(data, cloud);
     }
-    if (type === "add-money-tracer") {
+    if (type === 'add-money-tracer') {
         return await addMoneyTracker(data, cloud);
     }
     if (type === 'refreshDataWithMonthAndYear') {
