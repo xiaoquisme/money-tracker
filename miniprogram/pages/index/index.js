@@ -14,19 +14,19 @@ Page({
                 name: '记账',
                 open: true,
                 pages: [
-                    { name: "花钱", url: "/pages/money/lost" },
-                    { name: "挣钱", url: "/pages/money/income" },
+                    { name: '花钱', url: '/pages/money/lost' },
+                    { name: '挣钱', url: '/pages/money/income' },
                 ]
             },
             {
                 id: 'other',
-                name: "其他",
+                name: '其他',
                 open: false,
                 pages: [
-                    { name: "日消费", url: "/pages/day/day" },
-                    { name: "周消费", url: "/pages/week/week" },
-                    { name: "月消费", url: "/pages/month/month" },
-                    { name: "消费类型", url: "/pages/money-types/money-types" }
+                    { name: '日消费', url: '/pages/day/day' },
+                    { name: '周消费', url: '/pages/week/week' },
+                    { name: '月消费', url: '/pages/month/month' },
+                    { name: '消费类型', url: '/pages/money-types/money-types' }
                 ]
             }
         ]
@@ -50,28 +50,28 @@ Page({
     kindToggle: function (e) {
         const id = e.currentTarget.id, list = this.data.functions;
         for (let i = 0, len = list.length; i < len; ++i) {
-            if (list[ i ].id == id) {
-                list[ i ].open = !list[ i ].open
+            if (list[i].id == id) {
+                list[i].open = !list[i].open;
             } else {
-                list[ i ].open = false
+                list[i].open = false;
             }
         }
         this.setData({
             functions: list,
         });
     },
-    clickDelete: function (e) {
+    clickDelete: function () {
         wx.cloud.callFunction({
-            name: "db",
+            name: 'db',
             data: {
-                type: "remove-today-test"
+                type: 'remove-today-test'
             }
-        }).then(any => {
+        }).then(() => {
             wx.showToast({
-                icon: "success",
-                title: "删除成功",
+                icon: 'success',
+                title: '删除成功',
                 duration: 1000
-            })
-        })
+            });
+        });
     }
 });

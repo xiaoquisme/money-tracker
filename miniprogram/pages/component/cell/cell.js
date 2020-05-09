@@ -17,7 +17,7 @@ Component({
             this.setData({
                 itemData: {
                     ...data,
-                    countWithFormat: data.moneyType === "LOST" ? `-${ data.count }` : `+${ data.count }`
+                    countWithFormat: data.moneyType === 'LOST' ? `-${ data.count }` : `+${ data.count }`
                 },
                 slideButtons: [
                     {
@@ -28,7 +28,7 @@ Component({
                         src: '/page/weui/cell/icon_del.svg', // icon的路径
                     }
                 ]
-            })
+            });
         }
     },
 
@@ -38,15 +38,14 @@ Component({
             this.triggerEvent('deleteItem',
                 { data: { id: data._id, type: data.moneyType } });
             wx.cloud.callFunction({
-                name: "db",
+                name: 'db',
                 data: {
-                    type: "delete-money-tracker",
+                    type: 'delete-money-tracker',
                     data: {
                         id: data._id
                     }
                 }
-            }).then(res => {
-            })
+            }).then(() => {});
         }
     },
-})
+});
