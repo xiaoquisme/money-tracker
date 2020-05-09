@@ -20,7 +20,7 @@
                     <view class="weui-label">{{ countTitle }}</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" value="{{count}}" bindinput="onCountChange" placeholder="{{countPlaceholder}}" />
+                    <input class="weui-input" type="digit" value="{{count}}" bindinput="onCountChange" placeholder="{{countPlaceholder}}" />
                 </view>
             </view>
             <view class="weui-cell ">
