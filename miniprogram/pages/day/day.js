@@ -2,22 +2,19 @@ Page({
 
     data: {
         day: null,
-        todayDescription: "日账单",
+        todayDescription: '日账单',
         lostItems: [],
-        lostItemsTitle: "日消费",
+        lostItemsTitle: '日消费',
         incomeItems: [],
-        incomeItemsTitle: "日收入",
+        incomeItemsTitle: '日收入',
         todayLost: 0,
         todayIncome: 0,
-        totalDescription: "累计消费",
+        totalDescription: '累计消费',
         showActionSheet: true,
         groups: [
-            "choice-day",
+            'choice-day',
         ],
         onlyMe: false,
-    },
-
-    onLoad: function (options) {
     },
 
     onDateChange: function (event) {
@@ -28,18 +25,18 @@ Page({
         });
         this.loadData(selectedDate);
     },
-    closeActionSheet: function (e) {
+    closeActionSheet: function () {
         this.setData({
             showActionSheet: false,
         });
         wx.navigateBack({
             delta: -1
-        })
+        });
     },
     onOnlyMeChange: function (e) {
         this.setData({
             onlyMe: e.detail.value,
-        })
+        });
     },
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
@@ -51,8 +48,8 @@ Page({
                 onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
-            const lostItems = res.data.filter(d => d.moneyType === "LOST").reverse();
-            const incomeItems = res.data.filter(d => d.moneyType === "INCOME").reverse();
+            const lostItems = res.data.filter(d => d.moneyType === 'LOST').reverse();
+            const incomeItems = res.data.filter(d => d.moneyType === 'INCOME').reverse();
             const todayLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             const todayIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
@@ -62,7 +59,7 @@ Page({
                 todayLost: todayLost,
                 todayIncome: todayIncome,
             });
-        }).then(any => {
+        }).then(()=> {
             wx.hideLoading();
         });
     }
