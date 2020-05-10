@@ -1,6 +1,6 @@
 <mp-slideview buttons="{{slideButtons}}"
               bind:buttontap="lostItemsDelete">
-    <view style="display:flex" class="report-base-weui-cell">
+    <navigator url="/index/pages/home" style="display:flex" class="report-base-weui-cell">
         <image src="{{itemData.avatarUrl}}" class="user_avatar"></image>
         <view class="type">{{ itemData.type }}</view>
         <view class="{{ itemData.moneyType === 'LOST' ? 'cost_count': 'income_count' }}">
@@ -9,5 +9,6 @@
         <view class="weui-flex">
             <view class="comment">{{ itemData.comment }}</view>
         </view>
-    </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access weui-cell_ft_flex-grow"></view>
+    </navigator>
 </mp-slideview>
