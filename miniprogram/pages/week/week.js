@@ -1,4 +1,4 @@
-const { getToday } = require('../component/lib/lib');
+const { getToday, getWeekNumberOptions } = require('../component/lib/lib');
 Page({
 
     data: {
@@ -27,7 +27,7 @@ Page({
             data: { date: getToday() },
         }).then(res => res.result).then(res => {
             this.setData({
-                weekNumberOptions: [...Array(parseInt(res.weekNumber) + 1).keys()].reverse()
+                weekNumberOptions: getWeekNumberOptions(res.weekNumber)
             });
         }).then(() => {
             wx.hideLoading();
