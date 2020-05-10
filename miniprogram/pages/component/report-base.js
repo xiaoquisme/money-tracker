@@ -27,6 +27,9 @@ Component({
                 acc[item[groupingBy]].push(item);
                 return acc;
             }, {});
+            this.setData({
+                functions: []
+            });
             Object.keys(grouped).forEach(key => {
                 const items = grouped[key].sort((a, b) => b.date.localeCompare(a.date));
                 this.setData({
