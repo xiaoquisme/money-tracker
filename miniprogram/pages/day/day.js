@@ -59,7 +59,7 @@ Page({
                 todayLost: todayLost,
                 todayIncome: todayIncome,
             });
-        }).then(()=> {
+        }).then(() => {
             wx.hideLoading();
         });
     }

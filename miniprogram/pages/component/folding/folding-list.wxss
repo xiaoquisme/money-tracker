@@ -13,3 +13,6 @@
 .kind-list__item-bd{height:0;overflow:hidden}
 .kind-list__item-bd_show{height:auto
 }
+.weui-flex_item_desc{
+    text-align: right
+}

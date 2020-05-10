@@ -4,11 +4,17 @@
               class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}"
               bindtap="kindToggle">
             <view class="weui-flex__item">{{item.name}}</view>
+            <view wx:if="{{item.desc}}" class="weui-flex__item weui-flex_item_desc">{{item.desc}}</view>
         </view>
         <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
             <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
                 <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
-                    <navigator url="{{page.url}}" class="weui-cell weui-cell_access">
+                    <block wx:if="{{item.customCell}}">
+                        <cell item="{{page}}"
+                              bind:deleteItem="deleteItemCallBack"
+                        />
+                    </block>
+                    <navigator wx:else url="{{page.url}}" class="weui-cell weui-cell_access">
                         <view class="weui-cell__bd">{{page.name}}</view>
                         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                     </navigator>

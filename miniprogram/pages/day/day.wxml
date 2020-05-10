@@ -38,5 +38,6 @@
             totalIncome="{{ todayIncome }}"
             total="{{ todayIncome-todayLost }}"
             totalDescription="{{ totalDescription }}"
+            groupingBy="type"
     />
 </view>

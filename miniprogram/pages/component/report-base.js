@@ -13,6 +13,39 @@ Component({
         totalIncome: Number,
         total: Number,
         totalDescription: String,
+        groupingBy: String
+    },
+
+    data: {
+        functions: []
+    },
+
+    observers: {
+        'lostItems': function(data){
+            const { groupingBy } = this.properties;
+            const grouped = data.reduce((acc, item) => {
+                acc[item[groupingBy]] = acc[item[groupingBy]] || [];
+                acc[item[groupingBy]].push(item);
+                return acc;
+            }, {});
+            Object.keys(grouped).forEach(key => {
+                const items = grouped[key];
+                this.setData({
+                    functions: [...this.data.functions, {
+                        id: key,
+                        name: key,
+                        open: false,
+                        desc: items.reduce((acc, item) => acc + parseFloat(item.count), 0),
+                        customCell: true,
+                        pages: items || []
+                    }]
+                });
+            });
+        }
+    },
+    // eslint-disable-next-line no-unused-vars
+    ready: function (e) {
+
     },
 
     methods: {
@@ -26,10 +59,10 @@ Component({
                     incomeItems: this.data.incomeItems.filter(i => i._id !== id),
                 });
             const { id, type } = event.detail.data;
-            if (type === "INCOME") {
+            if (type === 'INCOME') {
                 updateIncomeItem(id);
             }
-            if (type === "LOST") {
+            if (type === 'LOST') {
                 updateLostItem(id);
             }
         },
