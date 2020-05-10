@@ -37,6 +37,11 @@
             total="{{ todayIncome-todayLost }}"
             totalDescription="{{ totalDescription }}"
             groupingBy="type">
-    <view slot="title" class="page__title">{{ todayDescription }}({{ day|| "" }})</view>
+        <view slot="title" class="page__title weui-flex">
+            <view>{{ todayDescription }}</view>
+            <picker mode="date" value="{{day}}" start="2020-01-01" bindchange="onDateChange">
+                <view class="weui-input">({{day || ""}})</view>
+            </picker>
+        </view>
     </report-base>
 </view>

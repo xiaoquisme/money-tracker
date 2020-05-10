@@ -37,6 +37,11 @@
             total="{{ weekIncome-weekLost }}"
             totalDescription="{{ totalDescription }}"
             groupingBy="type">
-        <view slot="title" class="page__title">{{ weekDescription }}({{ week|| "" }})</view>
+        <view slot="title" class="page__title weui-flex">
+            <view>{{ weekDescription }}</view>
+            <picker mode="selector" value="{{week}}" range="{{weekNumberOptions}}" bind:change="onWeekSelect">
+                <view class="weui-input">({{ week || ""}})</view>
+            </picker>
+        </view>
     </report-base>
 </view>
