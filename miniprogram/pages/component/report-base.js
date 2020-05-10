@@ -29,7 +29,7 @@ Component({
                 return acc;
             }, {});
             Object.keys(grouped).forEach(key => {
-                const items = grouped[key];
+                const items = grouped[key].sort((a, b) => b.date.localeCompare(a.date));
                 this.setData({
                     functions: [...this.data.functions, {
                         id: key,
@@ -38,7 +38,7 @@ Component({
                         desc: items.reduce((acc, item) => acc + parseFloat(item.count), 0),
                         customCell: true,
                         pages: items || []
-                    }]
+                    }].sort((a, b) => b.id.localeCompare(a.id))
                 });
             });
         }

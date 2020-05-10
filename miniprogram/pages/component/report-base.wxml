@@ -8,23 +8,5 @@
     </view>
     <view class="page__bd">
         <folding-list functions="{{ functions }}"></folding-list>
-        <view wx:if="{{ lostItems.length > 0 }}" class="weui-cells__title">{{ lostItemsTitle }}</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view wx:for="{{ lostItems }}">
-                <cell
-                        item="{{ item }}"
-                        bind:deleteItem="deleteItemCallBack">
-                </cell>
-            </view>
-        </view>
-        <view wx:if="{{ incomeItems.length > 0 }}" class="weui-cells__title">{{ incomeItemsTitle }}</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view wx:for="{{ incomeItems }}">
-                <cell
-                        item="{{ item }}"
-                        bind:deleteItem="deleteItemCallBack">
-                </cell>
-            </view>
-        </view>
     </view>
 </view>

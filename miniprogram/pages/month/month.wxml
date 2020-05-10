@@ -38,5 +38,6 @@
             totalIncome="{{ monthIncome }}"
             total="{{ monthIncome-monthLost }}"
             totalDescription="{{ totalDescription }}"
+            groupingBy="date"
     />
 </view>
