@@ -1,6 +1,6 @@
 <view class="page">
     <view class="page__hd">
-        <view class="page__title">{{ dateDescription }}({{ date }})</view>
+        <slot name="title"></slot>
         <view class="page__desc">共计消费: {{ totalLost }}, 共计收入: {{ totalIncome }}</view>
         <view class="page__desc {{ total >0 ? 'red' : 'green' }}">{{ totalDescription }}: {{ total > 0
             ? '+' : '' }}{{ total }}

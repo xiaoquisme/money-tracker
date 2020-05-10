@@ -28,8 +28,6 @@
         </view>
     </action-sheet>
     <report-base
-            date="{{ day }}"
-            dateDescription="{{ todayDescription }}"
             lostItems="{{ lostItems }}"
             lostItemsTitle="{{ lostItemsTitle }}"
             incomeItems="{{ incomeItems }}"
@@ -38,6 +36,7 @@
             totalIncome="{{ todayIncome }}"
             total="{{ todayIncome-todayLost }}"
             totalDescription="{{ totalDescription }}"
-            groupingBy="type"
-    />
+            groupingBy="type">
+    <view slot="title" class="page__title">{{ todayDescription }}({{ day|| "" }})</view>
+    </report-base>
 </view>

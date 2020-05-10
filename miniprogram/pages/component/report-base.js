@@ -1,10 +1,9 @@
 Component({
     options: {
         addGlobalClass: true,
+        multipleSlots: true
     },
     properties: {
-        date: String,
-        dateDescription: String,
         lostItems: Array,
         lostItemsTitle: String,
         incomeItems: Array,
