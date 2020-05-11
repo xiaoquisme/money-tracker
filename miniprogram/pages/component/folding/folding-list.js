@@ -1,3 +1,5 @@
+const { getTotalCount } = require('../lib/lib');
+
 Component({
     options: {
         addGlobalClass: true,
@@ -34,9 +36,11 @@ Component({
         deleteItemCallBack: function (event) {
             const { id } = event.detail.data;
             const newFunctions = this.data.functions.map(f => {
+                const items = f.pages.filter(i => i._id !== id);
                 return {
                     ...f,
-                    pages: f.pages.filter(i => i._id !== id)
+                    desc: getTotalCount(items),
+                    pages: items
                 };
             });
 

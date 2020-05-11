@@ -1,3 +1,5 @@
+const { getTotalCount } = require('./lib/lib');
+
 Component({
     options: {
         addGlobalClass: true,
@@ -17,7 +19,7 @@ Component({
     },
 
     observers: {
-        'allItems': function(data){
+        'allItems': function (data) {
             const { groupingBy } = this.properties;
             const grouped = data.reduce((acc, item) => {
                 acc[item[groupingBy]] = acc[item[groupingBy]] || [];
@@ -34,7 +36,7 @@ Component({
                         id: key,
                         name: key,
                         open: false,
-                        desc: items.reduce((acc, item) => acc + parseFloat(item.count), 0),
+                        desc: getTotalCount(items),
                         customCell: true,
                         pages: items || []
                     }].sort((a, b) => b.id.localeCompare(a.id))
