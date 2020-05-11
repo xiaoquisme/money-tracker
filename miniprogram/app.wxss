@@ -73,7 +73,10 @@ page {
 
 .comment {
     color: rgba(0, 0, 0, .5);
-    text-align: right;
+    overflow: hidden;
+    white-space:nowarp;
+    text-overflow: ellipsis;
+    max-width: 145px;
 }
 
 .cost_count {
@@ -100,9 +103,12 @@ page {
     margin: 0 16px 0 0;
     min-width: 50px;
 }
-.weui-cell_ft_flex-grow{
-    flex-grow:1
+.weui-cell_ft_flex-grow {
+    flex-grow:1;
 }
-.weui-cells{
+.weui-cells {
     padding-right:4px
+}
+.weui-flex {
+    flex-grow:2;
 }
