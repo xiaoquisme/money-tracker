@@ -29,10 +29,6 @@
     </action-sheet>
     <report-base
             allItems="{{ allItems }}"
-            totalLost="{{ weekLost }}"
-            totalIncome="{{ weekIncome }}"
-            total="{{ weekIncome-weekLost }}"
-            totalDescription="{{ totalDescription }}"
             groupingBy="type">
         <view slot="title" class="page__title weui-flex">
             <view>{{ weekDescription }}</view>

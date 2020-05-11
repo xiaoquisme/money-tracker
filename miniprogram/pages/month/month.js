@@ -7,23 +7,12 @@ Page({
     data: {
         month: null,
         monthDescription: '月账单',
-        monthLost: 0,
-        monthIncome: 0,
-        totalDescription: '累计消费',
         showActionSheet: true,
         groups: [
             'choice-month',
         ],
         onlyMe: false,
         allItems:[]
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    // eslint-disable-next-line no-unused-vars
-    onLoad: function (options) {
-
     },
 
     onDateChange: function (event) {
@@ -47,17 +36,7 @@ Page({
             onlyMe: e.detail.value,
         });
     },
-    onPullDownRefresh: function () {
 
-    },
-
-    onReachBottom: function () {
-
-    },
-
-    onShareAppMessage: function () {
-
-    },
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
         wx.cloud.callFunction({
@@ -71,14 +50,8 @@ Page({
                 onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
-            const lostItems = res.data.filter(d => d.moneyType === 'LOST').reverse();
-            const incomeItems = res.data.filter(d => d.moneyType === 'INCOME').reverse();
-            const monthLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
-            const monthIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
                 month: selectedDate,
-                monthLost: monthLost,
-                monthIncome: monthIncome,
                 allItems:res.data
             });
         }).then(() => {

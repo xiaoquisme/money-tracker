@@ -1,4 +1,4 @@
-const { getTotalCount } = require('./lib/lib');
+const { getTotalCount, getTotal } = require('./lib/lib');
 
 Component({
     options: {
@@ -6,16 +6,15 @@ Component({
         multipleSlots: true
     },
     properties: {
-        totalLost: Number,
-        totalIncome: Number,
-        total: Number,
-        totalDescription: String,
         groupingBy: String,
         allItems: Array
     },
 
     data: {
-        functions: []
+        functions: [],
+        totalIncome: 0,
+        totalLost: 0,
+        total: 0
     },
 
     observers: {
@@ -41,6 +40,12 @@ Component({
                         pages: items || []
                     }].sort((a, b) => b.id.localeCompare(a.id))
                 });
+            });
+            const { totalLost, totalIncome } = getTotal(data);
+            this.setData({
+                totalIncome: totalIncome,
+                totalLost: totalLost,
+                total: totalIncome - totalLost
             });
         }
     },

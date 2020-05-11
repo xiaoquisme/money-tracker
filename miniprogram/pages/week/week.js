@@ -4,9 +4,6 @@ Page({
     data: {
         week: null,
         weekDescription: '周账单',
-        weekLost: 0,
-        weekIncome: 0,
-        totalDescription: '累计消费',
         showActionSheet: true,
         groups: [
             'choice-day',
@@ -61,14 +58,8 @@ Page({
                 onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
-            const lostItems = res.data.filter(d => d.moneyType === 'LOST').reverse();
-            const incomeItems = res.data.filter(d => d.moneyType === 'INCOME').reverse();
-            const weekLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
-            const weekIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
-                weekLost: weekLost,
                 week: selectedWeekNumber,
-                weekIncome: weekIncome,
                 allItems: res.data
             });
         }).then(() => {

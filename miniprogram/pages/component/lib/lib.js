@@ -9,5 +9,17 @@ export const getWeekNumberOptions = function (weekNumber) {
 };
 
 export const getTotalCount = function (items) {
-    return items.reduce((acc, item) => acc + parseFloat(item.count), 0);
+    return parseToFloat(items.reduce((acc, item) => acc + parseFloat(item.count), 0));
+};
+
+export const parseToFloat = function (string) {
+    return parseFloat(string).toFixed(2);
+};
+
+export const getTotal = function (allItems) {
+    const lostItems = allItems.filter(d => d.moneyType === 'LOST').reverse();
+    const incomeItems = allItems.filter(d => d.moneyType === 'INCOME').reverse();
+    const totalLost = parseToFloat(lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0));
+    const totalIncome = parseToFloat(incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0));
+    return { totalIncome, totalLost };
 };
