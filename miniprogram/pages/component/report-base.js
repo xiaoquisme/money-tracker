@@ -42,29 +42,4 @@ Component({
             });
         }
     },
-    // eslint-disable-next-line no-unused-vars
-    ready: function (e) {
-
-    },
-
-    methods: {
-        deleteItemCallBack: function (event) {
-            const updateLostItem = id =>
-                this.setData({
-                    lostItems: this.data.lostItems.filter(i => i._id !== id),
-                });
-            const updateIncomeItem = id =>
-                this.setData({
-                    incomeItems: this.data.incomeItems.filter(i => i._id !== id),
-                });
-            const { id, type } = event.detail.data;
-            if (type === 'INCOME') {
-                updateIncomeItem(id);
-            }
-            if (type === 'LOST') {
-                updateLostItem(id);
-            }
-        },
-
-    }
 });
