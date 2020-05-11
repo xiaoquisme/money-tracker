@@ -106,6 +106,3 @@ page {
 .weui-cells{
     padding-right:4px
 }
-.weui-flex{
-    display:flex;
-}
