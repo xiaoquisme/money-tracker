@@ -4,10 +4,6 @@ Page({
     data: {
         week: null,
         weekDescription: '周账单',
-        lostItems: [],
-        lostItemsTitle: '周消费',
-        incomeItems: [],
-        incomeItemsTitle: '周收入',
         weekLost: 0,
         weekIncome: 0,
         totalDescription: '累计消费',
@@ -17,6 +13,7 @@ Page({
         ],
         weekNumberOptions: [],
         onlyMe: false,
+        allItems: []
     },
 
     // eslint-disable-next-line no-unused-vars
@@ -69,11 +66,10 @@ Page({
             const weekLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             const weekIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
-                lostItems: lostItems,
-                incomeItems: incomeItems,
                 weekLost: weekLost,
                 week: selectedWeekNumber,
                 weekIncome: weekIncome,
+                allItems: res.data
             });
         }).then(() => {
             wx.hideLoading();

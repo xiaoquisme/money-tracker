@@ -28,11 +28,8 @@
         </view>
     </action-sheet>
     <report-base
-            lostItems="{{ lostItems }}"
-            lostItemsTitle="{{ lostItemsTitle }}"
-            incomeItems="{{ incomeItems }}"
-            incomeItemsTitle="{{ incomeItemsTitle }}"
             totalLost="{{ monthLost }}"
+            allItems="{{ allItems }}"
             totalIncome="{{ monthIncome }}"
             total="{{ monthIncome-monthLost }}"
             totalDescription="{{ totalDescription }}"

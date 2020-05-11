@@ -3,10 +3,6 @@ Page({
     data: {
         day: null,
         todayDescription: '日账单',
-        lostItems: [],
-        lostItemsTitle: '日消费',
-        incomeItems: [],
-        incomeItemsTitle: '日收入',
         todayLost: 0,
         todayIncome: 0,
         totalDescription: '累计消费',
@@ -15,6 +11,7 @@ Page({
             'choice-day',
         ],
         onlyMe: false,
+        allItems:[]
     },
 
     onDateChange: function (event) {
@@ -53,11 +50,10 @@ Page({
             const todayLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             const todayIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
-                lostItems: lostItems,
-                incomeItems: incomeItems,
                 day: selectedDate,
                 todayLost: todayLost,
                 todayIncome: todayIncome,
+                allItems: res.data,
             });
         }).then(() => {
             wx.hideLoading();

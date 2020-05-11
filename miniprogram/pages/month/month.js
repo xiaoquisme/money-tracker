@@ -7,10 +7,6 @@ Page({
     data: {
         month: null,
         monthDescription: '月账单',
-        lostItems: [],
-        lostItemsTitle: '月消费',
-        incomeItems: [],
-        incomeItemsTitle: '月收入',
         monthLost: 0,
         monthIncome: 0,
         totalDescription: '累计消费',
@@ -19,6 +15,7 @@ Page({
             'choice-month',
         ],
         onlyMe: false,
+        allItems:[]
     },
 
     /**
@@ -79,11 +76,10 @@ Page({
             const monthLost = lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             const monthIncome = incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0);
             this.setData({
-                lostItems: lostItems,
-                incomeItems: incomeItems,
                 month: selectedDate,
                 monthLost: monthLost,
                 monthIncome: monthIncome,
+                allItems:res.data
             });
         }).then(() => {
             wx.hideLoading();

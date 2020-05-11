@@ -4,15 +4,12 @@ Component({
         multipleSlots: true
     },
     properties: {
-        lostItems: Array,
-        lostItemsTitle: String,
-        incomeItems: Array,
-        incomeItemsTitle: String,
         totalLost: Number,
         totalIncome: Number,
         total: Number,
         totalDescription: String,
-        groupingBy: String
+        groupingBy: String,
+        allItems: Array
     },
 
     data: {
@@ -20,7 +17,7 @@ Component({
     },
 
     observers: {
-        'lostItems': function(data){
+        'allItems': function(data){
             const { groupingBy } = this.properties;
             const grouped = data.reduce((acc, item) => {
                 acc[item[groupingBy]] = acc[item[groupingBy]] || [];
