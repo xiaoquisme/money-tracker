@@ -13,6 +13,14 @@
 .kind-list__item-bd{height:0;overflow:hidden}
 .kind-list__item-bd_show{height:auto
 }
-.weui-flex_item_desc{
+.weui-flex_item_desc {
     text-align: right
+}
+
+@media (prefers-color-scheme: dark) {
+    /* DarkMode 下的样式 start */
+    .kind-list__item{
+        background-color: #000000;
+    }
+    /* DarkMode 下的样式 end */
 }
