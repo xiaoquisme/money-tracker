@@ -16,10 +16,9 @@ jobs:
       with:
         node-version: 14.x
 
-    - name: npm install, make coverage
-      run: |
-        yarn
-        jest
+    - name: yarn install, make coverage
+    - run: yarn
+    - run: npm run test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
