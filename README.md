@@ -1,3 +1,5 @@
+* codecov [![codecov](https://codecov.io/gh/1483523635/money-tracker/branch/master/graph/badge.svg)](https://codecov.io/gh/1483523635/money-tracker)
+* travis-ci [![Build Status](https://travis-ci.org/1483523635/money-tracker.svg?branch=master)](https://travis-ci.org/1483523635/money-tracker)
 # 简介
 微信记账小程序。
 ## 用到功能
