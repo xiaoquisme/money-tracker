@@ -1,6 +1,8 @@
 [![codecov](https://codecov.io/gh/1483523635/money-tracker/branch/master/graph/badge.svg)](https://codecov.io/gh/1483523635/money-tracker)
 [![Build Status](https://travis-ci.org/1483523635/money-tracker.svg?branch=master)](https://travis-ci.org/1483523635/money-tracker)
 ![money-tracker-ci](https://github.com/1483523635/money-tracker/workflows/money-tracker-ci/badge.svg)
+![Test Coveralls(coverage-all)](https://github.com/1483523635/money-tracker/workflows/Test%20Coveralls(coverage-all)/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/1483523635/money-tracker/badge.svg?branch=master)](https://coveralls.io/github/1483523635/money-tracker?branch=master)
 # 简介
 微信记账小程序。
 ## 用到功能
