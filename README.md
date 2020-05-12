@@ -16,6 +16,6 @@
 - [x] ~~github workflow~~
 - [ ] 代码测试覆盖率
 - [ ] add test
-- [ ] ~~适配 [DarkMode](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/darkmode.html) finish~~
+- [x] ~~适配 [DarkMode](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/darkmode.html) finish~~
 - [x] ~~月报表~~ 
 - [ ] 年报表（小程序云数据库，服务端最大只能取100条数据，需要特殊处理）
