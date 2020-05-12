@@ -1,6 +1,6 @@
 on: ["push", "pull_request"]
 
-name: Test Coveralls
+name: Test Coveralls(coverage-all)
 
 jobs:
 
@@ -16,10 +16,10 @@ jobs:
       with:
         node-version: 10.x
 
-    - name: npm install, make test-coverage
+    - name: npm install, make coverage
       run: |
         npm install
-        make test-coverage
+        jest
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
