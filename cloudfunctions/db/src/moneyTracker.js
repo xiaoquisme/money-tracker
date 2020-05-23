@@ -1,4 +1,4 @@
-const { getWeekNumber, getYear, getMonth, getToday, getDatabase, getUserId } = require('./utils');
+const { getWeekNumber, getYear, getMonth, getDatabase, getUserId } = require('./utils');
 const _ = require('lodash');
 
 async function addMoneyTracker(data, cloud) {
@@ -154,15 +154,12 @@ async function refreshDataWithMonthAndYear(weekNumber, cloud) {
     })));
 }
 
-async function deleteTodayTestData(cloud) {
-    const db = getDatabase(cloud);
-    const today = getToday();
-    return db.collection('money-tracker')
+async function findById(id, cloud){
+    const database = getDatabase(cloud);
+    return database.collection('money-tracker')
         .where({
-            date: today,
-            comment: '111'
-        }).remove();
-
+            _id: id
+        }).get();
 }
 
 module.exports = {
@@ -172,5 +169,5 @@ module.exports = {
     getWeekData,
     getMonthData,
     refreshDataWithMonthAndYear,
-    deleteTodayTestData,
+    findById
 };

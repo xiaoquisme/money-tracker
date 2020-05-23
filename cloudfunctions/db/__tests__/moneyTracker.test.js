@@ -133,4 +133,16 @@ describe('moneyTrackerTest', () => {
             expect(mockDB().collection().where().get).toHaveBeenCalled();
         });
     });
+    describe('findById', () => {
+        it('should get correct data', async function () {
+            const mockDB = mockCloudDB('success');
+            utils.getDatabase.mockReturnValue(mockDB());
+            const response = await moneyTracker.findById('Id');
+            expect(response.data).toBe('success');
+            expect(mockDB).toHaveBeenCalled();
+            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection().where).toBeCalledWith({ _id: 'Id' });
+            expect(mockDB().collection().where().get).toHaveBeenCalled();
+        });
+    });
 });

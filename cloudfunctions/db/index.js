@@ -9,8 +9,8 @@ const {
     getDayData,
     getWeekData,
     getMonthData,
-    deleteTodayTestData,
     refreshDataWithMonthAndYear,
+    findById
 } = require('./src/moneyTracker');
 const {
     addMoneyType,
@@ -35,9 +35,6 @@ exports.main = async (request, context) => {
         const { month, year } = date;
         return await getMonthData(year, month, cloud, onlyMe);
     }
-    if (type === 'remove-today-test') {
-        return await deleteTodayTestData(cloud);
-    }
     if (type === 'money-types-lost') {
         return await findAllMoneyLostTypes(cloud);
     }
@@ -55,6 +52,9 @@ exports.main = async (request, context) => {
     }
     if (type === 'refreshDataWithMonthAndYear') {
         return await refreshDataWithMonthAndYear(data, cloud);
+    }
+    if(type === 'findById'){
+        return await findById(data.id, cloud);
     }
     return [];
 };
