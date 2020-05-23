@@ -7,7 +7,8 @@
     "pages/day/day",
     "pages/week/week",
     "pages/money-types/money-types",
-    "pages/month/month"
+    "pages/month/month",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "@bgColor",
@@ -19,5 +20,5 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "darkmode": true,
-  "themeLocation":"theme.json"
+  "themeLocation": "theme.json"
 }

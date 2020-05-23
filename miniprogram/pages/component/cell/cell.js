@@ -1,4 +1,6 @@
 // pages/component/cell/cell.js
+const { deleteItemAsync } = require('../lib/moneyTracker.js');
+
 Component({
     options: {
         addGlobalClass: true,
@@ -37,15 +39,10 @@ Component({
             const { data } = event.detail;
             this.triggerEvent('deleteItem',
                 { data: { id: data._id, type: data.moneyType } });
-            wx.cloud.callFunction({
-                name: 'db',
-                data: {
-                    type: 'delete-money-tracker',
-                    data: {
-                        id: data._id
-                    }
-                }
-            }).then(() => {});
+            deleteItemAsync(data)
+                .then(() => {
+                })
+            ;
         }
     },
 });
