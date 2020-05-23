@@ -1,0 +1,50 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">账单预览</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">消费金额</label>
+                    <em class="weui-form-preview__value">¥{{ item.count }}</em>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">类别</label>
+                    <text class="weui-form-preview__value">{{ item.type}}</text>
+                </view>
+                <view class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">消费人</label>
+                    <text class="weui-form-preview__value">{{ item.creator }}</text>
+                </view>
+                <view class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">消费日期</label>
+                    <text class="weui-form-preview__value">{{ item.date }}({{ item.weekNumber }})</text>
+                </view>
+                <view class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">消费备注</label>
+                    <text class="weui-form-preview__value">{{item.comment }}</text>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+                <a class="weui-form-preview__btn weui-form-preview__btn_primary" bind:tap="onClickEdit">修改</a>
+                <a class="weui-form-preview__btn weui-form-preview_btn_warn" bind:tap="onClickDelete">删除</a>
+            </view>
+        </view>
+    </view>
+    <view class="fadeIn" wx:if="{{shouldShowDeleteDialog}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog">
+            <view class="weui-dialog__hd">
+                <strong class="weui-dialog__title">确定删除</strong>
+            </view>
+            <view class="weui-dialog__ft">
+                <a class="weui-dialog__btn weui-dialog__btn_warn" bind:tap="clickConfirmDelete">确定</a>
+                <a class="weui-dialog__btn weui-dialog__btn_primary" bind:tap="closeDialog">取消</a>
+            </view>
+        </view>
+    </view>
+
+</view>

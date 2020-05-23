@@ -1,0 +1,9 @@
+.weui-form-preview_btn_warn {
+    color: var(--weui-RED);
+}
+.weui-dialog__btn_warn {
+    color: var(--weui-RED);
+}
+.weui-dialog__btn_primary{
+    color: var(--weui-GREEN);
+}

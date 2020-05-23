@@ -1,6 +1,6 @@
 <mp-slideview buttons="{{slideButtons}}"
               bind:buttontap="lostItemsDelete">
-    <navigator url="/index/pages/home" style="display:flex" class="report-base-weui-cell">
+    <navigator url="/pages/detail/detail?id={{ itemData._id }}" style="display:flex" class="report-base-weui-cell">
         <image src="{{itemData.avatarUrl}}" class="user_avatar"></image>
         <view class="type">{{ itemData.type }}</view>
         <view class="{{ itemData.moneyType === 'LOST' ? 'cost_count': 'income_count' }}">
