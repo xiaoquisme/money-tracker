@@ -1,21 +1,28 @@
-// miniprogram/pages/money/income.js
-Page({
+const { getInitData } = require('./utils');
 
+Page({
     data: {
-        moneyType: "INCOME",
+        moneyType: 'INCOME',
         moneyTypeOptions: [],
+        initData: null
     },
-    onLoad: function () {
+    onLoad: function (options) {
+        getInitData(options)
+            .then(data => {
+                this.setData({
+                    initData: data
+                });
+            });
         wx.cloud.callFunction({
             name: 'db',
-            data:{
+            data: {
                 type: 'money-types-income'
             }
         }).then(res => res.result.data)
             .then(options => {
                 this.setData({
                     moneyTypeOptions: options.map(o => o.name)
-                })
-            })
+                });
+            });
     }
 });

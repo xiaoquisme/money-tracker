@@ -8,9 +8,6 @@ Component({
     options: {
         addGlobalClass: true,
     },
-    /**
-     * 组件的属性列表
-     */
     properties: {
         title: String,
         typeTitle: String,
@@ -21,24 +18,30 @@ Component({
         date: String,
         comment: String,
         moneyType: String,
+        initData: Object
     },
-
+    observers: {
+        'initData': function (data) {
+            if(data !== null){
+                this.setData({
+                    ...data,
+                    type: this.data.typeOptions.findIndex(o => o === data.type)
+                });
+                return;
+            }
+            const today = getToday();
+            this.setData({
+                date: today
+            });
+        }
+    },
     data: {
         type: '0',
         count: 0.00,
         date: null,
         comment: '',
     },
-    // eslint-disable-next-line no-unused-vars
-    ready: function (e) {
-        const today = getToday();
-        this.setData({
-            date: today
-        });
-    },
-    /**
-     * 组件的方法列表
-     */
+
     methods: {
         onTypeChange: function (e) {
             this.setData({

@@ -6,5 +6,6 @@
             count-title="消费"
             count-placeholder="比如: 10.00"
             money-type="{{ moneyType }}"
+            init-data="{{ initData }}"
     />
 </view>

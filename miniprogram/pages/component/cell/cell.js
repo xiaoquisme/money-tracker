@@ -1,5 +1,5 @@
 // pages/component/cell/cell.js
-const { deleteItemAsync } = require('../lib/moneyTracker.js');
+const { deleteItem } = require('../lib/moneyTracker.js');
 
 Component({
     options: {
@@ -39,7 +39,7 @@ Component({
             const { data } = event.detail;
             this.triggerEvent('deleteItem',
                 { data: { id: data._id, type: data.moneyType } });
-            deleteItemAsync(data)
+            deleteItem(data)
                 .then(() => {
                 })
             ;

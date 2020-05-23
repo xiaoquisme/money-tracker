@@ -6,6 +6,6 @@
             count-title="收入"
             count-placeholder="比如: 10000"
             money-type="{{ moneyType }}"
-            creator="{{ creator }}"
+            init-data="{{ initData }}"
     />
 </view>

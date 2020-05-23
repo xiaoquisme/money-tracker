@@ -1,4 +1,4 @@
-async function deleteItemAsync(data) {
+async function deleteItem(data) {
     return wx.cloud.callFunction({
         name: 'db',
         data: {
@@ -10,6 +10,19 @@ async function deleteItemAsync(data) {
     });
 }
 
+async function findById(id) {
+    return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'findById',
+            data: {
+                id: id,
+            }
+        }
+    }).then(res => res.result.data[0]);
+}
+
 export {
-    deleteItemAsync
+    findById,
+    deleteItem
 };

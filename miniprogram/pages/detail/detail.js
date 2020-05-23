@@ -1,4 +1,4 @@
-const { deleteItemAsync } = require('../component/lib/moneyTracker');
+const { deleteItem, findById } = require('../component/lib/moneyTracker');
 Page({
     data: {
         item: null,
@@ -7,23 +7,18 @@ Page({
 
     onLoad: function (options) {
         const { id } = options;
-        wx.cloud.callFunction({
-            name: 'db',
-            data: {
-                type: 'findById',
-                data: {
-                    id: id,
-                }
-            }
-        }).then(res => {
+        findById(id).then(data => {
             this.setData({
-                item: res.result.data[0]
+                item: data
             });
         });
     },
 
     onClickEdit: function () {
-
+        const { _id, moneyType } = this.data.item;
+        wx.navigateTo({
+            url: `/pages/money/${ moneyType === 'LOST' ? 'lost' : 'income' }?id=${ _id }`
+        });
     },
     onClickDelete: function () {
         this.setData({
@@ -36,7 +31,7 @@ Page({
         });
     },
     clickConfirmDelete: function () {
-        deleteItemAsync(this.data.item)
+        deleteItem(this.data.item)
             .then(() => {
                 wx.showToast({
                     title: '删除成功',
