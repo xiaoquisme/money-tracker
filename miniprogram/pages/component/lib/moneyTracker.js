@@ -10,6 +10,27 @@ async function deleteItem(data) {
     });
 }
 
+async function addItem(data) {
+    return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'add-money-tracer',
+            data: data,
+        }
+    });
+}
+
+async function updateItem(data) {
+    return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'update-money-tracer',
+            data: data,
+        }
+    });
+}
+
+
 async function findById(id) {
     return wx.cloud.callFunction({
         name: 'db',
@@ -24,5 +45,7 @@ async function findById(id) {
 
 export {
     findById,
-    deleteItem
+    deleteItem,
+    addItem,
+    updateItem,
 };

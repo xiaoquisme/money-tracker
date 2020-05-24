@@ -1,4 +1,5 @@
-const { getInitData } = require('./utils');
+import { getInitData } from './utils';
+import { getIncomeTypes } from '../component/lib/moneyTypes';
 
 Page({
     data: {
@@ -6,23 +7,10 @@ Page({
         moneyTypeOptions: [],
         initData: null
     },
-    onLoad: function (options) {
-        getInitData(options)
-            .then(data => {
-                this.setData({
-                    initData: data
-                });
-            });
-        wx.cloud.callFunction({
-            name: 'db',
-            data: {
-                type: 'money-types-income'
-            }
-        }).then(res => res.result.data)
-            .then(options => {
-                this.setData({
-                    moneyTypeOptions: options.map(o => o.name)
-                });
-            });
+    onLoad: function (params) {
+        getIncomeTypes()
+            .then(options => this.setData({ moneyTypeOptions: options.map(o => o.name) }))
+            .then(() => getInitData(params))
+            .then(data => this.setData({ initData: data }));
     }
 });

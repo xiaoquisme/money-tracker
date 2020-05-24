@@ -23,3 +23,16 @@ export const getTotal = function (allItems) {
     const totalIncome = parseToFloat(incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0));
     return { totalIncome, totalLost };
 };
+
+export function showSuccess(){
+    wx.showToast({
+        title: '添加成功',
+        success: () => {
+            setTimeout(function () {
+                wx.navigateBack({
+                    delta: -1,
+                });
+            }, 1000);
+        }
+    });
+}

@@ -10,8 +10,10 @@ const {
     getWeekData,
     getMonthData,
     refreshDataWithMonthAndYear,
-    findById
+    findById,
+    updateMoneyTracker
 } = require('./src/moneyTracker');
+
 const {
     addMoneyType,
     findAllMoneyIncomeTypes,
@@ -43,6 +45,9 @@ exports.main = async (request, context) => {
     }
     if (type === 'money-types-add') {
         return await addMoneyType(data, cloud);
+    }
+    if(type === 'update-money-tracer'){
+        return await updateMoneyTracker(data, cloud);
     }
     if (type === 'delete-money-tracker') {
         return await deleteMoneyTracker(data, cloud);

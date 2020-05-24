@@ -1,4 +1,10 @@
+import { updateItem, addItem } from './lib/moneyTracker';
+
+import { showSuccess } from './lib/lib';
+
 const app = getApp();
+
+
 
 let timer;
 
@@ -22,7 +28,7 @@ Component({
     },
     observers: {
         'initData': function (data) {
-            if(data !== null){
+            if (data !== null) {
                 this.setData({
                     ...data,
                     type: this.data.typeOptions.findIndex(o => o === data.type)
@@ -65,7 +71,7 @@ Component({
         },
         onSubmit: function () {
             function validatePass() {
-                return Object.keys(this.data).every(key => this.data[key] != null);
+                return Object.keys(this.data).filter(key => key !== 'initData').every(key => this.data[key] != null);
             }
 
             if (!validatePass.call(this)) {
@@ -75,36 +81,36 @@ Component({
                 });
                 return;
             }
-            const { type, count, date, comment } = this.data;
-            const { moneyType } = this.properties;
-            const { userInfo } = app.globalData;
-            const data = {
-                creator: userInfo.nickName,
-                avatarUrl: userInfo.avatarUrl,
-                moneyType,
-                type: this.properties.typeOptions[type],
-                count,
-                date,
-                comment
-            };
-            wx.cloud.callFunction({
-                name: 'db',
-                data: {
-                    type: 'add-money-tracer',
-                    data: data,
-                }
-            }).then(() => {
-                wx.showToast({
-                    title: '添加成功',
-                    success: () => {
-                        setTimeout(function () {
-                            wx.navigateBack({
-                                delta: -1,
-                            });
-                        }, 1000);
-                    }
-                });
-            });
+            const { type, count, date, comment, moneyType, initData } = this.data;
+
+            function buildUpdateObject() {
+                return {
+                    type: this.properties.typeOptions[type],
+                    count,
+                    date,
+                    comment
+                };
+            }
+
+            function buildCreateObject() {
+                const { userInfo } = app.globalData;
+                return {
+                    creator: userInfo.nickName,
+                    avatarUrl: userInfo.avatarUrl,
+                    moneyType,
+                    ...buildUpdateObject.call(this)
+                };
+            }
+
+            if (!initData) {
+                const createData = buildCreateObject.call(this);
+                addItem(createData)
+                    .then(() => showSuccess());
+                return;
+            }
+            const updateData = { ...buildUpdateObject.call(this), id: initData._id };
+            updateItem(updateData)
+                .then(() => showSuccess());
         },
 
         debounce: function (func, waitSecond) {
