@@ -1,4 +1,4 @@
-import { cache, getFromCache, getTotal, getTotalCount } from './lib/lib';
+import { cache, getFromCache, getTotal, getTotalCount, removeFromCache } from './lib/lib';
 
 const app = getApp();
 
@@ -29,6 +29,10 @@ Component({
                 '日期'
             ]
         });
+    },
+
+    detached: function() {
+        removeFromCache(allItemsCacheKey);
     },
 
     observers: {
