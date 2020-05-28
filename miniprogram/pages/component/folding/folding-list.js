@@ -23,7 +23,7 @@ Component({
         kindToggle: function (e) {
             const id = e.currentTarget.id, list = this.data.functions;
             for (let i = 0, len = list.length; i < len; ++i) {
-                if (list[i].id == id) {
+                if (list[i].id === id) {
                     list[i].open = !list[i].open;
                 } else {
                     list[i].open = false;

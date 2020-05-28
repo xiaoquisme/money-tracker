@@ -49,4 +49,7 @@ Component({
             });
         }
     },
+    methods: {
+
+    }
 });

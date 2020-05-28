@@ -33,7 +33,7 @@ Page({
     },
     onOnlyMeChange: function (e) {
         this.setData({
-            onlyMe: e.detail.value,
+            onlyMe: e.detail.data.onlyMe,
         });
     },
 
