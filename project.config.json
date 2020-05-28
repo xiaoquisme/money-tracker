@@ -11,7 +11,7 @@
 	},
 	"appid": "wxe630e3ad72526b4d",
 	"projectname": "MoneyTracker",
-	"libVersion": "2.8.1",
+	"libVersion": "2.11.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

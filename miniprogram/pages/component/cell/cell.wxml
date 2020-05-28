@@ -9,6 +9,8 @@
         <view class="weui-flex">
             <view class="comment">{{ itemData.comment }}</view>
         </view>
-        <view class="weui-cell__ft weui-cell__ft_in-access weui-cell_ft_flex-grow"></view>
+        <view class="weui-cell_access weui-cell_ft_flex-grow">
+            <view class="weui-cell__ft weui-cell__ft_in-access weui-cell_ft-access-position"></view>
+        </view>
     </navigator>
 </mp-slideview>

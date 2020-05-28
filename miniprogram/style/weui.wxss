@@ -4183,7 +4183,7 @@ page {
 
 .page {
     min-height: 100%;
-    background-color: var(--weui-BG-0);
+    /*background-color: var(--weui-BG-0);*/
     color: var(--weui-FG-0);
     font-size: 16px;
     font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif

@@ -108,6 +108,11 @@ page {
     flex-grow: 1;
 }
 
+.weui-cell_access .weui-cell_ft-access-position {
+    right: 1;
+    margin-top: 14px;
+}
+
 .weui-cells {
     padding-right: 4px
 }
