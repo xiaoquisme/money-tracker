@@ -126,6 +126,40 @@ page {
     /* DarkMode 下的样式 start */
     page {
         background: #1b1b1b;
+        --weui-BG-0: #191919;
+        --weui-BG-1: #1f1f1f;
+        --weui-BG-2: #232323;
+        --weui-BG-3: #2f2f2f;
+        --weui-BG-4: #606060;
+        --weui-BG-5: #2c2c2c;
+        --weui-FG-0: hsla(0, 0%, 100%, .8);
+        --weui-FG-HALF: hsla(0, 0%, 100%, .6);
+        --weui-FG-1: hsla(0, 0%, 100%, .5);
+        --weui-FG-2: hsla(0, 0%, 100%, .3);
+        --weui-FG-3: hsla(0, 0%, 100%, .05);
+        --weui-RED: #fa5151;
+        --weui-ORANGE: #c87d2f;
+        --weui-YELLOW: #cc9c00;
+        --weui-GREEN: #74a800;
+        --weui-LIGHTGREEN: #28b561;
+        --weui-BRAND: #07c160;
+        --weui-BLUE: #10aeff;
+        --weui-INDIGO: #1196ff;
+        --weui-PURPLE: #8183ff;
+        --weui-WHITE: hsla(0, 0%, 100%, .8);
+        --weui-LINK: #7d90a9;
+        --weui-TEXTGREEN: #259c5c;
+        --weui-FG: #fff;
+        --weui-BG: #000;
+        --weui-TAG-TEXT-ORANGE: rgba(250, 157, 59, .6);
+        --weui-TAG-BACKGROUND-ORANGE: rgba(250, 157, 59, .1);
+        --weui-TAG-TEXT-GREEN: rgba(6, 174, 86, .6);
+        --weui-TAG-BACKGROUND-GREEN: rgba(6, 174, 86, .1);
+        --weui-TAG-TEXT-BLUE: rgba(16, 174, 255, .6);
+        --weui-TAG-BACKGROUND-BLUE: rgba(16, 174, 255, .1);
+        --weui-TAG-TEXT-BLACK: hsla(0, 0%, 100%, .5);
+        --weui-TAG-BACKGROUND-BLACK: hsla(0, 0%, 100%, .05);
+        --weui-BG-COLOR-ACTIVE: #373737
     }
 
     .kind-list__item {
@@ -159,6 +193,7 @@ page {
     .weui-cell_access .weui-cell__ft:after{
         background-color: white;
     }
+
 
     /* DarkMode 下的样式 end */
 
