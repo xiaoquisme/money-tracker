@@ -1,4 +1,8 @@
-const { getTotalCount, getTotal } = require('./lib/lib');
+import { cache, getFromCache, getTotal, getTotalCount } from './lib/lib';
+
+const app = getApp();
+
+const allItemsCacheKey = 'all-items-cache-key';
 
 Component({
     options: {
@@ -19,6 +23,10 @@ Component({
 
     observers: {
         'allItems': function (data) {
+            const cached = getFromCache(allItemsCacheKey);
+            if (!cached.length && data.length) {
+                cache(allItemsCacheKey, data);
+            }
             const { groupingBy } = this.properties;
             const grouped = data.reduce((acc, item) => {
                 acc[item[groupingBy]] = acc[item[groupingBy]] || [];
@@ -50,6 +58,13 @@ Component({
         }
     },
     methods: {
-
+        onOnlyMeChange: function (e) {
+            const { onlyMe } = e.detail.data;
+            const { nickName:creator } = app.globalData.userInfo;
+            const allItems = getFromCache(allItemsCacheKey);
+            this.setData({
+                allItems: allItems.filter(i => onlyMe ? creator === i.creator : true)
+            });
+        }
     }
 });

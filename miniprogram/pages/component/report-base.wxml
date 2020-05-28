@@ -5,6 +5,7 @@
         <view class="page__desc {{ total >0 ? 'red' : 'green' }}">累计消费: {{ total > 0
             ? '+' : '' }}{{ total }}
         </view>
+        <only-me bind:onOnlyMeChange="onOnlyMeChange"/>
     </view>
     <view class="page__bd">
         <folding-list functions="{{ functions }}"></folding-list>
