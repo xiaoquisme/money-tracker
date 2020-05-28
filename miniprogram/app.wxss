@@ -156,6 +156,9 @@ page {
     .comment {
         color: rgba(255, 255, 255, 0.5);
     }
+    .weui-cell_access .weui-cell__ft:after{
+        background-color: white;
+    }
 
     /* DarkMode 下的样式 end */
 
