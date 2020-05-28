@@ -20,9 +20,9 @@ Page({
     onLoad: function (options) {
         wx.showLoading({ title: '数据加载中' });
         const data = getFromCache(weekNumberOptionsCacheKey);
-        if(data){
+        if(data.length){
             this.setData({
-                weekNumberOptions: getWeekNumberOptions(data)
+                weekNumberOptions: data
             });
             wx.hideLoading();
             return;

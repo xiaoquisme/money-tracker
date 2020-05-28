@@ -10,7 +10,6 @@ Component({
         multipleSlots: true
     },
     properties: {
-        groupingBy: String,
         allItems: Array
     },
 
@@ -18,7 +17,18 @@ Component({
         functions: [],
         totalIncome: 0,
         totalLost: 0,
-        total: 0
+        total: 0,
+        groupType: 0,
+        groupTypeOptions: [],
+    },
+
+    ready: function () {
+        this.setData({
+            groupTypeOptions: [
+                '类别',
+                '日期'
+            ]
+        });
     },
 
     observers: {
@@ -27,7 +37,12 @@ Component({
             if (!cached.length && data.length) {
                 cache(allItemsCacheKey, data);
             }
-            const { groupingBy } = this.properties;
+            const groupingTypeMap = {
+                '类别': 'type',
+                '日期': 'date',
+            };
+            const { groupType, groupTypeOptions } = this.data;
+            const groupingBy = groupingTypeMap[groupTypeOptions[groupType || '0']];
             const grouped = data.reduce((acc, item) => {
                 acc[item[groupingBy]] = acc[item[groupingBy]] || [];
                 acc[item[groupingBy]].push(item);
@@ -60,10 +75,16 @@ Component({
     methods: {
         onOnlyMeChange: function (e) {
             const { onlyMe } = e.detail.data;
-            const { nickName:creator } = app.globalData.userInfo;
+            const { nickName: creator } = app.globalData.userInfo;
             const allItems = getFromCache(allItemsCacheKey);
             this.setData({
                 allItems: allItems.filter(i => onlyMe ? creator === i.creator : true)
+            });
+        },
+        onGroupTypeChange: function (e) {
+            this.setData({
+                groupType: e.detail.value,
+                allItems: this.data.allItems
             });
         }
     }

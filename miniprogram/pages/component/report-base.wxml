@@ -5,7 +5,19 @@
         <view class="page__desc {{ total >0 ? 'red' : 'green' }}">累计消费: {{ total > 0
             ? '+' : '' }}{{ total }}
         </view>
+    </view>
+    <view>
         <only-me bind:onOnlyMeChange="onOnlyMeChange"/>
+        <view class="weui-cell ">
+            <view class="weui-cell__hd">
+                <view class="weui-label">分组类型</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker mode="selector" value="{{groupType}}" range="{{groupTypeOptions}}" bind:change="onGroupTypeChange">
+                    <view class="weui-input">{{ groupTypeOptions[groupType || "0"] }}</view>
+                </picker>
+            </view>
+        </view>
     </view>
     <view class="page__bd">
         <folding-list functions="{{ functions }}"></folding-list>

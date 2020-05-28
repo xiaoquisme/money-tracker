@@ -20,9 +20,7 @@
             </view>
         </view>
     </action-sheet>
-    <report-base
-            allItems="{{ allItems }}"
-            groupingBy="type">
+    <report-base allItems="{{ allItems }}">
         <view slot="title" class="page__title weui-flex">
             <view>{{ todayDescription }}</view>
             <picker mode="date" value="{{day}}" start="2020-01-01" bindchange="onDateChange">

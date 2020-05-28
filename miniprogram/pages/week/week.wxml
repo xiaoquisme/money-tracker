@@ -20,9 +20,7 @@
             </view>
         </view>
     </action-sheet>
-    <report-base
-            allItems="{{ allItems }}"
-            groupingBy="type">
+    <report-base allItems="{{ allItems }}">
         <view slot="title" class="page__title weui-flex">
             <view>{{ weekDescription }}</view>
             <picker mode="selector" value="{{week}}" range="{{weekNumberOptions}}" bind:change="onWeekSelect">
