@@ -24,7 +24,22 @@ export const getTotal = function (allItems) {
     return { totalIncome, totalLost };
 };
 
-export function showSuccess(){
+export const cache = function (key, data) {
+    wx.setStorageSync(key, data);
+};
+
+export const getFromCache = function (key) {
+    return wx.getStorageSync(key);
+};
+
+export const removeFromCache = function (key) {
+    wx.removeStorageSync(key);
+};
+export const clearCache = function () {
+    wx.clearStorageSync();
+};
+
+export function showSuccess() {
     wx.showToast({
         title: '添加成功',
         success: () => {

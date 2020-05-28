@@ -1,4 +1,7 @@
-const { getToday, getWeekNumberOptions } = require('../component/lib/lib');
+import { cache, getToday, getWeekNumberOptions, getFromCache } from '../component/lib/lib';
+
+const weekNumberOptionsCacheKey = 'weekNumberOptions';
+
 Page({
 
     data: {
@@ -16,6 +19,14 @@ Page({
     // eslint-disable-next-line no-unused-vars
     onLoad: function (options) {
         wx.showLoading({ title: '数据加载中' });
+        const data = getFromCache(weekNumberOptionsCacheKey);
+        if(data){
+            this.setData({
+                weekNumberOptions: getWeekNumberOptions(data)
+            });
+            wx.hideLoading();
+            return;
+        }
         wx.cloud.callFunction({
             name: 'lib',
             data: { date: getToday() },
@@ -23,6 +34,7 @@ Page({
             this.setData({
                 weekNumberOptions: getWeekNumberOptions(res.weekNumber)
             });
+            cache(weekNumberOptionsCacheKey, getWeekNumberOptions(res.weekNumber));
         }).then(() => {
             wx.hideLoading();
         });
