@@ -7,13 +7,14 @@ Page({
 
     onLoad: function (options) {
         const { id } = options;
-        findById(id).then(data => {
-            this.setData({
-                item: data
-            });
+        this.setData({
+            id: id
         });
+        this.loadData(id);
     },
-
+    onPullDownRefresh: function () {
+        this.loadData(this.data.id);
+    },
     onClickEdit: function () {
         const { _id, moneyType } = this.data.item;
         wx.navigateTo({
@@ -48,5 +49,13 @@ Page({
                     delta: -1
                 });
             });
+    },
+    loadData: function (id) {
+        findById(id).then(data => {
+            this.setData({
+                item: data
+            });
+        });
+        wx.stopPullDownRefresh();
     }
 });
