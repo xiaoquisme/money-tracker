@@ -72,7 +72,7 @@ Component({
             this.setData({
                 totalIncome: totalIncome,
                 totalLost: totalLost,
-                total: totalIncome - totalLost
+                total: parseFloat(totalIncome - totalLost).toFixed(2)
             });
         }
     },
