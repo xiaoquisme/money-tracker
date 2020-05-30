@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "money-base": "/pages/component/money-base"
-  }
+  },
+  "enablePullDownRefresh": true
 }
