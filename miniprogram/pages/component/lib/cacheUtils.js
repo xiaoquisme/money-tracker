@@ -1,3 +1,5 @@
+import { isNil } from './lib';
+
 export const incomeTypesCacheKey = 'incomeTypesCacheKey';
 export const lostTypesCacheKey = 'lostTypesCacheKey';
 
@@ -23,7 +25,7 @@ export const clearCache = function () {
 
 async function getData(cacheKey, getData) {
     const cachedResult = getFromCache(cache);
-    if (cachedResult && cachedResult.length) {
+    if (!isNil(cachedResult)) {
         return Promise.resolve(cachedResult);
     }
     return getData()

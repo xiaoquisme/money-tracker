@@ -24,6 +24,10 @@ export const getTotal = function (allItems) {
     return { totalIncome, totalLost };
 };
 
+export const isNil = function (data) {
+    return data == null;
+};
+
 export function showSuccess() {
     wx.showToast({
         title: '添加成功',

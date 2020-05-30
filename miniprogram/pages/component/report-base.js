@@ -1,5 +1,5 @@
 import { allItemsCacheKey, cache, getFromCache, removeFromCache } from './lib/cacheUtils';
-import { getTotal, getTotalCount } from './lib/lib';
+import { getTotal, getTotalCount, isNil } from './lib/lib';
 
 
 const app = getApp();
@@ -38,7 +38,7 @@ Component({
     observers: {
         'allItems': function (data) {
             const cached = getFromCache(allItemsCacheKey);
-            if (!cached.length && data.length) {
+            if (!isNil(cached) && data.length) {
                 cache(allItemsCacheKey, data);
             }
             const groupingTypeMap = {

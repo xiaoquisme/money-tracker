@@ -1,5 +1,5 @@
 import { cache, getFromCache, weekNumberOptionsCacheKey } from '../component/lib/cacheUtils';
-import { getToday, getWeekNumberOptions } from '../component/lib/lib';
+import { getToday, getWeekNumberOptions, isNil } from '../component/lib/lib';
 
 Page({
 
@@ -19,7 +19,7 @@ Page({
     onLoad: function (options) {
         wx.showLoading({ title: '数据加载中' });
         const data = getFromCache(weekNumberOptionsCacheKey);
-        if(data.length){
+        if(isNil(data)){
             this.setData({
                 weekNumberOptions: data
             });
