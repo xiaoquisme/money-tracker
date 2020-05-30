@@ -1,5 +1,6 @@
-import { cache, getFromCache, weekNumberOptionsCacheKey } from '../component/lib/cacheUtils';
-import { getToday, getWeekNumberOptions, isNil } from '../component/lib/lib';
+import { cache, getData, weekNumberOptionsCacheKey } from '../component/lib/cacheUtils';
+import { getWeekNumberOptions } from '../component/lib/lib';
+import { getWeekNumberOptionsFromDB } from '../component/lib/moneyTracker';
 
 Page({
 
@@ -15,26 +16,15 @@ Page({
         allItems: []
     },
 
-    // eslint-disable-next-line no-unused-vars
-    onLoad: function (options) {
+    onLoad: function () {
         wx.showLoading({ title: '数据加载中' });
-        const data = getFromCache(weekNumberOptionsCacheKey);
-        if(isNil(data)){
-            this.setData({
-                weekNumberOptions: data
-            });
-            wx.hideLoading();
-            return;
-        }
-        wx.cloud.callFunction({
-            name: 'lib',
-            data: { date: getToday() },
-        }).then(res => res.result).then(res => {
-            this.setData({
-                weekNumberOptions: getWeekNumberOptions(res.weekNumber)
-            });
-            cache(weekNumberOptionsCacheKey, getWeekNumberOptions(res.weekNumber));
-        }).then(() => {
+        getData(weekNumberOptionsCacheKey, getWeekNumberOptionsFromDB)
+            .then(weekNumber => {
+                this.setData({
+                    weekNumberOptions: getWeekNumberOptions(weekNumber)
+                });
+                cache(weekNumberOptionsCacheKey, getWeekNumberOptions(weekNumber));
+            }).then(() => {
             wx.hideLoading();
         });
     },

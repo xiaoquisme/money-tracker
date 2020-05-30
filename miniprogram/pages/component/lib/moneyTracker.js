@@ -1,3 +1,5 @@
+import { getToday } from './lib';
+
 async function deleteItem(data) {
     return wx.cloud.callFunction({
         name: 'db',
@@ -43,9 +45,17 @@ async function findById(id) {
     }).then(res => res.result.data[0]);
 }
 
+async function getWeekNumberOptionsFromDB() {
+    return wx.cloud.callFunction({
+        name: 'lib',
+        data: { date: getToday() },
+    }).then(res => res.result.weekNumber);
+}
+
 export {
     findById,
     deleteItem,
     addItem,
     updateItem,
+    getWeekNumberOptionsFromDB
 };
