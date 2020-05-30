@@ -7,7 +7,6 @@
             bind:close="closeActionSheet"
     >
         <view slot="choice-month" class="weui-cells">
-            <only-me bind:onOnlyMeChange="onOnlyMeChange"/>
             <view class="weui-cell ">
                 <view class="weui-cell__hd">
                     <view class="weui-label">日期</view>

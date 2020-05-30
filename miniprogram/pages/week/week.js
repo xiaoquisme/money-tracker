@@ -12,7 +12,6 @@ Page({
             'choice-day',
         ],
         weekNumberOptions: [],
-        onlyMe: false,
         allItems: []
     },
 
@@ -44,11 +43,6 @@ Page({
             delta: -1
         });
     },
-    onOnlyMeChange: function (e) {
-        this.setData({
-            onlyMe: e.detail.data.onlyMe,
-        });
-    },
     loadData: function (selectedWeekNumber) {
         wx.showLoading({ title: '数据加载中' });
         wx.cloud.callFunction({
@@ -56,7 +50,6 @@ Page({
             data: {
                 type: 'week',
                 date: selectedWeekNumber,
-                onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
             this.setData({

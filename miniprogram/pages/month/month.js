@@ -11,7 +11,6 @@ Page({
         groups: [
             'choice-month',
         ],
-        onlyMe: false,
         allItems:[]
     },
 
@@ -31,12 +30,6 @@ Page({
             delta: -1
         });
     },
-    onOnlyMeChange: function (e) {
-        this.setData({
-            onlyMe: e.detail.data.onlyMe,
-        });
-    },
-
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
         wx.cloud.callFunction({
@@ -47,7 +40,6 @@ Page({
                     year: selectedDate.split('-')[0],
                     month: selectedDate.split('-')[1],
                 },
-                onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
             this.setData({

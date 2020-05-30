@@ -7,7 +7,6 @@ Page({
         groups: [
             'choice-day',
         ],
-        onlyMe: false,
         allItems:[]
     },
 
@@ -27,11 +26,6 @@ Page({
             delta: -1
         });
     },
-    onOnlyMeChange: function (e) {
-        this.setData({
-            onlyMe: e.detail.data.onlyMe,
-        });
-    },
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
         wx.cloud.callFunction({
@@ -39,7 +33,6 @@ Page({
             data: {
                 type: 'day',
                 date: selectedDate,
-                onlyMe: this.data.onlyMe,
             }
         }).then(res => res.result).then(res => {
             this.setData({
