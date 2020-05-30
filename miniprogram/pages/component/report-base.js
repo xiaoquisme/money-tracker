@@ -1,8 +1,8 @@
-import { cache, getFromCache, getTotal, getTotalCount, removeFromCache } from './lib/lib';
+import { allItemsCacheKey, cache, getFromCache, removeFromCache } from './lib/cacheUtils';
+import { getTotal, getTotalCount } from './lib/lib';
+
 
 const app = getApp();
-
-const allItemsCacheKey = 'all-items-cache-key';
 
 Component({
     options: {
@@ -31,7 +31,7 @@ Component({
         });
     },
 
-    detached: function() {
+    detached: function () {
         removeFromCache(allItemsCacheKey);
     },
 

@@ -1,4 +1,10 @@
+import { getData, incomeTypesCacheKey, lostTypesCacheKey } from './cacheUtils';
+
 async function getIncomeTypes() {
+    return getData(incomeTypesCacheKey, getIncomeTypesFromDB);
+}
+
+async function getIncomeTypesFromDB() {
     return wx.cloud.callFunction({
         name: 'db',
         data: {
@@ -7,8 +13,13 @@ async function getIncomeTypes() {
     }).then(res => res.result.data);
 }
 
+
 async function getLostItems() {
-   return wx.cloud.callFunction({
+    return getData(lostTypesCacheKey, getLostItemsFromDB);
+}
+
+async function getLostItemsFromDB() {
+    return wx.cloud.callFunction({
         name: 'db',
         data: {
             type: 'money-types-lost'

@@ -1,4 +1,4 @@
-import { clearCache } from './pages/component/lib/lib';
+import { clearCache } from './pages/component/lib/cacheUtils';
 
 App({
     onLaunch: function () {

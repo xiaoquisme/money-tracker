@@ -1,6 +1,5 @@
-import { cache, getToday, getWeekNumberOptions, getFromCache } from '../component/lib/lib';
-
-const weekNumberOptionsCacheKey = 'weekNumberOptions';
+import { cache, getFromCache, weekNumberOptionsCacheKey } from '../component/lib/cacheUtils';
+import { getToday, getWeekNumberOptions } from '../component/lib/lib';
 
 Page({
 
