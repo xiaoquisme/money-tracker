@@ -1,5 +1,7 @@
-Page({
+import { getDayDataFromDB } from '../component/lib/moneyTracker';
+import { allItemsCacheKey, removeFromCache } from '../component/lib/cacheUtils';
 
+Page({
     data: {
         day: null,
         todayDescription: '日账单',
@@ -7,9 +9,12 @@ Page({
         groups: [
             'choice-day',
         ],
-        allItems:[]
+        allItems: []
     },
-
+    onPullDownRefresh: function () {
+        removeFromCache(allItemsCacheKey);
+        this.loadData(this.data.day);
+    },
     onDateChange: function (event) {
         const selectedDate = event.detail.value;
         this.setData({
@@ -28,19 +33,15 @@ Page({
     },
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
-        wx.cloud.callFunction({
-            name: 'db',
-            data: {
-                type: 'day',
-                date: selectedDate,
-            }
-        }).then(res => res.result).then(res => {
-            this.setData({
-                day: selectedDate,
-                allItems: res.data,
-            });
-        }).then(() => {
+        getDayDataFromDB(this.data.day)
+            .then(res => {
+                this.setData({
+                    day: selectedDate,
+                    allItems: res.data,
+                });
+            }).then(() => {
             wx.hideLoading();
+            wx.stopPullDownRefresh();
         });
     }
 });

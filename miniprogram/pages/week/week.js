@@ -1,6 +1,6 @@
-import { cache, getData, weekNumberOptionsCacheKey } from '../component/lib/cacheUtils';
+import { getData, weekNumberOptionsCacheKey } from '../component/lib/cacheUtils';
 import { getWeekNumberOptions } from '../component/lib/lib';
-import { getWeekNumberOptionsFromDB } from '../component/lib/moneyTracker';
+import { getWeekDataFromDB, getWeekNumberOptionsFromDB } from '../component/lib/moneyTracker';
 
 Page({
 
@@ -14,7 +14,9 @@ Page({
         weekNumberOptions: [],
         allItems: []
     },
-
+    onPullDownRefresh: function () {
+        this.loadData(this.data.week);
+    },
     onLoad: function () {
         wx.showLoading({ title: '数据加载中' });
         getData(weekNumberOptionsCacheKey, getWeekNumberOptionsFromDB)
@@ -22,10 +24,7 @@ Page({
                 this.setData({
                     weekNumberOptions: getWeekNumberOptions(weekNumber)
                 });
-                cache(weekNumberOptionsCacheKey, getWeekNumberOptions(weekNumber));
-            }).then(() => {
-            wx.hideLoading();
-        });
+            }).then(() => wx.hideLoading());
     },
     onWeekSelect: function (e) {
         const selectedWeekNumber = this.data.weekNumberOptions[e.detail.value];
@@ -45,20 +44,15 @@ Page({
     },
     loadData: function (selectedWeekNumber) {
         wx.showLoading({ title: '数据加载中' });
-        wx.cloud.callFunction({
-            name: 'db',
-            data: {
-                type: 'week',
-                date: selectedWeekNumber,
-            }
-        }).then(res => res.result).then(res => {
-            this.setData({
-                week: selectedWeekNumber,
-                allItems: res.data
-            });
-        }).then(() => {
+        getWeekDataFromDB(selectedWeekNumber)
+            .then(res => {
+                this.setData({
+                    week: selectedWeekNumber,
+                    allItems: res.data
+                });
+            }).then(() => {
             wx.hideLoading();
+            wx.stopPullDownRefresh();
         });
     }
-
 });

@@ -13,7 +13,9 @@ Page({
         ],
         allItems:[]
     },
-
+    onPullDownRefresh: function () {
+        this.loadData(this.data.month);
+    },
     onDateChange: function (event) {
         const selectedDate = event.detail.value;
         this.setData({
@@ -48,6 +50,7 @@ Page({
             });
         }).then(() => {
             wx.hideLoading();
+            wx.stopPullDownRefresh();
         });
     }
 });

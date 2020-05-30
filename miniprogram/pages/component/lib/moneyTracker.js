@@ -52,10 +52,36 @@ async function getWeekNumberOptionsFromDB() {
     }).then(res => res.result.weekNumber);
 }
 
+/*
+@param day
+    format: yyyy-MM-dd
+ */
+async function getDayDataFromDB(day) {
+   return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'day',
+            date: day,
+        }
+    }).then(res => res.result);
+}
+
+async function getWeekDataFromDB(weekNumber){
+    return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'week',
+            date: weekNumber,
+        }
+    }).then(res => res.result);
+}
+
 export {
     findById,
     deleteItem,
     addItem,
     updateItem,
-    getWeekNumberOptionsFromDB
+    getWeekNumberOptionsFromDB,
+    getDayDataFromDB,
+    getWeekDataFromDB,
 };
