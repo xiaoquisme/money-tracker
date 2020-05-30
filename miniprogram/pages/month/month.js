@@ -28,6 +28,7 @@ Page({
     },
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
+        removeFromCache(allItemsCacheKey);
         getMonthDataFromDB(selectedDate)
             .then(res => {
                 this.setData({

@@ -22,6 +22,7 @@ Page({
     },
     loadData: function (day) {
         wx.showLoading({ title: '数据加载中' });
+        removeFromCache(allItemsCacheKey);
         getDayDataFromDB(day)
             .then(res => {
                 this.setData({
