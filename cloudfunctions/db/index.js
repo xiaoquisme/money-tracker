@@ -9,7 +9,6 @@ const {
     getDayData,
     getWeekData,
     getMonthData,
-    refreshDataWithMonthAndYear,
     findById,
     updateMoneyTracker
 } = require('./src/moneyTracker');
@@ -54,9 +53,6 @@ exports.main = async (request, context) => {
     }
     if (type === 'add-money-tracer') {
         return await addMoneyTracker(data, cloud);
-    }
-    if (type === 'refreshDataWithMonthAndYear') {
-        return await refreshDataWithMonthAndYear(data, cloud);
     }
     if(type === 'findById'){
         return await findById(data.id, cloud);

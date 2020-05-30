@@ -146,26 +146,6 @@ async function updateMoneyTracker(data, cloud) {
         });
 }
 
-async function refreshDataWithMonthAndYear(weekNumber, cloud) {
-    const db = getDatabase(cloud);
-    const response = await db.collection('money-tracker').get();
-    return (await Promise.all(response.data.map(d => {
-        return {
-            ...d,
-            month: getMonth(d.date),
-            year: getYear(d.date)
-        };
-    }).map(item => {
-        return db.collection('money-tracker')
-            .where({
-                _id: item._id
-            })
-            .update({
-                data: _.omit(item, '_id'),
-            });
-    })));
-}
-
 async function findById(id, cloud) {
     const database = getDatabase(cloud);
     return database.collection('money-tracker')
@@ -180,7 +160,6 @@ module.exports = {
     getDayData,
     getWeekData,
     getMonthData,
-    refreshDataWithMonthAndYear,
     findById,
     updateMoneyTracker
 };
