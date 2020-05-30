@@ -1,17 +1,17 @@
+import { addItem } from '../component/lib/moneyTypes';
+import { incomeTypesCacheKey, lostTypesCacheKey, removeFromCache } from '../component/lib/cacheUtils';
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
         name: null,
         moneyTypeOptions: [],
-        value: "0"
+        value: '0'
     },
 
-    onLoad: function (options) {
+    onLoad: function () {
         this.setData({
-            moneyTypeOptions: ["支出", "收入"]
+            moneyTypeOptions: ['支出', '收入']
         });
     },
 
@@ -25,35 +25,21 @@ Page({
             name: event.detail.value,
         });
     },
-    onSubmit: function (event) {
-        const moneyTypeMap = {
-            "0": "LOST",
-            "1": "INCOME",
-        };
-
-        wx.cloud.callFunction({
-            name: "db",
-            data: {
-                type: 'money-types-add',
-                data: {
-                    name: this.data.name,
-                    value: moneyTypeMap[ this.data.value ],
-                    isActive: true,
-                }
-            }
-        }).then(res => {
+    onSubmit: function () {
+        addItem(this.data).then(() => {
+            removeFromCache(incomeTypesCacheKey);
+            removeFromCache(lostTypesCacheKey);
             wx.showToast({
                 title: '添加成功',
                 success: () => {
                     setTimeout(function () {
                         wx.navigateBack({
                             delta: -1,
-                        })
-                    }, 1000)
+                        });
+                    }, 1000);
                 }
-            })
-        })
-        ;
-    }
+            });
 
-})
+        });
+    }
+});

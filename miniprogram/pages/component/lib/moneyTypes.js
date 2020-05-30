@@ -27,7 +27,28 @@ async function getLostItemsFromDB() {
     }).then(res => res.result.data);
 }
 
+
+const moneyTypeMap = {
+    '0': 'LOST',
+    '1': 'INCOME',
+};
+
+async function addItem({name, value}){
+    return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'money-types-add',
+            data: {
+                name: name,
+                value: moneyTypeMap[value],
+                isActive: true,
+            }
+        }
+    });
+}
+
 export {
     getIncomeTypes,
-    getLostItems
+    getLostItems,
+    addItem
 };
