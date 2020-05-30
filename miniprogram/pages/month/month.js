@@ -1,4 +1,8 @@
 // miniprogram/pages/month/month.js
+import { getCurrentMonth, getCurrentYear } from '../component/lib/lib';
+import { getMonthDataFromDB } from '../component/lib/moneyTracker';
+import { allItemsCacheKey, removeFromCache } from '../component/lib/cacheUtils';
+
 Page({
 
     /**
@@ -7,50 +11,39 @@ Page({
     data: {
         month: null,
         monthDescription: '月账单',
-        showActionSheet: true,
         groups: [
             'choice-month',
         ],
-        allItems:[]
+        allItems: []
     },
     onPullDownRefresh: function () {
+        removeFromCache(allItemsCacheKey);
         this.loadData(this.data.month);
     },
-    onDateChange: function (event) {
-        const selectedDate = event.detail.value;
-        this.setData({
-            month: selectedDate,
-            showActionSheet: false,
-        });
-        this.loadData(selectedDate);
-    },
-    closeActionSheet: function () {
-        this.setData({
-            showActionSheet: false,
-        });
-        wx.navigateBack({
-            delta: -1
-        });
+    onLoad: function () {
+        const currentMonth = getCurrentMonth();
+        const currentYear = getCurrentYear();
+        this.setData({ month: `${currentYear}-${currentMonth}`});
+        this.loadData(this.data.month);
     },
     loadData: function (selectedDate) {
         wx.showLoading({ title: '数据加载中' });
-        wx.cloud.callFunction({
-            name: 'db',
-            data: {
-                type: 'month',
-                date: {
-                    year: selectedDate.split('-')[0],
-                    month: selectedDate.split('-')[1],
-                },
-            }
-        }).then(res => res.result).then(res => {
-            this.setData({
-                month: selectedDate,
-                allItems:res.data
-            });
-        }).then(() => {
+        getMonthDataFromDB(selectedDate)
+            .then(res => {
+                this.setData({
+                    allItems: res.data
+                });
+            }).then(() => {
             wx.hideLoading();
             wx.stopPullDownRefresh();
         });
-    }
+    },
+    onDateChange: function (event) {
+        removeFromCache(allItemsCacheKey);
+        const selectedDate = event.detail.value;
+        this.setData({
+            month: selectedDate,
+        });
+        this.loadData(selectedDate);
+    },
 });

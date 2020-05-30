@@ -57,7 +57,7 @@ async function getWeekNumberOptionsFromDB() {
     format: yyyy-MM-dd
  */
 async function getDayDataFromDB(day) {
-   return wx.cloud.callFunction({
+    return wx.cloud.callFunction({
         name: 'db',
         data: {
             type: 'day',
@@ -66,12 +66,25 @@ async function getDayDataFromDB(day) {
     }).then(res => res.result);
 }
 
-async function getWeekDataFromDB(weekNumber){
+async function getWeekDataFromDB(weekNumber) {
     return wx.cloud.callFunction({
         name: 'db',
         data: {
             type: 'week',
             date: weekNumber,
+        }
+    }).then(res => res.result);
+}
+
+async function getMonthDataFromDB(selectedDate) {
+    return wx.cloud.callFunction({
+        name: 'db',
+        data: {
+            type: 'month',
+            date: {
+                year: selectedDate.split('-')[0],
+                month: selectedDate.split('-')[1],
+            },
         }
     }).then(res => res.result);
 }
@@ -84,4 +97,5 @@ export {
     getWeekNumberOptionsFromDB,
     getDayDataFromDB,
     getWeekDataFromDB,
+    getMonthDataFromDB,
 };

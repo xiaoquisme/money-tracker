@@ -1,24 +1,4 @@
 <view>
-    <action-sheet
-            bindactiontap="btnClick"
-            show="{{ showActionSheet }}"
-            actions="{{ groups }}"
-            title="请选择日期"
-            bind:close="closeActionSheet"
-    >
-        <view slot="choice-day" class="weui-cells">
-            <view class="weui-cell ">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">日期</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker mode="date" value="{{day}}" start="2020-01-01" bindchange="onDateChange">
-                        <view class="weui-input">{{day || "请选择"}}</view>
-                    </picker>
-                </view>
-            </view>
-        </view>
-    </action-sheet>
     <report-base allItems="{{ allItems }}">
         <view slot="title" class="page__title weui-flex">
             <view>{{ todayDescription }}</view>

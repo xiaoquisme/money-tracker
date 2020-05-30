@@ -1,9 +1,9 @@
-import { isNil } from './lib';
+import { isEmpty } from './lib';
 
 export const incomeTypesCacheKey = 'incomeTypesCacheKey';
 export const lostTypesCacheKey = 'lostTypesCacheKey';
 
-export const weekNumberOptionsCacheKey = 'weekNumberOptions';
+export const weekNumberCacheKey = 'weekNumberCacheKey';
 
 export const allItemsCacheKey = 'all-items-cache-key';
 
@@ -25,7 +25,7 @@ export const clearCache = function () {
 
 async function getData(cacheKey, getData) {
     const cachedResult = getFromCache(cache);
-    if (!isNil(cachedResult)) {
+    if (!isEmpty(cachedResult)) {
         return Promise.resolve(cachedResult);
     }
     return getData()

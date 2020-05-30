@@ -1,5 +1,19 @@
+import { getFromCache, weekNumberCacheKey } from './cacheUtils';
+
 export const getToday = function () {
     return new Date().toISOString().split('T')[0];
+};
+
+export const getCurrentWeek = function () {
+    return getFromCache(weekNumberCacheKey);
+};
+
+export const getCurrentMonth = function () {
+    return getToday().split('-')[1];
+};
+
+export const getCurrentYear = function () {
+    return getToday().split('-')[0];
 };
 
 export const getWeekNumberOptions = function (weekNumber) {
@@ -24,8 +38,8 @@ export const getTotal = function (allItems) {
     return { totalIncome, totalLost };
 };
 
-export const isNil = function (data) {
-    return data == null;
+export const isEmpty = function (data) {
+    return data == null || data.length === 0;
 };
 
 export function showSuccess() {
