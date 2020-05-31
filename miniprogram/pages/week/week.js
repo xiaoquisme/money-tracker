@@ -7,9 +7,6 @@ Page({
     data: {
         week: null,
         weekDescription: '周账单',
-        groups: [
-            'choice-day',
-        ],
         weekNumberOptions: [],
         allItems: []
     },

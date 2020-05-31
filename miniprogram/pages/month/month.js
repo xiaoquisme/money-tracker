@@ -11,9 +11,6 @@ Page({
     data: {
         month: null,
         monthDescription: '月账单',
-        groups: [
-            'choice-month',
-        ],
         allItems: []
     },
     onPullDownRefresh: function () {

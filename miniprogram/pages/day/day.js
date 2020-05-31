@@ -6,9 +6,6 @@ Page({
     data: {
         day: null,
         todayDescription: '日账单',
-        groups: [
-            'choice-day',
-        ],
         allItems: []
     },
     onPullDownRefresh: function () {
