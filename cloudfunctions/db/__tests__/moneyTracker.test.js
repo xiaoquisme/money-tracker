@@ -1,7 +1,10 @@
 const utils = require('../src/utils');
+
 jest.mock('../src/utils');
 const moneyTracker = require('../src/moneyTracker');
 const { mockCloudDB } = require('../cloudDBTestUtils');
+const dbName = moneyTracker.dbName;
+
 
 describe('moneyTrackerTest', () => {
     describe('addMoneyTracker', () => {
@@ -18,7 +21,7 @@ describe('moneyTrackerTest', () => {
             };
             const response = await moneyTracker.addMoneyTracker(data, cloud);
             expect(response).toBe('success');
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().add).toBeCalledWith({
                 data: {
                     _openid: 'userId',
@@ -41,7 +44,7 @@ describe('moneyTrackerTest', () => {
             };
             const response = await moneyTracker.deleteMoneyTracker(data, null);
             expect(response).toBe('success');
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({ _id: 1 });
             expect(mockDB().collection().where().update).toBeCalledWith({
                 data: {
@@ -62,7 +65,7 @@ describe('moneyTrackerTest', () => {
             utils.getUserId.mockReturnValue('userId');
             const response = await moneyTracker.getDayData('day', 'any', true);
             expect(response.data).toBe('success');
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({ date: 'day', _openid: 'userId', isDelete: false });
             expect(mockDB().collection().where().get).toHaveBeenCalled();
         });
@@ -73,7 +76,7 @@ describe('moneyTrackerTest', () => {
             const response = await moneyTracker.getDayData('day', 'any', false);
             expect(response.data).toBe('success');
             expect(mockDB).toHaveBeenCalled();
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({ date: 'day', isDelete: false });
             expect(mockDB().collection().where().get).toHaveBeenCalled();
         });
@@ -88,7 +91,7 @@ describe('moneyTrackerTest', () => {
             const response = await moneyTracker.getWeekData(1, null, true);
             expect(response.data).toBe('success');
             expect(mockDB).toHaveBeenCalled();
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({ weekNumber: 1, isDelete: false, _openid: 'userId' });
         });
         it('should get all week data when onlyMe=false', async function () {
@@ -97,7 +100,7 @@ describe('moneyTrackerTest', () => {
             const response = await moneyTracker.getWeekData(1, null, false);
             expect(response.data).toBe('success');
             expect(mockDB).toHaveBeenCalled();
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({ weekNumber: 1, isDelete: false });
         });
     });
@@ -109,7 +112,7 @@ describe('moneyTrackerTest', () => {
             const response = await moneyTracker.getMonthData('2020', '01', null, true);
             expect(response.data[0]).toBe('success');
             expect(mockDB).toHaveBeenCalled();
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({
                 year: 2020,
                 month: 1,
@@ -124,7 +127,7 @@ describe('moneyTrackerTest', () => {
             const response = await moneyTracker.getMonthData('2020', '01', null, false);
             expect(response.data[0]).toBe('success');
             expect(mockDB).toHaveBeenCalled();
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({
                 year: 2020,
                 month: 1,
@@ -140,9 +143,25 @@ describe('moneyTrackerTest', () => {
             const response = await moneyTracker.findById('Id');
             expect(response.data).toBe('success');
             expect(mockDB).toHaveBeenCalled();
-            expect(mockDB().collection).toBeCalledWith('money-tracker');
+            expect(mockDB().collection).toBeCalledWith(dbName);
             expect(mockDB().collection().where).toBeCalledWith({ _id: 'Id' });
             expect(mockDB().collection().where().get).toHaveBeenCalled();
+        });
+    });
+    describe('updateMoneyTracker', () => {
+        it('should update item', async function () {
+            const mockDB = mockCloudDB('success');
+            utils.getDatabase.mockReturnValue(mockDB());
+            const response = await moneyTracker.updateMoneyTracker({ id: 1, type: 'lost' });
+            expect(response).toBe('success');
+            expect(mockDB).toHaveBeenCalled();
+            expect(mockDB().collection).toBeCalledWith(dbName);
+            expect(mockDB().collection().where).toBeCalledWith({ _id: 1 });
+            expect(mockDB().collection().where().update).toBeCalledWith({
+                data: {
+                    type: 'lost'
+                }
+            });
         });
     });
 });
