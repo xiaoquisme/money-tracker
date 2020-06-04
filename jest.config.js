@@ -3,7 +3,6 @@ module.exports = {
     moduleFileExtensions: [...defaults.moduleFileExtensions, 'js'],
     collectCoverage: true,
     coverageDirectory: './coverage/',
-    testRegex: '__tests__',
     coverageThreshold: {
         global: {
             branches: 0,
@@ -12,5 +11,5 @@ module.exports = {
             statements: 0
         }
     },
-    transform: { '^.+\\.[j]s?$': 'babel-jest' }
+    transform: { '^.+\\.[j]s?$': 'babel-jest' },
 };
