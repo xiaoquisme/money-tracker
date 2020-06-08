@@ -42,6 +42,10 @@ export const isEmpty = function (data) {
     return data == null || data.length === 0;
 };
 
+export const getWx = function () {
+    return wx;
+};
+
 export function showSuccess() {
     wx.showToast({
         title: '添加成功',

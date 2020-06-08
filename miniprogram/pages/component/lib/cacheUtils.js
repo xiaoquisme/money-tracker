@@ -1,4 +1,4 @@
-import { isEmpty } from './lib';
+import { isEmpty, getWx } from './lib';
 
 export const incomeTypesCacheKey = 'incomeTypesCacheKey';
 export const lostTypesCacheKey = 'lostTypesCacheKey';
@@ -8,23 +8,23 @@ export const weekNumberCacheKey = 'weekNumberCacheKey';
 export const allItemsCacheKey = 'all-items-cache-key';
 
 export const cache = function (key, data) {
-    wx.setStorageSync(key, data);
+    getWx().setStorageSync(key, data);
 };
 
 export const getFromCache = function (key) {
-    return wx.getStorageSync(key);
+    return getWx().getStorageSync(key);
 };
 
 export const removeFromCache = function (key) {
-    wx.removeStorageSync(key);
+    getWx().removeStorageSync(key);
 };
 export const clearCache = function () {
-    wx.clearStorageSync();
+    getWx().clearStorageSync();
 };
 
 
 async function getData(cacheKey, getData) {
-    const cachedResult = getFromCache(cache);
+    const cachedResult = getFromCache(cacheKey);
     if (!isEmpty(cachedResult)) {
         return Promise.resolve(cachedResult);
     }
