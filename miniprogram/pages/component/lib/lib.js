@@ -1,7 +1,7 @@
 import { getFromCache, weekNumberCacheKey } from './cacheUtils';
 
 export const getToday = function () {
-    return new Date().toISOString().split('T')[0];
+    return new Date(Date.now()).toISOString().split('T')[0];
 };
 
 export const getCurrentWeek = function () {
@@ -17,7 +17,8 @@ export const getCurrentYear = function () {
 };
 
 export const getWeekNumberOptions = function (weekNumber) {
-    const weekNumberOptions = [...Array(parseInt(weekNumber) + 1).keys()].sort((a, b) => b - a);
+    const weekNumberOptions =
+        [...Array(parseInt(weekNumber) + 1).keys()].sort((a, b) => b - a);
     weekNumberOptions.pop();
     return weekNumberOptions;
 };
@@ -31,8 +32,8 @@ export const parseToFloat = function (string) {
 };
 
 export const getTotal = function (allItems) {
-    const lostItems = allItems.filter(d => d.moneyType === 'LOST').reverse();
-    const incomeItems = allItems.filter(d => d.moneyType === 'INCOME').reverse();
+    const lostItems = allItems.filter(d => d.moneyType === 'LOST');
+    const incomeItems = allItems.filter(d => d.moneyType === 'INCOME');
     const totalLost = parseToFloat(lostItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0));
     const totalIncome = parseToFloat(incomeItems.reduce((pre, cur) => parseFloat(cur.count) + pre, 0));
     return { totalIncome, totalLost };
@@ -47,11 +48,11 @@ export const getWx = function () {
 };
 
 export function showSuccess() {
-    wx.showToast({
+    getWx().showToast({
         title: '添加成功',
         success: () => {
             setTimeout(function () {
-                wx.navigateBack({
+                getWx().navigateBack({
                     delta: -1,
                 });
             }, 1000);
