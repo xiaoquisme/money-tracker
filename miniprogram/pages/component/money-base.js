@@ -1,6 +1,6 @@
 import { updateItem, addItem } from './lib/moneyTracker';
 
-import { showSuccess } from './lib/lib';
+import { showSuccess,isEmpty } from './lib/lib';
 
 const app = getApp();
 
@@ -71,7 +71,8 @@ Component({
         },
         onSubmit: function () {
             function validatePass() {
-                return Object.keys(this.data).filter(key => key !== 'initData').every(key => this.data[key] != null);
+                return Object.keys(this.data).filter(key => key !== 'initData')
+                    .every(key => !isEmpty(this.data[key]));
             }
 
             if (!validatePass.call(this)) {
