@@ -47,6 +47,19 @@ export const getWx = function () {
     return wx;
 };
 
+export const groupingTypeMap = {
+    '类别': 'type',
+    '日期': 'date',
+};
+
+export const groupingData = (data, groupingBy) => {
+    return data.reduce((acc, item) => {
+        acc[item[groupingBy]] = acc[item[groupingBy]] || [];
+        acc[item[groupingBy]].push(item);
+        return acc;
+    }, {});
+};
+
 export function showSuccess() {
     getWx().showToast({
         title: '添加成功',

@@ -1,5 +1,5 @@
 import { allItemsCacheKey, cache, getFromCache, removeFromCache } from './lib/cacheUtils';
-import { getTotal, getTotalCount, isEmpty } from './lib/lib';
+import { getTotal, getTotalCount, groupingData, groupingTypeMap, isEmpty } from './lib/lib';
 
 
 const app = getApp();
@@ -41,17 +41,10 @@ Component({
             if (isEmpty(cached) && data.length) {
                 cache(allItemsCacheKey, data);
             }
-            const groupingTypeMap = {
-                '类别': 'type',
-                '日期': 'date',
-            };
+
             const { groupType, groupTypeOptions } = this.data;
             const groupingBy = groupingTypeMap[groupTypeOptions[groupType || '0']];
-            const grouped = data.reduce((acc, item) => {
-                acc[item[groupingBy]] = acc[item[groupingBy]] || [];
-                acc[item[groupingBy]].push(item);
-                return acc;
-            }, {});
+            const grouped = groupingData(data, groupingBy);
             this.setData({
                 functions: []
             });
