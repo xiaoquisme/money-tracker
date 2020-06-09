@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+wechat-charts@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/wechat-charts/-/wechat-charts-1.0.0.tgz#5e4e55f018a7f546dd95cd00a6bab6754bfe1a66"
+  integrity sha512-3U/EDPAc2fKrigaioPkKKk0ovTmmNdHDOwBcbV6fGZzgt12/5v8xEzr3i4y3a7ZJcZVC9P58sIj12zYeG4/JxQ==
+
 weui-miniprogram@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/weui-miniprogram/-/weui-miniprogram-1.0.3.tgz#3da5bde55a74a40d09fcda9b49dfe765da791d83"

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "weui-miniprogram": "^1.0.3",
-    "weui-wxss": "^2.3.0"
+    "weui-wxss": "^2.3.0",
+    "wechat-charts": "^1.0.0"
   }
 }
