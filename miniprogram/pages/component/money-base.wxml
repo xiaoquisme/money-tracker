@@ -11,7 +11,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <picker value="{{type}}" range="{{ typeOptions }}" bindchange="onTypeChange">
-                        <view class="weui-input">{{ typeOptions[type || "0"]}}</view>
+                        <view class="weui-input">{{ typeOptions[type || '0']}}</view>
                     </picker>
                 </view>
             </view>
@@ -20,7 +20,8 @@
                     <view class="weui-label">{{ countTitle }}</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" type="digit" value="{{count}}" bindinput="onCountChange" placeholder="{{countPlaceholder}}" />
+                    <input class="weui-input" type="digit" value="{{count}}" bindinput="onCountChange"
+                           placeholder="{{countPlaceholder}}"/>
                 </view>
             </view>
             <view class="weui-cell ">
@@ -29,7 +30,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="date" value="{{date}}" start="2020-01-01" bindchange="onDateChange">
-                        <view class="weui-input">{{date || ""}}</view>
+                        <view class="weui-input">{{date || ''}}</view>
                     </picker>
                 </view>
             </view>
@@ -39,14 +40,30 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea value="{{comment}}" class="weui-textarea" bindinput="onCommentChange" placeholder="备注一下吧" style="height: 3.3em" />
+                    <textarea value="{{comment}}"
+                              class="weui-textarea"
+                              bind:input="onCommentChange"
+                              placeholder="备注一下吧"
+                              style="height: 3.3em"/>
                     <view class="weui-textarea-counter">{{comment.length}}/200</view>
                 </view>
             </view>
         </view>
 
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bind:tap="onSubmitClick">确定</button>
+        <view class="weui-btn-area" style="display:flex">
+            <button class="weui-btn weui-btn_default"
+                    data-id="continue"
+                    style="margin-right:40px"
+                    bind:tap="onContinueClick">
+                继续添加
+            </button>
+            <button class="weui-btn"
+                    type="primary"
+                    data-id="confirm"
+                    style="height:40px;margin-top:0px"
+                    bind:tap="onSubmitClick">
+                确定
+            </button>
         </view>
     </view>
 </view>

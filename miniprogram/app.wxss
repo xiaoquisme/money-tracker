@@ -159,7 +159,10 @@ page {
         --weui-TAG-BACKGROUND-BLUE: rgba(16, 174, 255, .1);
         --weui-TAG-TEXT-BLACK: hsla(0, 0%, 100%, .5);
         --weui-TAG-BACKGROUND-BLACK: hsla(0, 0%, 100%, .05);
-        --weui-BG-COLOR-ACTIVE: #373737
+        --weui-BG-COLOR-ACTIVE: #373737;
+        --weui-BTN-DISABLED-FONT-COLOR: hsla(0, 0%, 100%, .2);
+        --weui-BTN-DEFAULT-BG: hsla(0, 0%, 100%, .08);
+
     }
 
     .kind-list__item {

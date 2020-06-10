@@ -60,14 +60,12 @@ export const groupingData = (data, groupingBy) => {
     }, {});
 };
 
-export function showSuccess() {
+export function showSuccess(successCallback = () => getWx().navigateBack({ delta: -1, })) {
     getWx().showToast({
         title: '添加成功',
         success: () => {
             setTimeout(function () {
-                getWx().navigateBack({
-                    delta: -1,
-                });
+                successCallback();
             }, 1000);
         }
     });

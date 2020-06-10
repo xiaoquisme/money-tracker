@@ -1,9 +1,8 @@
 import { updateItem, addItem } from './lib/moneyTracker';
 
-import { showSuccess,isEmpty } from './lib/lib';
+import { showSuccess, isEmpty } from './lib/lib';
 
 const app = getApp();
-
 
 
 let timer;
@@ -69,9 +68,12 @@ Component({
                 comment: e.detail.value,
             });
         },
-        onSubmit: function () {
+        onSubmit: function (event) {
+            const isContinue = event.target.dataset.id === 'continue';
+
             function validatePass() {
-                return Object.keys(this.data).filter(key => key !== 'initData')
+                return Object.keys(this.data)
+                    .filter(key => !(key === 'initData' || key === 'comment'))
                     .every(key => !isEmpty(this.data[key]));
             }
 
@@ -106,7 +108,18 @@ Component({
             if (!initData) {
                 const createData = buildCreateObject.call(this);
                 addItem(createData)
-                    .then(() => showSuccess());
+                    .then(() => {
+                        if (isContinue) {
+                            showSuccess(() => {
+                                this.setData({
+                                    count: '',
+                                    comment: ''
+                                });
+                            });
+                            return;
+                        }
+                        showSuccess();
+                    });
                 return;
             }
             const updateData = { ...buildUpdateObject.call(this), id: initData._id };
@@ -115,13 +128,16 @@ Component({
         },
 
         debounce: function (func, waitSecond) {
-            return () => {
+            return (event) => {
                 clearTimeout(timer);
-                timer = setTimeout(func, waitSecond * 1000);
+                timer = setTimeout(() => func(event), waitSecond * 1000);
             };
         },
-        onSubmitClick: function () {
-            this.debounce(this.onSubmit.bind(this), 0.3)();
+        onSubmitClick: function (event) {
+            this.debounce(this.onSubmit.bind(this), 0.3)(event);
+        },
+        onContinueClick: function (event) {
+            this.debounce(this.onSubmit.bind(this), 0.3)(event);
         }
     }
 });
