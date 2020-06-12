@@ -4,16 +4,28 @@ export const getToday = function () {
     return new Date(Date.now()).toISOString().split('T')[0];
 };
 
+export const getDay = function (date) {
+    return date.split('-')[2];
+};
+
 export const getCurrentWeek = function () {
     return getFromCache(weekNumberCacheKey);
 };
 
 export const getCurrentMonth = function () {
-    return getToday().split('-')[1];
+    return getMonth(getToday());
+};
+
+export const getMonth = function (date) {
+    return date.split('-')[1];
 };
 
 export const getCurrentYear = function () {
-    return getToday().split('-')[0];
+    return getYear(getToday());
+};
+
+export const getYear = function (date) {
+    return date.split('-')[0];
 };
 
 export const getWeekNumberOptions = function (weekNumber) {

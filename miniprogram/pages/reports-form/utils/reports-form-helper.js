@@ -1,19 +1,15 @@
-import { getTotalCount, groupingData } from '../../component/lib/lib';
+import { getDay, getMonth, getTotalCount, groupingData } from '../../component/lib/lib';
 
-export const dayCategories = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-let weekNumberIndex;
-export const initWeekNumberIndex = () => {
-    weekNumberIndex = 1;
-};
-
-export const formatWeekNumber = () => `第${ weekNumberIndex++ }周`;
+export const formatWeekNumber = (key) => `第${ key }周`;
 
 export const formatCount = val => `${ val }元`;
 
 
 export const getWeekNumberGrouped = function (items) {
-    const weekNumberGrouped = groupingData(items, 'weekNumber');
-    const weekNumberDataForCharts = calcGroupedData(weekNumberGrouped, formatWeekNumber());
+    const groupingBy = 'weekNumber';
+    const sortedItems = items.sort((a, b) => a[groupingBy] - b[groupingBy]);
+    const weekNumberGrouped = groupingData(sortedItems, groupingBy);
+    const weekNumberDataForCharts = calcGroupedData(weekNumberGrouped, formatWeekNumber);
     return { weekNumberGrouped, weekNumberDataForCharts };
 };
 
@@ -29,8 +25,9 @@ export const dayDataGrouped = function (weekNumberGrouped) {
 };
 
 function groupedAndCalc(items, groupingBy) {
-    const groupedData = groupingData(items, groupingBy);
-    return calcGroupedData(groupedData, dayCategories);
+    const sortedItems = items.sort((a, b) => a[groupingBy].localeCompare( b[groupingBy]));
+    const groupedData = groupingData(sortedItems, groupingBy);
+    return calcGroupedData(groupedData, (date) => `${ getDay(date) }/${ getMonth(date) }`);
 }
 
 function calcGroupedData(groupedData, categories) {
@@ -38,7 +35,7 @@ function calcGroupedData(groupedData, categories) {
         const values = groupedData[key];
         return {
             data: getTotalCount(values),
-            categories: categories,
+            categories: categories(key),
             key: key,
         };
     });

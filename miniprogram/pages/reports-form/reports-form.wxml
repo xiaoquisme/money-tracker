@@ -1,8 +1,12 @@
 <view class="container">
     <view class="title">
-        <view wx:if="{{!isMainPage}}" class="back-btn" bind:tap="onClickBack">返回</view>
-        {{ isMainPage ? title : subTitle }}
+        <view wx:if="{{!isMainPage}}" class="back-btn" bind:tap="onClickBack" style="font-size:14px">返回</view>
+        <block wx:if="{{isMainPage}}">
+            <picker mode="date" value="{{selectedMonth}}" fields="month" start="2020-01" bind:change="onMonthChange">
+                <view class="weui-cell_link" style="font-size:15px" >{{selectedMonth || ""}}</view>
+            </picker>
+        </block>
+        <block wx:else><view style="font-size:14px">{{ title }}</view></block>
     </view>
     <canvas canvas-id="report-form" class="canvas" bind:tap="touchHandler"></canvas>
-    <view wx:if="{{isMainPage}}" style="text-align:center">点击查看详情</view>
 </view>
