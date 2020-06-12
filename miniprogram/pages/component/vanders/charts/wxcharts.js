@@ -1964,8 +1964,8 @@ Charts.prototype.getCurrentDataIndex = function (e) {
     var touches = e.touches && e.touches.length ? e.touches : e.changedTouches;
     if (touches && touches.length) {
         var _touches$ = touches[0],
-            x = _touches$.x,
-            y = _touches$.y;
+            x = _touches$.x || _touches$.pageX,
+            y = _touches$.y || _touches$.pageY;
 
         if (this.opts.type === 'pie' || this.opts.type === 'ring') {
             return findPieChartCurrentIndex({ x: x, y: y }, this.chartData.pieData);
