@@ -23,12 +23,12 @@ export const clearCache = function () {
 };
 
 
-async function getData(cacheKey, getData) {
+async function getData(cacheKey, dataSource) {
     const cachedResult = getFromCache(cacheKey);
     if (!isEmpty(cachedResult)) {
         return Promise.resolve(cachedResult);
     }
-    return getData()
+    return dataSource()
         .then((data) => {
             cache(cacheKey, data);
             return data;

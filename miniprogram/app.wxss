@@ -122,6 +122,11 @@ page {
 }
 
 
+.canvas {
+    width: 100%;
+    height: 200px;
+}
+
 @media (prefers-color-scheme: dark) {
     /* DarkMode 下的样式 start */
     page {

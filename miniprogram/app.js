@@ -10,7 +10,10 @@ App({
             // env: 'my-env-id',
             traceUser: true,
         });
+        const systemInfo = wx.getSystemInfoSync();
+        console.log(systemInfo);
         this.globalData = {};
+        this.globalData.systemInfo = systemInfo;
     },
     onHide: function () {
         clearCache();

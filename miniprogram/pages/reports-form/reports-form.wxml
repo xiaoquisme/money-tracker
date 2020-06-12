@@ -1,0 +1,8 @@
+<view class="container">
+    <view class="title">
+        <view wx:if="{{!isMainPage}}" class="back-btn" bind:tap="onClickBack">返回</view>
+        {{ isMainPage ? title : subTitle }}
+    </view>
+    <canvas canvas-id="report-form" class="canvas" bind:tap="touchHandler"></canvas>
+    <view wx:if="{{isMainPage}}" style="text-align:center">点击查看详情</view>
+</view>
