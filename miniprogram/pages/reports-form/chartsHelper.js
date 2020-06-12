@@ -1,4 +1,4 @@
-import wxCharts from '../vanders/charts/wxcharts';
+import wxCharts from '../component/vanders/charts/wxcharts';
 
 const app = getApp();
 

@@ -2,16 +2,10 @@ import { getMonthDataFromDB } from '../component/lib/moneyTracker';
 import { allItemsCacheKey, getData } from '../component/lib/cacheUtils';
 import { getCurrentMonth, getCurrentYear, getTotalCount, groupingData } from '../component/lib/lib';
 
-import { getColumnChart } from '../component/lib/chartsHelper';
-
-const dayCategories = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-
-let weekNumberIndex;
+import { getColumnChart } from './chartsHelper';
+import { dayCategories, formatCount, formatWeekNumber, initWeekNumberIndex } from './reports-form-helper';
 
 let chart;
-
-const formatWeekNumber = () => `第${ weekNumberIndex++ }周`;
-const formatCount = val => `${ val }元`;
 
 Page({
 
@@ -36,7 +30,7 @@ Page({
     },
 
     init: function (selectedMonth) {
-        weekNumberIndex = 1;
+        initWeekNumberIndex();
         getData(allItemsCacheKey, () => getMonthDataFromDB(selectedMonth))
             .then(res => res.data)
             .then(items => {
