@@ -19,6 +19,7 @@ Page({
 
     onLoad: function () {
         chart = null;
+        removeFromCache(allItemsCacheKey);
         const defaultMonth = `${ getCurrentYear() }-${ getCurrentMonth() }`;
         this.init(defaultMonth);
     },
@@ -33,7 +34,6 @@ Page({
     },
 
     init: function (selectedMonth) {
-
         getData(allItemsCacheKey, () => getMonthDataFromDB(selectedMonth))
             .then(res => res.data)
             .then(items => items.filter(i => i.moneyType === 'LOST'))
