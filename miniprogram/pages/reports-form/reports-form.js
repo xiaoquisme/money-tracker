@@ -36,20 +36,19 @@ Page({
             wx.navigateTo({
                 url: `/pages/day/day?date=${ day }`
             });
-            console.log(day);
         }
     },
 
     init: function (selectedMonth) {
-        getData(allItemsCacheKey, () => getMonthDataFromDB(selectedMonth))
+       return getData(allItemsCacheKey, () => getMonthDataFromDB(selectedMonth))
             .then(res => res.data)
             .then(items => items.filter(i => i.moneyType === 'LOST'))
             .then(items => {
-                // 分组
                 const { weekNumberGrouped, weekNumberDataForCharts } = getWeekNumberGrouped(items);
                 let dayData = dayDataGrouped(weekNumberGrouped);
                 this.setData({
                     mainData: weekNumberDataForCharts,
+                    isMainPage: true,
                     subData: dayData,
                     selectedMonth: selectedMonth,
                 });
@@ -116,9 +115,9 @@ Page({
         this.init(selectedDate);
     },
 
-    onHide: function () {
-        chart = null;
+    onPullDownRefresh: function () {
+        this.init(this.data.selectedMonth)
+            .then(() => wx.stopPullDownRefresh());
     }
-
 });
 

@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "消费报告"
+  "navigationBarTitleText": "消费报告",
+  "enablePullDownRefresh": true
 }
