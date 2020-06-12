@@ -30,5 +30,6 @@
 - [ ] TS重写
 - [ ] 重写UI
 - [ ] DarkMode 用新的方式（mixin）实现
-- [x] 添加顶部下拉刷新
-- [x] 批量添加功能
+- [x] ~~添加顶部下拉刷新~~
+- [x] ~~批量添加功能~~
+- [x] ~~报表[wx-charts](https://github.com/xiaolin3303/wx-charts) 有bug~~
