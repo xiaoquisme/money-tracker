@@ -10,11 +10,15 @@ export function getColumnChart(targetComponent, canvasId, formatFunc, categories
         animation: true,
         yAxis: {
             format: formatFunc,
-            min: 0
+            min: 0,
+            fontColor: getColor('#666666'),
+            gridColor: getColor('#cccccc')
         },
         xAxis: {
             disableGrid: false,
-            type: 'calibration'
+            type: 'calibration',
+            fontColor: getColor('#666666'),
+            gridColor: getColor('#cccccc')
         },
         extra: {
             column: {
@@ -23,8 +27,20 @@ export function getColumnChart(targetComponent, canvasId, formatFunc, categories
         },
         width: app.globalData.systemInfo.windowWidth,
         height: 200,
-        padding: 0,
+        background: isDarkMode() ? '#1b1b1b' : '#e4e4e4',
+        seriesTextColor: getColor('#666666'),
         categories: categories,
         series: series
     });
+}
+
+export const isDarkMode = () => app.globalData.systemInfo.theme === 'dark';
+
+
+function getColor(color) {
+    return isDarkMode() && reverseColor(color) || color;
+}
+
+function reverseColor(color) {
+    return `#${ (0XFFFFFF - `0X${ color.split('#')[1] }`).toString(16) }`;
 }
