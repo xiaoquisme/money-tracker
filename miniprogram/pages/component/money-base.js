@@ -1,6 +1,6 @@
-import { updateItem, addItem } from './lib/moneyTracker';
+import { addItem, updateItem } from './lib/moneyTracker';
 
-import { showSuccess, isEmpty } from './lib/lib';
+import { isEmpty, redirectToDayPage, showSuccess } from './lib/lib';
 
 const app = getApp();
 
@@ -118,7 +118,9 @@ Component({
                             });
                             return;
                         }
-                        showSuccess();
+                        showSuccess( () => {
+                            redirectToDayPage(this.data.date);
+                        });
                     });
                 return;
             }

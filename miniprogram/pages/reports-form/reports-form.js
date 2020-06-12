@@ -1,6 +1,6 @@
 import { getMonthDataFromDB } from '../component/lib/moneyTracker';
 import { allItemsCacheKey, getData, removeFromCache } from '../component/lib/cacheUtils';
-import { getCurrentMonth, getCurrentYear } from '../component/lib/lib';
+import { getCurrentMonth, getCurrentYear, navigateToDayPage } from '../component/lib/lib';
 
 import { getColumnChart } from './utils/charts-helper';
 import { dayDataGrouped, formatCount, getWeekNumberGrouped } from './utils/reports-form-helper';
@@ -33,9 +33,7 @@ Page({
                 return ;
             }
             const day = this.data.subData[this.data.weekNumber][index].key;
-            wx.navigateTo({
-                url: `/pages/day/day?date=${ day }`
-            });
+            navigateToDayPage(day);
         }
     },
 

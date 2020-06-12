@@ -82,3 +82,16 @@ export function showSuccess(successCallback = () => getWx().navigateBack({ delta
         }
     });
 }
+
+
+export function redirectToDayPage(date) {
+    wx.redirectTo({
+        url: `/pages/day/day?date=${ date }`
+    });
+}
+
+export function navigateToDayPage(date) {
+    wx.navigateTo({
+        url: `/pages/day/day?date=${ date }`
+    });
+}
