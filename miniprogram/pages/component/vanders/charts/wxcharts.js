@@ -803,13 +803,13 @@ function drawRingTitle(opts, config, context) {
     }
 }
 
-function drawPointText(points, series, config, context) {
+function drawPointText(points, series, config, context, opts) {
     // 绘制数据文案
     var data = series.data;
 
     context.beginPath();
     context.setFontSize(config.fontSize);
-    context.setFillStyle('#666666');
+    context.setFillStyle(opts.seriesTextColor || '#666666');
     points.forEach(function (item, index) {
         if (item !== null) {
             var formatVal = series.format ? series.format(data[index]) : data[index];
@@ -1087,7 +1087,7 @@ function drawColumnDataPoints(series, opts, config, context) {
         var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
         points = fixColumeData(points, eachSpacing, series.length, seriesIndex, config, opts);
         if (opts.dataLabel !== false && process === 1) {
-            drawPointText(points, eachSeries, config, context);
+            drawPointText(points, eachSeries, config, context, opts);
         }
     });
     context.restore();
