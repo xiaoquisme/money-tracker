@@ -2,8 +2,8 @@ import { getMonthDataFromDB } from '../component/lib/moneyTracker';
 import { allItemsCacheKey, getData } from '../component/lib/cacheUtils';
 import { getCurrentMonth, getCurrentYear, getTotalCount, groupingData } from '../component/lib/lib';
 
-import { getColumnChart } from './chartsHelper';
-import { dayCategories, formatCount, formatWeekNumber, initWeekNumberIndex } from './reports-form-helper';
+import { getColumnChart } from './utils/charts-helper';
+import { dayCategories, formatCount, formatWeekNumber, initWeekNumberIndex } from './utils/reports-form-helper';
 
 let chart;
 
