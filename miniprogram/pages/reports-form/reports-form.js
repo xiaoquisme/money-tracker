@@ -18,10 +18,8 @@ Page({
     data: {
         isMainPage: true,
         title: '',
-        weekData: [],
-        monthData: [],
         mainData: [],
-        subDataMap: {},
+        subData: []
     },
 
     onLoad: function () {
