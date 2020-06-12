@@ -26,10 +26,17 @@ Page({
 
     touchHandler: function (e) {
         let index = chart.getCurrentDataIndex(e);
-        if (index > -1 && this.data.isMainPage) {
-            this.setData({ isMainPage: false });
-            this.updateChartsForSubPage(index);
-
+        if (index > -1 ) {
+            if(this.data.isMainPage){
+                this.setData({ isMainPage: false});
+                this.updateChartsForSubPage(index);
+                return ;
+            }
+            const day = this.data.subData[this.data.weekNumber][index].key;
+            wx.navigateTo({
+                url: `/pages/day/day?date=${ day }`
+            });
+            console.log(day);
         }
     },
 
@@ -87,7 +94,8 @@ Page({
     updateChartsForSubPage: function (index) {
         const weekNumber = this.data.mainData[index].key;
         this.setData({
-            title: `第${ weekNumber }周消费`
+            title: `第${ weekNumber }周消费`,
+            weekNumber: weekNumber,
         });
         chart.updateData({
             categories: this.data.subData[weekNumber].map(d => d.categories),

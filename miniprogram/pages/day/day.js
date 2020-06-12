@@ -12,8 +12,8 @@ Page({
         removeFromCache(allItemsCacheKey);
         this.loadData(this.data.day);
     },
-    onLoad: function () {
-        const today = getToday();
+    onLoad: function ({date}) {
+        const today = date || getToday();
         this.setData({ day: today });
         this.loadData(today);
     },
