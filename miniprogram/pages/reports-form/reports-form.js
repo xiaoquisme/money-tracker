@@ -1,9 +1,15 @@
 import { getMonthDataFromDB } from '../component/lib/moneyTracker';
 import { allItemsCacheKey, getData } from '../component/lib/cacheUtils';
-import { getCurrentMonth, getCurrentYear, getTotalCount, groupingData } from '../component/lib/lib';
+import { getCurrentMonth, getCurrentYear } from '../component/lib/lib';
 
 import { getColumnChart } from './utils/charts-helper';
-import { dayCategories, formatCount, formatWeekNumber, initWeekNumberIndex } from './utils/reports-form-helper';
+import {
+    dayCategories,
+    dayDataGrouped,
+    formatCount,
+    getWeekNumberGrouped,
+    initWeekNumberIndex
+} from './utils/reports-form-helper';
 
 let chart;
 
@@ -35,43 +41,8 @@ Page({
             .then(res => res.data)
             .then(items => {
                 // 分组
-                const weekNumberGrouped = groupingData(items, 'weekNumber');
-                // map 成 charts的数据
-                // 通过分组的数据
-                // 进行map
-                // [{data: 100.00, categories: '第一周', weekNumber: 23} ]
-                const weekNumberDataForCharts = Object.keys(weekNumberGrouped).map(weekNumber => {
-                    const curWeekData = weekNumberGrouped[weekNumber];
-                    return {
-                        data: getTotalCount(curWeekData),
-                        categories: formatWeekNumber(),
-                        weekNumber: weekNumber
-                    };
-                });
-
-
-                // {
-                //  23: [{data: 100.00, categories: "周一(12-16)"}]
-                // }
-                let dayData = JSON.parse(JSON.stringify(weekNumberGrouped));
-
-                Object.keys(dayData).forEach(weekNumber => {
-                    const weekData = dayData[weekNumber];
-                    const groupedDayData = groupingData(weekData, 'date');
-
-                    const groupedDayDataForCharts = Object.keys(groupedDayData).map(day => {
-                        const curDayData = groupedDayData[day];
-                        return {
-                            data: getTotalCount(curDayData),
-                            categories: dayCategories,
-                            day: day,
-                        };
-                    });
-
-                    dayData[weekNumber] = groupedDayDataForCharts;
-
-                });
-
+                const { weekNumberGrouped, weekNumberDataForCharts } = getWeekNumberGrouped(items);
+                let dayData = dayDataGrouped(weekNumberGrouped);
                 this.setData({
                     mainData: weekNumberDataForCharts,
                     subData: dayData,
@@ -115,7 +86,7 @@ Page({
             categories: dayCategories,
             series: [{
                 name: '消费额',
-                data: this.data.subData[this.data.mainData[index].weekNumber].map(d => d.data),
+                data: this.data.subData[this.data.mainData[index].key].map(d => d.data),
                 format: formatCount
             }]
         })
