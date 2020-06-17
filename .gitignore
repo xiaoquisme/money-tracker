@@ -7,3 +7,5 @@ cloudfunctions/.eslintcache
 /node_modules/
 .eslintcache
 package-lock.json
+*.js.map
+*.js

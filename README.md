@@ -1,3 +1,4 @@
+
 [![Coverage Status](https://coveralls.io/repos/github/1483523635/money-tracker/badge.svg?branch=master)](https://coveralls.io/github/1483523635/money-tracker?branch=master)
 [![codecov](https://codecov.io/gh/1483523635/money-tracker/branch/master/graph/badge.svg)](https://codecov.io/gh/1483523635/money-tracker)
 
@@ -27,7 +28,7 @@
 - [x] ~~月报表~~ 
 - [ ] 年报表（小程序云数据库，服务端最大只能取100条数据，需要特殊处理）
 - [ ] 多语言支持
-- [ ] TS重写
+- [ ] TS重写(doing)
 - [ ] 重写UI
 - [ ] DarkMode 用新的方式（mixin）实现
 - [x] ~~添加顶部下拉刷新~~

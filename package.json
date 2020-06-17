@@ -4,7 +4,8 @@
   "description": "mini program",
   "scripts": {
     "test": "jest",
-    "eslint": "eslint --fix cloudfunctions/db/src/* cloudfunctions/db/__tests__/*"
+    "eslint": "eslint --fix cloudfunctions/db/src/* cloudfunctions/db/__tests__/*",
+    "build": "tsc"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.2",
