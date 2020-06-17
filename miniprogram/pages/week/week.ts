@@ -17,6 +17,7 @@ Page({
     onLoad: function () {
         wx.showLoading({ title: '数据加载中' });
         removeFromCache(allItemsCacheKey);
+        removeFromCache(weekNumberCacheKey);
         getData(weekNumberCacheKey, getWeekNumberOptionsFromDB)
             .then(weekNumber => {
                 this.setData({
@@ -37,7 +38,7 @@ Page({
         });
         this.loadData(selectedWeekNumber);
     },
-    loadData: function (selectedWeekNumber) {
+    loadData: function (selectedWeekNumber: string) {
         wx.showLoading({ title: '数据加载中' });
         getWeekDataFromDB(selectedWeekNumber)
             .then(res => {
