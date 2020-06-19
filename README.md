@@ -27,9 +27,12 @@
 - [x] ~~月报表~~ 
 - [ ] 年报表（小程序云数据库，服务端最大只能取100条数据，需要特殊处理）
 - [ ] 多语言支持
-- [ ] TS重写
+- [ ] TS重写 正在进行中具体在分支
 - [ ] 重写UI
 - [ ] DarkMode 用新的方式（mixin）实现
 - [x] ~~添加顶部下拉刷新~~
 - [x] ~~批量添加功能~~
 - [x] ~~报表[wx-charts](https://github.com/xiaolin3303/wx-charts) 有bug~~
+- [x] ~~添加数据删除功能(左滑删除)~~
+- [ ] 报表替换wx-charts： 原因bug太多， 用 [ucharts](https://gitee.com/uCharts/uCharts) 看起来不错需要进一步spike
+
