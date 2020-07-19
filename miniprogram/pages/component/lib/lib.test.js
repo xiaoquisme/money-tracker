@@ -40,8 +40,29 @@ describe('lib', () => {
     });
     describe('getTotalCount', () => {
         it('should getTotalCount', function () {
-            expect(lib.getTotalCount([{ count: 1.001 }, { count: 2.222 }])).toBe('3.22');
+            expect(lib.getTotalCount([{ count: 1.001 }, { count: 2.222, }])).toBe('3.22');
         });
+
+        it('should get 2.00 when income 6  lost 8', function () {
+            expect(lib.getTotalCount([{ count: 8, moneyType: 'LOST' }, {
+                count: 6,
+                moneyType: 'INCOME'
+            }])).toBe('2.00');
+        });
+
+        it('should get -2.00 when income 8  lost 6', function () {
+            expect(lib.getTotalCount([{ count: 6, moneyType: 'LOST' }, {
+                count: 8,
+                moneyType: 'INCOME'
+            }])).toBe('-2.00');
+        });
+        it('should get 0.00 when income 8  lost 8', function () {
+            expect(lib.getTotalCount([{ count: 8, moneyType: 'LOST' }, {
+                count: 8,
+                moneyType: 'INCOME'
+            }])).toBe('0.00');
+        });
+
     });
     describe('parseToFloat', () => {
         it('should parseToFloat', function () {

@@ -36,7 +36,12 @@ export const getWeekNumberOptions = function (weekNumber) {
 };
 
 export const getTotalCount = function (items) {
-    return parseToFloat(items.reduce((acc, item) => acc + parseFloat(item.count), 0));
+    return parseToFloat(items.reduce((acc, item) => {
+        if (item.moneyType === 'INCOME'){
+            return acc - parseFloat(item.count);
+        }
+        return acc + parseFloat(item.count);
+    }, 0));
 };
 
 export const parseToFloat = function (string) {
