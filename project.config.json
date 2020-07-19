@@ -4,10 +4,28 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"enhance": true
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxe630e3ad72526b4d",
 	"projectname": "MoneyTracker",
