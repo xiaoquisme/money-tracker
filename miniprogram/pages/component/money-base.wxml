@@ -51,7 +51,7 @@
         </view>
 
         <view class="weui-btn-area" style="display:flex">
-            <button class="weui-btn weui-btn_default"
+            <button wx:if="{{!isEdit}}" class="weui-btn weui-btn_default"
                     data-id="continue"
                     style="margin-right:40px"
                     bind:tap="onContinueClick">

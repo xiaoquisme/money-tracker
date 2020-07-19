@@ -23,14 +23,16 @@ Component({
         date: String,
         comment: String,
         moneyType: String,
-        initData: Object
+        initData: Object,
+        isEdit: Boolean
     },
     observers: {
         'initData': function (data) {
             if (data !== null) {
                 this.setData({
                     ...data,
-                    type: this.data.typeOptions.findIndex(o => o === data.type)
+                    type: this.data.typeOptions.findIndex(o => o === data.type),
+                    isEdit: true
                 });
                 return;
             }
@@ -45,6 +47,7 @@ Component({
         count: 0.00,
         date: null,
         comment: '',
+        isEdit: false,
     },
 
     methods: {
@@ -69,7 +72,7 @@ Component({
             });
         },
         onSubmit: function (event) {
-            const isContinue = event.target.dataset.id === 'continue';
+            const isContinue = () => event.target.dataset.id === 'continue';
 
             function validatePass() {
                 return Object.keys(this.data)
@@ -84,7 +87,7 @@ Component({
                 });
                 return;
             }
-            const { type, count, date, comment, moneyType, initData } = this.data;
+            const { type, count, date, comment, moneyType, initData, isEdit } = this.data;
 
             function buildUpdateObject() {
                 return {
@@ -105,11 +108,11 @@ Component({
                 };
             }
 
-            if (!initData) {
+            if (!isEdit) {
                 const createData = buildCreateObject.call(this);
                 addItem(createData)
                     .then(() => {
-                        if (isContinue) {
+                        if (isContinue()) {
                             showSuccess(() => {
                                 this.setData({
                                     count: '',
@@ -118,7 +121,7 @@ Component({
                             });
                             return;
                         }
-                        showSuccess( () => {
+                        showSuccess(() => {
                             redirectToDayPage(this.data.date);
                         });
                     });
